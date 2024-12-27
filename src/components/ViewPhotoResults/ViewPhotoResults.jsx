@@ -16,6 +16,7 @@ const ViewPhotoResults = () => {
             alt: "Mango 1",
             info: "Fruit Areas: 142564 sq-pixels | Bruised Area: 23 sq-pixels | Photo: Mango1.png W: 1653 x H: 840",
         },
+        
         {
             src: mangoData2,
             alt: "Mango 2",

@@ -41,7 +41,7 @@ function ContactUsPage() {
             {/* Content Section */}
             <main className="contactus-content">
                 <div className="content-section">
-                    <h2 className="content-title">How can we help?</h2>
+                    <h2 className="content-title">How can we help you?</h2>
                     <p className="content-description">
                         Purpose
                         The "Need Help?" section serves as a quick-access area for users seeking support or information. It's a critical component for building trust and encouraging engagement by providing clear communication channels.

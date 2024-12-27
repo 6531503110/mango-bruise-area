@@ -33,7 +33,7 @@ function AboutUsPage() {
 
             {/* Hero Section */}
             <header className="aboutus-hero" style={{ backgroundImage: `url(${mangoBackground})` }}>
-                <h1 className="hero-title">About Us</h1> {/* Title in the hero section */}
+                <h1 className="hero-title">About Us Page</h1> {/* Title in the hero section */}
             </header>
 
             {/* Content Section */}

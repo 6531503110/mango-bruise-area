@@ -23,10 +23,12 @@ function ContactUsPage() {
             {/* Navbar Section */}
             <nav className="contactus-navbar">
                 <div className="navbar-brand">
+
                     {/* Logo in the navbar */}
                     <img src={mangoLogo} alt="Mango Logo" className="navbar-logo" />
                 </div>
                 <div className="navbar-actions">
+                    
                     {/* Sign-In and Sign-Up buttons */}
                     <button className="navbar-button" onClick={handleSignIn}>Sign-In</button>
                     <button className="navbar-button" onClick={handleSignUp}>Sign-Up</button>
@@ -77,6 +79,7 @@ function ContactUsPage() {
             {/* Footer Section */}
             <footer className="contactuspage-footer">
                 <div className="footer-links">
+
                     {/* About Us and Contact Us links in the footer */}
                     <button className="footer-link" onClick={handleAboutUs}>About Us</button>
                     <button className="footer-link" onClick={handleContactUs}>Contact Us</button>

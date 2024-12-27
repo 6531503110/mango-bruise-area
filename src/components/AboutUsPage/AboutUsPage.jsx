@@ -43,7 +43,7 @@ function AboutUsPage() {
                     <p className="content-description">
                         Mangoers Bruise Tracker, developed at Mae Fah Luang University, specializes in bruise area detection and calculation.
                         Using advanced computer vision with Deep Learning (DL) and Machine Learning (ML), our platform helps retailers
-                        analyze mango samples. This service automates bruise detection, providing valuable insights for quality control.
+                        analyze mango samples. This service automates bruise detection, providing valuable insights for the best quality control.
                     </p>
                 </div>
 

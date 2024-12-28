@@ -13,12 +13,21 @@ const FeatureAnalysis = () => {
     const handleContactUs = () => navigate('/contactuspage');
     const handleUserProfile = () => navigate('/userprofilepage');
     const handleDashboard = () => navigate('/dashboardpage');
-    const handleBruiseAreaCalculation = () => navigate('/bruiseareacalculation')
-    const handleFeatureAnalysisResults = () => navigate('/featureanalysisresults')
+    const handleBruiseAreaCalculation = () => navigate('/bruiseareacalculation');
+    const handleFeatureAnalysisResults = () => {
+        const fileData = selectedFiles.map((file, index) => ({
+            id: index + 1,
+            name: file.name,
+            size: file.size,
+        }));
+        localStorage.setItem('uploadedFiles', JSON.stringify(fileData));
+        navigate('/featureanalysisresults');
+    };
 
     const handleFileChange = (event) => {
         const files = Array.from(event.target.files);
         const validFiles = files.filter(file => /\.(jpg|jpeg|png)$/i.test(file.name));
+
         if (validFiles.length > 0) {
             setSelectedFiles(prevFiles => [...prevFiles, ...validFiles]);
         } else {
@@ -40,6 +49,7 @@ const FeatureAnalysis = () => {
         setDragActive(false);
         const files = Array.from(event.dataTransfer.files);
         const validFiles = files.filter(file => /\.(jpg|jpeg|png)$/i.test(file.name));
+        
         if (validFiles.length > 0) {
             setSelectedFiles(prevFiles => [...prevFiles, ...validFiles]);
         } else {

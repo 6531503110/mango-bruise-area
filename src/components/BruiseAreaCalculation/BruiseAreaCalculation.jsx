@@ -5,26 +5,20 @@ import mangoLogo from '../../assets/Logo_white.png';
 import userProfileImg from '../../assets/profile.jpg';
 
 const BruiseAreaCalculation = () => {
-
-    // State to manage drag and drop file upload activity
     const [dragActive, setDragActive] = useState(false);
-    
-    // State to store the selected files
     const [selectedFiles, setSelectedFiles] = useState([]);
-    const navigate = useNavigate();  // Hook for navigation
+    const navigate = useNavigate();
 
-    // Functions for navigating to different pages
     const handleAboutUs = () => navigate('/aboutuspage');
     const handleContactUs = () => navigate('/contactuspage');
     const handleUserProfile = () => navigate('/userprofilepage');
     const handleDashboard = () => navigate('/dashboardpage');
-    const handleShowAreaCalculation = () => navigate('/showareacalculation');
-    const handleFeatureAnalysis = () => { navigate('/featureanalysis') };
+    const handleFeatureAnalysis = () => navigate('/featureanalysis');
 
-    // Function to handle file selection
     const handleFileChange = (event) => {
         const files = Array.from(event.target.files);
         const validFiles = files.filter(file => /\.(jpg|jpeg|png)$/i.test(file.name));
+        
         if (validFiles.length > 0) {
             setSelectedFiles(prevFiles => [...prevFiles, ...validFiles]);
         } else {
@@ -32,23 +26,21 @@ const BruiseAreaCalculation = () => {
         }
     };
 
-    // Function to handle drag over event
     const handleDragOver = (event) => {
         event.preventDefault();
         setDragActive(true);
     };
 
-    // Function to handle drag leave event
     const handleDragLeave = () => {
         setDragActive(false);
     };
 
-    // Function to handle file drop event
     const handleDrop = (event) => {
         event.preventDefault();
         setDragActive(false);
         const files = Array.from(event.dataTransfer.files);
         const validFiles = files.filter(file => /\.(jpg|jpeg|png)$/i.test(file.name));
+
         if (validFiles.length > 0) {
             setSelectedFiles(prevFiles => [...prevFiles, ...validFiles]);
         } else {
@@ -56,15 +48,25 @@ const BruiseAreaCalculation = () => {
         }
     };
 
-    // Function to delete a selected file
     const handleFileDelete = (index) => {
         setSelectedFiles(prevFiles => prevFiles.filter((_, i) => i !== index));
     };
 
+    const handleUpload = () => {
+        const fileData = selectedFiles.map((file, index) => ({
+            id: index + 1,
+            photoName: file.name,
+            date: new Date().toLocaleString(),
+            area: "---",
+            percentage: "---"
+        }));
+        
+        localStorage.setItem('uploadedFiles', JSON.stringify(fileData));
+        navigate('/showareacalculation');
+    };
+
     return (
         <div className="bruiseareacalculation-page">
-
-            {/* Navbar */}
             <nav className="navbar">
                 <div className="navbar-brand">
                     <img src={mangoLogo} alt="Mango Logo" className="mango-logo" />
@@ -82,15 +84,12 @@ const BruiseAreaCalculation = () => {
                 </div>
             </nav>
 
-            {/* Content */}
             <div className="bruiseareacalculation-content">
                 <h1 className="bruiseareacalculation-title">Bruise Area Calculation</h1>
                 <p className="bruise-description">
                     The Bruise area calculation will show the total area of mango and the total bruise area of mango
                 </p>
                 <div className="file-upload-container">
-                    
-                    {/* File dropzone */}
                     <div
                         className={`file-dropzone ${dragActive ? 'drag-active' : ''}`}
                         onDragOver={handleDragOver}
@@ -112,7 +111,6 @@ const BruiseAreaCalculation = () => {
                         <p>🚨Only .jpg .jpeg .png files are allowed</p>
                     </div>
 
-                    {/* Show the selected files box */}
                     <div className="selected-files-box">
                         <h3>Selected Files:</h3>
                         <ul>
@@ -131,18 +129,16 @@ const BruiseAreaCalculation = () => {
                     </div>
                 </div>
 
-                {/* Action buttons */}
                 <div className="action-buttons">
                     <button className="bt backto-bt" onClick={handleDashboard}>
                         Back
                     </button>
-                    <button className="bt upload-bruiseareacalculation-bt" onClick={handleShowAreaCalculation}>
+                    <button className="bt upload-bruiseareacalculation-bt" onClick={handleUpload}>
                         Upload
                     </button>
                 </div>
             </div>
 
-            {/* Footer */}
             <footer className="footer-bruiseareacalculation">
                 <div className="footer-address-bruiseareacalculation">
                     <p>Mae Fah Luang University 333 Moo 1, Thasud, Muang, Chiang Rai 57100</p>

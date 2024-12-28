@@ -45,6 +45,7 @@ const EditUserProfile = () => {
 
     return (
         <div className="edit-page">
+            
             {/* Navbar */}
             <nav className="edit">
                 <div className="edit-brand">

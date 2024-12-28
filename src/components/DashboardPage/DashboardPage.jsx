@@ -29,6 +29,7 @@ const DashboardPage = () => {
                 </div>
 
                 <div className="navbar-links">
+
                     {/* Dashboard and other navigation links */}
                     <button className="navbar-link">Dashboard</button>
                     <button className="navbar-link" onClick={handleBruiseAreaCalculation}>Bruised Area Calculation</button>
@@ -112,10 +113,12 @@ const DashboardPage = () => {
             {/* Footer Section */}
             <footer className="footering">
                 <div className="footering-links">
+                    
                     {/* Empty section for future links */}
                 </div>
                 
                 <div className="footering-address">
+
                     {/* Footer address */}
                     <p>Mae Fah Luang University 333 Moo 1, Thasud, Muang, Chiang Rai 57100</p>
                 </div>

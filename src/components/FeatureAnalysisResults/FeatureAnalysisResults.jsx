@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './FeatureAnalysisResults.css';
 import mangoLogo from '../../assets/Logo_white.png';
@@ -14,6 +14,15 @@ const FeatureAnalysisResults = () => {
         perimeter: true,
     });
 
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        const storedFiles = localStorage.getItem('uploadedFiles');
+        if (storedFiles) {
+            setData(JSON.parse(storedFiles));
+        }
+    }, []);
+
     const handleExportFeatureSuccessful = () => navigate('/exportfeaturesuccessful');
     const handleDashboard = () => { navigate('/dashboardpage') }
     const handleFeatureAnalysis = () => { navigate('/featureanalysis') }
@@ -21,18 +30,6 @@ const FeatureAnalysisResults = () => {
     const handleAboutUs = () => navigate("/aboutuspage");
     const handleContactUs = () => navigate("/contactuspage");
     const handleUserProfile = () => navigate("/userprofilepage");
-
-    // Dummy data for the table
-    const data = [
-        { id: 1, red_mean: 123.5, green_mean: 110.3, blue_mean: 95.6, glcm_contrast: 0.345, glcm_energy: 0.870, glcm_homogeneity: 0.750, area: 1500, perimeter: 120 },
-        { id: 2, red_mean: 132.8, green_mean: 125.0, blue_mean: 101.4, glcm_contrast: 0.280, glcm_energy: 0.885, glcm_homogeneity: 0.812, area: 1625, perimeter: 140 },
-        { id: 3, red_mean: 146.9, green_mean: 133.5, blue_mean: 119.2, glcm_contrast: 0.410, glcm_energy: 0.850, glcm_homogeneity: 0.765, area: 1710, perimeter: 160 },
-        { id: 4, red_mean: 146.9, green_mean: 133.5, blue_mean: 119.2, glcm_contrast: 0.410, glcm_energy: 0.850, glcm_homogeneity: 0.765, area: 1710, perimeter: 160 },
-        { id: 5, red_mean: 146.9, green_mean: 133.5, blue_mean: 119.2, glcm_contrast: 0.410, glcm_energy: 0.850, glcm_homogeneity: 0.765, area: 1710, perimeter: 160 },
-        { id: 6, red_mean: 146.9, green_mean: 133.5, blue_mean: 119.2, glcm_contrast: 0.410, glcm_energy: 0.850, glcm_homogeneity: 0.765, area: 1710, perimeter: 160 },
-        { id: 7, red_mean: 146.9, green_mean: 133.5, blue_mean: 119.2, glcm_contrast: 0.410, glcm_energy: 0.850, glcm_homogeneity: 0.765, area: 1710, perimeter: 160 },
-        // Add more rows as needed
-    ];
 
     const handleCheckboxChange = (feature) => {
         setChecked((prevChecked) => ({
@@ -103,36 +100,40 @@ const FeatureAnalysisResults = () => {
 
                 {/* Table */}
                 <div className="results-table">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Image ID</th>
-                                <th>Red Mean</th>
-                                <th>Green Mean</th>
-                                <th>Blue Mean</th>
-                                <th>GLCM Contrast</th>
-                                <th>GLCM Energy</th>
-                                <th>GLCM Homogeneity</th>
-                                <th>Area</th>
-                                <th>Perimeter</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {data.map(row => (
-                                <tr key={row.id}>
-                                    <td>{row.id}</td>
-                                    <td>{row.red_mean}</td>
-                                    <td>{row.green_mean}</td>
-                                    <td>{row.blue_mean}</td>
-                                    <td>{row.glcm_contrast.toFixed(3)}</td>
-                                    <td>{row.glcm_energy.toFixed(3)}</td>
-                                    <td>{row.glcm_homogeneity.toFixed(3)}</td>
-                                    <td>{row.area}</td>
-                                    <td>{row.perimeter}</td>
+                    {data.length > 0 ? (
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Image ID</th>
+                                    <th>Red Mean</th>
+                                    <th>Green Mean</th>
+                                    <th>Blue Mean</th>
+                                    <th>GLCM Contrast</th>
+                                    <th>GLCM Energy</th>
+                                    <th>GLCM Homogeneity</th>
+                                    <th>Area</th>
+                                    <th>Perimeter</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {data.map(row => (
+                                    <tr key={row.id}>
+                                        <td>{row.name}</td>
+                                        <td>{row.red_mean || '-'}</td>
+                                        <td>{row.green_mean || '-'}</td>
+                                        <td>{row.blue_mean || '-'}</td>
+                                        <td>{row.glcm_contrast ? row.glcm_contrast.toFixed(3) : '-'}</td>
+                                        <td>{row.glcm_energy ? row.glcm_energy.toFixed(3) : '-'}</td>
+                                        <td>{row.glcm_homogeneity ? row.glcm_homogeneity.toFixed(3) : '-'}</td>
+                                        <td>{row.area || '-'}</td>
+                                        <td>{row.perimeter || '-'}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    ) : (
+                        <p>No information available</p>
+                    )}
                 </div>
 
                 {/* Actions */}

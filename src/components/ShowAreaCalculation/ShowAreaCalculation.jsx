@@ -26,7 +26,15 @@ const ShowAreaCalculation = () => {
   const handleContactUs = () => navigate("/contactuspage");
   const handleUserProfile = () => navigate("/userprofilepage");
   const handleBack = () => navigate("/bruiseareacalculation");
-  const handleExportCSV = () => navigate("/exportcsvsuccessfully");
+
+  const handleExportCSV = () => {
+    if (tableData.length === 0) {
+      alert("No information to export");
+    } else {
+      navigate("/exportcsvsuccessfully");
+    }
+  };
+
   const handleDashboard = () => navigate("/dashboardpage");
   const handleBruiseAreaCalculation = () => navigate("/bruiseareacalculation");
   const handleFeatureAnalysis = () => navigate("/featureanalysis");

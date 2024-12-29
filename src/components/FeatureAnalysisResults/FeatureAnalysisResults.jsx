@@ -23,7 +23,14 @@ const FeatureAnalysisResults = () => {
         }
     }, []);
 
-    const handleExportFeatureSuccessful = () => navigate('/exportfeaturesuccessful');
+    const handleExportFeatureSuccessful = () => {
+        if (data.length === 0) {
+            alert("No information to export");
+        } else {
+            navigate('/exportfeaturesuccessful');
+        }
+    };
+
     const handleDashboard = () => { navigate('/dashboardpage') }
     const handleFeatureAnalysis = () => { navigate('/featureanalysis') }
     const handleBruiseAreaCalculation = () => { navigate('/bruiseareacalculation') }

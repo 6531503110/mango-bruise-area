@@ -7,7 +7,7 @@ This technology automates the bruise detection process, making it more efficient
 
 # mango-bruise-areaTo Run This Project:
 
-Open a new terminal and navigate to the project directory.
-Execute the command `npm install` to install the required dependencies for the React.js frontend.
-Once the dependencies are installed, run the command `npm start` to launch the project.
-Open your browser and navigate to `http://localhost:3000` to interact with the Mango Bruise Area Calculation application.
+- Open a new terminal and navigate to the project directory.
+- Execute the command `npm install` to install the required dependencies for the React.js frontend.
+- Once the dependencies are installed, run the command `npm start` to launch the project.
+- Open your browser and navigate to `http://localhost:3000` to interact with the Mango Bruise Area Calculation application.

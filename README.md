@@ -5,7 +5,7 @@ In the agricultural industry, finding bruised areas on mangoes with just the nak
 
 This technology automates the bruise detection process, making it more efficient, accurate, and reliable. React.js enhances the project by enabling a seamless, interactive, and user-friendly web interface for data visualization and analysis. With this combination of technologies, the project has the potential to improve fruit selection and reduce waste in the agricultural sector.
 
-# mango-bruise-areaTo Run This Project:
+# mango-bruise-area To Run This Project:
 
 - Open a new terminal and navigate to the project directory.
 - Execute the command `npm install` to install the required dependencies for the React.js frontend.

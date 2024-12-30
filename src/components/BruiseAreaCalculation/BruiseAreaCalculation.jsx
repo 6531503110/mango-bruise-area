@@ -53,10 +53,6 @@ const BruiseAreaCalculation = () => {
     };
 
     const handleUpload = () => {
-        if (selectedFiles.length === 0) {
-            alert('No files to upload.');
-            return;
-        }
 
         const fileData = selectedFiles.map((file, index) => ({
             id: index + 1,

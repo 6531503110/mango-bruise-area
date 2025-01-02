@@ -33,7 +33,7 @@ function AboutUsPage() {
 
             {/* Hero Section */}
             <header className="aboutus-hero" style={{ backgroundImage: `url(${mangoBackground})` }}>
-                <h1 className="hero-title">About Us Page</h1> {/* Title in the hero section */}
+                <h1 className="hero-title">About Us</h1> {/* Title in the hero section */}
             </header>
 
             {/* Content Section */}
@@ -47,7 +47,7 @@ function AboutUsPage() {
 
                 {/* Frameworks Section */}
                 <section className="frameworks-section">
-                    <h3 className="frameworks-title">Frameworks That We Use</h3> {/* Frameworks section title */}
+                    <h3 className="frameworks-title">Frameworks We Use</h3> {/* Frameworks section title */}
                     <div className="frameworks-logos">
 
                         {/* Python Logo */}

@@ -15,19 +15,34 @@ const FeatureAnalysisResults = () => {
     });
 
     const [data, setData] = useState([]);
+    const [isExporting, setIsExporting] = useState(false);
+    const [exportProgress, setExportProgress] = useState(0);
 
     useEffect(() => {
         const storedFiles = localStorage.getItem('uploadedFiles');
+
         if (storedFiles) {
             setData(JSON.parse(storedFiles));
         }
     }, []);
 
     const handleExportFeatureSuccessful = () => {
+
         if (data.length === 0) {
             alert("No information to export");
         } else {
-            navigate('/exportfeaturesuccessful');
+            setIsExporting(true);
+            const interval = setInterval(() => {
+                setExportProgress((prevProgress) => {
+                    
+                    if (prevProgress >= 100) {
+                        clearInterval(interval);
+                        navigate('/exportfeaturesuccessful');
+                        return 100;
+                    }
+                    return prevProgress + 10;
+                });
+            }, 300);
         }
     };
 
@@ -152,6 +167,12 @@ const FeatureAnalysisResults = () => {
                         Export CSV
                     </button>
                 </div>
+
+                {isExporting && (
+                    <div className="export-progress">
+                        <p>Exporting CSV... {exportProgress}%</p>
+                    </div>
+                )}
             </div>
 
             {/* Footer */}

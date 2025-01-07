@@ -30,12 +30,14 @@ const ShowAreaCalculation = () => {
   const handleBack = () => navigate("/bruiseareacalculation");
 
   const handleExportCSV = () => {
+
     if (tableData.length === 0) {
       alert("No information to export");
     } else {
       setIsExporting(true);
       const interval = setInterval(() => {
         setExportProgress((prevProgress) => {
+          
           if (prevProgress >= 100) {
             clearInterval(interval);
             navigate("/exportcsvsuccessfully");

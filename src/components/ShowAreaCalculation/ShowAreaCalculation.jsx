@@ -7,6 +7,8 @@ import userProfileImg from "../../assets/profile.jpg";
 const ShowAreaCalculation = () => {
   const navigate = useNavigate();
   const [tableData, setTableData] = useState([]);
+  const [isExporting, setIsExporting] = useState(false);
+  const [exportProgress, setExportProgress] = useState(0);
 
   useEffect(() => {
     const storedFiles = localStorage.getItem('uploadedFiles');
@@ -31,7 +33,17 @@ const ShowAreaCalculation = () => {
     if (tableData.length === 0) {
       alert("No information to export");
     } else {
-      navigate("/exportcsvsuccessfully");
+      setIsExporting(true);
+      const interval = setInterval(() => {
+        setExportProgress((prevProgress) => {
+          if (prevProgress >= 100) {
+            clearInterval(interval);
+            navigate("/exportcsvsuccessfully");
+            return 100;
+          }
+          return prevProgress + 10;
+        });
+      }, 300);
     }
   };
 
@@ -100,6 +112,12 @@ const ShowAreaCalculation = () => {
           <button className="btn backer-btn" onClick={handleBack}>Back</button>
           <button className="btn upload-btn" onClick={handleExportCSV}>Export CSV</button>
         </div>
+
+        {isExporting && (
+          <div className="export-progress">
+            <p>Exporting CSV... {exportProgress}%</p>
+          </div>
+        )}
       </div>
 
       <footer className="footer-showareacalculation">

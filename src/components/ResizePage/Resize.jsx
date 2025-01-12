@@ -18,6 +18,7 @@ const Resize = () => {
     const handleUserProfile = () => navigate('/userprofilepage');
     const handleDashboard = () => navigate('/dashboardpage');
     const handleFeatureAnalysis = () => navigate('/featureanalysis');
+    const handleBruiseAreaCalculation = () => { navigate('/bruiseareacalculation') }
 
     const handleFileChange = (event) => {
         const files = Array.from(event.target.files);
@@ -84,7 +85,7 @@ const Resize = () => {
                 </div>
                 <div className="navbar-links">
                     <button className="navbar-link" onClick={handleDashboard}>Dashboard</button>
-                    <button className="navbar-link">Bruised Area Calculation</button>
+                    <button className="navbar-link" onClick={handleBruiseAreaCalculation}>Bruised Area Calculation</button>
                     <button className="navbar-link" onClick={handleFeatureAnalysis}>Feature Analysis</button>
                     <button className="navbar-link">Resize</button>
                     <button className="navbar-link" onClick={handleAboutUs}>About Us</button>

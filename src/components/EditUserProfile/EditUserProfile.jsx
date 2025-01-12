@@ -10,6 +10,7 @@ const EditUserProfile = () => {
     const { userInfo, setUserInfo } = useContext(UserContext);
     const [profileImage, setProfileImage] = useState(userInfo.profileImage || userProfileImg);
     const [errorMessage, setErrorMessage] = useState('');
+    const handleResize = () => {navigate('/resize')}
 
     const handleNavigation = useCallback((path) => () => navigate(path), [navigate]);
 
@@ -50,7 +51,7 @@ const EditUserProfile = () => {
                     <button className="edit-link" onClick={handleNavigation('/dashboardpage')}>Dashboard</button>
                     <button className="edit-link" onClick={handleNavigation('/bruiseareacalculation')}>Bruised Area Calculation</button>
                     <button className="edit-link" onClick={handleNavigation('/featureanalysis')}>Feature Analysis</button>
-                    <button className="profile-link">Resize</button>
+                    <button className="profile-link" onClick={handleResize}>Resize</button>
                     <button className="edit-link" onClick={handleNavigation('/aboutuspage')}>About Us</button>
                     <button className="edit-link" onClick={handleNavigation('/contactuspage')}>Contact Us</button>
                 </div>

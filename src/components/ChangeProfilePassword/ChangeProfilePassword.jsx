@@ -15,6 +15,7 @@ const ChangeProfilePassword = () => {
   const [passwordLengthAlert, setPasswordLengthAlert] = useState(''); // New state for password length alert
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const handleResize = () => {navigate('/resize')}
 
   const handleNewPasswordUpdate = () => {
     if (!newPassword || !confirmPassword) {
@@ -51,7 +52,7 @@ const ChangeProfilePassword = () => {
           <button className="profile-link" onClick={() => navigate('/dashboardpage')}>Dashboard</button>
           <button className="profile-link" onClick={() => navigate('/bruiseareacalculation')}>Bruised Area Calculation</button>
           <button className="profile-link" onClick={() => navigate('/featureanalysis')}>Feature Analysis</button>
-          <button className="navbar-link">Resize</button>
+          <button className="navbar-link" onClick={handleResize}>Resize</button>
           <button className="edit-link" onClick={() => navigate('/aboutuspage')}>About Us</button>
           <button className="edit-link" onClick={() => navigate('/contactuspage')}>Contact Us</button>
         </div>

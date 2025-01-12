@@ -52,6 +52,7 @@ const FeatureAnalysisResults = () => {
     const handleAboutUs = () => navigate("/aboutuspage");
     const handleContactUs = () => navigate("/contactuspage");
     const handleUserProfile = () => navigate("/userprofilepage");
+    const handleResize = () => {navigate('/resize')}
 
     const handleCheckboxChange = (feature) => {
         setChecked((prevChecked) => ({
@@ -72,7 +73,7 @@ const FeatureAnalysisResults = () => {
                     <button className="navbar-link" onClick={handleDashboard}>Dashboard</button>
                     <button className="navbar-link" onClick={handleBruiseAreaCalculation}>Bruised Area Calculation</button>
                     <button className="navbar-link active" onClick={handleFeatureAnalysis}>Feature Analysis</button>
-                    <button className="profile-link">Resize</button>
+                    <button className="profile-link" onClick={handleResize}>Resize</button>
                     <button className="navbar-link" onClick={handleAboutUs}>About Us</button>
                     <button className="navbar-link" onClick={handleContactUs}>Contact Us</button>
                 </div>

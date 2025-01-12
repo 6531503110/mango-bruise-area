@@ -7,6 +7,7 @@ import { UserContext } from '../../UserContext';
 
 const UserProfilePage = () => {
     const navigate = useNavigate();
+    const handleResize = () => {navigate('/resize')}
     const { userInfo } = useContext(UserContext);
 
     return (
@@ -19,7 +20,7 @@ const UserProfilePage = () => {
                     <button className="profile-link" onClick={() => navigate('/dashboardpage')}>Dashboard</button>
                     <button className="profile-link" onClick={() => navigate('/bruiseareacalculation')}>Bruised Area Calculation</button>
                     <button className="profile-link" onClick={() => navigate('/featureanalysis')}>Feature Analysis</button>
-                    <button className="profile-link">Resize</button>
+                    <button className="profile-link" onClick={handleResize}>Resize</button>
                     <button className="profile-link" onClick={() => navigate('/aboutuspage')}>About Us</button>
                     <button className="profile-link" onClick={() => navigate('/contactuspage')}>Contact Us</button>
                 </div>

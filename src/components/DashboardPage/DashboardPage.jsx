@@ -16,6 +16,7 @@ const DashboardPage = () => {
     const handleFeatureAnalysis = () => { navigate('/featureanalysis') }
     const handleShowAreaCalculation = () => navigate('/showareacalculation')
     const handleExportCSV = () => { navigate('/exportcsvsuccessfully') }
+    const handleResize = () => {navigate('/resize')}
 
     return (
         <div className="dashboard-page">
@@ -34,7 +35,7 @@ const DashboardPage = () => {
                     <button className="navbar-link">Dashboard</button>
                     <button className="navbar-link" onClick={handleBruiseAreaCalculation}>Bruised Area Calculation</button>
                     <button className="navbar-link" onClick={handleFeatureAnalysis}>Feature Analysis</button>
-                    <button className="navbar-link">Resize</button>
+                    <button className="navbar-link" onClick={handleResize}>Resize</button>
                     <button className="navbar-link" onClick={handleAboutUs}>About Us</button>
                     <button className="navbar-link" onClick={handleContactUs}>Contact Us</button>
                 </div>

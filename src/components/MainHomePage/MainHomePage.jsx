@@ -14,6 +14,7 @@ function MainHomePage() {
     const handleUserProfile = () => {navigate('/userprofilepage');};
     const handleBruiseAreaCalculation = () => {navigate('/bruiseareacalculation')}
     const handleFeatureAnalysis = () => {navigate('/featureanalysis')}
+    const handleResize = () => {navigate('/resize')}
 
     return (
         <div className="main-homepage">
@@ -28,7 +29,7 @@ function MainHomePage() {
                     <button className="navbar-link" onClick={handleDashboard}>Dashboard</button>
                     <button className="navbar-link" onClick={handleBruiseAreaCalculation}>Bruised Area Calculation</button>
                     <button className="navbar-link" onClick={handleFeatureAnalysis}>Feature Analysis</button>
-                    <button className="navbar-link">Resize</button>
+                    <button className="navbar-link" onClick={handleResize}>Resize</button>
                     <button className="navbar-link" onClick={handleAboutUs}>About Us</button>
                     <button className="navbar-link" onClick={handleContactUs}>Contact Us</button>
                 </div>

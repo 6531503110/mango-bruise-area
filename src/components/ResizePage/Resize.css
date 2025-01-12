@@ -47,18 +47,25 @@
 }
 
 .resized-images .download-btn {
-    background: #436850;
+    background: linear-gradient(135deg, #6b8e23, #3a5330);
     color: #fff;
-    padding: 5px 10px;
-    border: 2px solid #ADBC9F;
-    border-radius: 5px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 14px;
-    transition: background-color 0.3s ease-in-out;
+    font-weight: bold;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .resized-images .download-btn:hover {
-    background: #3a5330;
+    background: linear-gradient(135deg, #556b2f, #2e3d1f);
+    transform: scale(1.05);
+}
+
+.resized-images .download-btn:active {
+    transform: scale(1.02);
 }
 
 .resize-settings-bruiseareacalculation {

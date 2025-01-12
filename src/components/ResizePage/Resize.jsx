@@ -46,8 +46,28 @@ const Resize = () => {
     };
 
     const handleDownloadImage = (image) => {
-        // Simulate downloading logic
-        alert(`Downloading resized image: ${image.name}`);
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        const img = new Image();
+
+        img.onload = () => {
+            canvas.width = image.width;
+            canvas.height = image.height;
+            ctx.drawImage(img, 0, 0, image.width, image.height);
+
+            canvas.toBlob((blob) => {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = image.name;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }, 'image/jpeg');
+        };
+
+        img.src = URL.createObjectURL(selectedFiles.find(file => file.name === image.name));
     };
 
     const handleReset = () => {

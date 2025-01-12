@@ -25,6 +25,7 @@ import FeatureAnalysis from './components/FeatureAnalysisPage/FeatureAnalysis';
 import ViewPhotoResults from './components/ViewPhotoResults/ViewPhotoResults';
 import FeatureAnalysisResults from './components/FeatureAnalysisResults/FeatureAnalysisResults';
 import ExportFeatureSuccessful from './components/ExportFeatureSuccessful/ExportFeatureSuccessful';
+import Resize from './components/ResizePage/Resize';
 
 function App() {
   return (
@@ -56,6 +57,7 @@ function App() {
           <Route path="/viewphotoresults" element={<ViewPhotoResults />} />
           <Route path="/featureanalysisresults" element={<FeatureAnalysisResults />} />
           <Route path="/exportfeaturesuccessful" element={<ExportFeatureSuccessful />} />
+          <Route path="/resize" element={<Resize />} />
         </Routes>
       </Router>
     </UserProvider>

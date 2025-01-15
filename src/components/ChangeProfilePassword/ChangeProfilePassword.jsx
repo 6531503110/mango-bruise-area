@@ -1,4 +1,4 @@
-import React, { useState } from 'react'; 
+import React, { useState, useCallback } from 'react'; 
 import { useNavigate } from 'react-router-dom'; 
 import './ChangeProfilePassword.css'; 
 import mangoLogo from '../../assets/Logo_white.png'; 
@@ -15,9 +15,12 @@ const ChangeProfilePassword = () => {
   const [passwordLengthAlert, setPasswordLengthAlert] = useState(''); // New state for password length alert
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const handleResize = () => {navigate('/resize')}
 
-  const handleNewPasswordUpdate = () => {
+  const handleResize = useCallback(() => {
+    navigate('/resize');
+  }, [navigate]);
+
+  const handleNewPasswordUpdate = useCallback(() => {
     if (!newPassword || !confirmPassword) {
       setAlertMessage('The field cannot be blank');
     } else if (newPassword.length < 8) {
@@ -31,15 +34,15 @@ const ChangeProfilePassword = () => {
       localStorage.setItem('signupPassword', newPassword); // Store the new password in local storage
       navigate('/newpasswordupdate'); // Navigate to the password update confirmation page
     }
-  };
+  }, [newPassword, confirmPassword, navigate]);
 
-  const toggleVisibility = (field) => {
+  const toggleVisibility = useCallback((field) => {
     if (field === 'newPassword') {
       setShowNewPassword((prev) => !prev);
     } else if (field === 'confirmPassword') {
       setShowConfirmPassword((prev) => !prev);
     }
-  };
+  }, []);
 
   return (
     <div className="change-profilepassword-page">

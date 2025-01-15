@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './BruiseAreaCalculation.css';
 import mangoLogo from '../../assets/Logo_white.png';
@@ -9,14 +9,14 @@ const BruiseAreaCalculation = () => {
     const [selectedFiles, setSelectedFiles] = useState([]);
     const navigate = useNavigate();
 
-    const handleAboutUs = () => navigate('/aboutuspage');
-    const handleContactUs = () => navigate('/contactuspage');
-    const handleUserProfile = () => navigate('/userprofilepage');
-    const handleDashboard = () => navigate('/dashboardpage');
-    const handleFeatureAnalysis = () => navigate('/featureanalysis');
-    const handleResize = () => {navigate('/resize')}
+    const handleAboutUs = useCallback(() => navigate('/aboutuspage'), [navigate]);
+    const handleContactUs = useCallback(() => navigate('/contactuspage'), [navigate]);
+    const handleUserProfile = useCallback(() => navigate('/userprofilepage'), [navigate]);
+    const handleDashboard = useCallback(() => navigate('/dashboardpage'), [navigate]);
+    const handleFeatureAnalysis = useCallback(() => navigate('/featureanalysis'), [navigate]);
+    const handleResize = useCallback(() => navigate('/resize'), [navigate]);
 
-    const handleFileChange = (event) => {
+    const handleFileChange = useCallback((event) => {
         const files = Array.from(event.target.files);
         const validFiles = files.filter(file => /\.(jpg|jpeg|png)$/i.test(file.name));
         
@@ -25,18 +25,18 @@ const BruiseAreaCalculation = () => {
         } else {
             alert('Only .jpg, .jpeg, and .png files are allowed.');
         }
-    };
+    }, []);
 
-    const handleDragOver = (event) => {
+    const handleDragOver = useCallback((event) => {
         event.preventDefault();
         setDragActive(true);
-    };
+    }, []);
 
-    const handleDragLeave = () => {
+    const handleDragLeave = useCallback(() => {
         setDragActive(false);
-    };
+    }, []);
 
-    const handleDrop = (event) => {
+    const handleDrop = useCallback((event) => {
         event.preventDefault();
         setDragActive(false);
         const files = Array.from(event.dataTransfer.files);
@@ -47,14 +47,13 @@ const BruiseAreaCalculation = () => {
         } else {
             alert('Only .jpg, .jpeg, and .png files are allowed.');
         }
-    };
+    }, []);
 
-    const handleFileDelete = (index) => {
+    const handleFileDelete = useCallback((index) => {
         setSelectedFiles(prevFiles => prevFiles.filter((_, i) => i !== index));
-    };
+    }, []);
 
-    const handleUpload = () => {
-
+    const handleUpload = useCallback(() => {
         const fileData = selectedFiles.map((file, index) => ({
             id: index + 1,
             photoName: file.name,
@@ -65,7 +64,7 @@ const BruiseAreaCalculation = () => {
         
         localStorage.setItem('uploadedFiles', JSON.stringify(fileData));
         navigate('/showareacalculation');
-    };
+    }, [selectedFiles, navigate]);
 
     return (
         <div className="bruiseareacalculation-page">

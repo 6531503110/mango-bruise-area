@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react'; // Import React library for component creation
+import React, { useCallback } from 'react'; // Import React library for component creation
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 import './ChangePasswordUpdate.css'; // Import CSS for styling
 import mangoLogo from '../../assets/check.png'; // Import logo image, update the path if necessary
@@ -8,7 +8,9 @@ function ChangePasswordUpdate() {
     const navigate = useNavigate(); // Initialize navigate for navigation to other pages
 
     // Function to handle sign-in button click and navigate to sign-in page
-    const handleSignIn = () => {navigate('/signin');};
+    const handleSignIn = useCallback(() => {
+        navigate('/signin');
+    }, [navigate]);
 
     return (
         <div className="ChangePasswordUpdate-container"> {/* Main container for the update page */}

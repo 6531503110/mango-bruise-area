@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Resize.css';
 import mangoLogo from '../../assets/Logo_white.png';
@@ -13,14 +13,14 @@ const Resize = () => {
 
     const navigate = useNavigate();
 
-    const handleAboutUs = () => navigate('/aboutuspage');
-    const handleContactUs = () => navigate('/contactuspage');
-    const handleUserProfile = () => navigate('/userprofilepage');
-    const handleDashboard = () => navigate('/dashboardpage');
-    const handleFeatureAnalysis = () => navigate('/featureanalysis');
-    const handleBruiseAreaCalculation = () => { navigate('/bruiseareacalculation') }
+    const handleAboutUs = useCallback(() => navigate('/aboutuspage'), [navigate]);
+    const handleContactUs = useCallback(() => navigate('/contactuspage'), [navigate]);
+    const handleUserProfile = useCallback(() => navigate('/userprofilepage'), [navigate]);
+    const handleDashboard = useCallback(() => navigate('/dashboardpage'), [navigate]);
+    const handleFeatureAnalysis = useCallback(() => navigate('/featureanalysis'), [navigate]);
+    const handleBruiseAreaCalculation = useCallback(() => navigate('/bruiseareacalculation'), [navigate]);
 
-    const handleFileChange = (event) => {
+    const handleFileChange = useCallback((event) => {
         const files = Array.from(event.target.files);
         const validFiles = files.filter(file => /\.(jpg|jpeg|png)$/i.test(file.name));
 
@@ -29,9 +29,9 @@ const Resize = () => {
         } else {
             alert('Only .jpg, .jpeg, and .png files are allowed.');
         }
-    };
+    }, []);
 
-    const handleResizeImages = () => {
+    const handleResizeImages = useCallback(() => {
         if (!dimensions.width || !dimensions.height) {
             alert('Please enter both width and height!');
             return;
@@ -44,9 +44,9 @@ const Resize = () => {
         }));
 
         setResizedImages(resized);
-    };
+    }, [dimensions, selectedFiles]);
 
-    const handleDownloadImage = (image) => {
+    const handleDownloadImage = useCallback((image) => {
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
         const img = new Image();
@@ -69,13 +69,19 @@ const Resize = () => {
         };
 
         img.src = URL.createObjectURL(selectedFiles.find(file => file.name === image.name));
-    };
+    }, [selectedFiles]);
 
-    const handleReset = () => {
+    const handleReset = useCallback(() => {
         setSelectedFiles([]);
         setResizedImages([]);
         setDimensions({ width: '', height: '' });
-    };
+    }, []);
+
+    useEffect(() => {
+        return () => {
+            selectedFiles.forEach(file => URL.revokeObjectURL(file.preview));
+        };
+    }, [selectedFiles]);
 
     return (
         <div className="bruiseareacalculation-page">

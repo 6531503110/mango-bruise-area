@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import './ChangePassword.css'; // Import CSS for styling
 import { useNavigate } from 'react-router-dom'; // Importing react-router-dom for navigation
 import mangoLogo from '../../assets/Logo_black.png'; // Update the path if needed for the mango logo
@@ -15,18 +15,21 @@ function ChangePassword() {
         confirmPassword: false
     });
 
+    const newPasswordRef = useRef(null);
+    const confirmPasswordRef = useRef(null);
+
     // Function to toggle visibility of password fields
-    const toggleVisibility = (field) => {
+    const toggleVisibility = useCallback((field) => {
         setPasswordVisibility((prev) => ({
             ...prev,
             [field]: !prev[field] // Toggle visibility for the selected password field
         }));
-    };
+    }, []);
 
     // Function to handle password change and validation
-    const handleChangePasswordUpdate = () => {
-        const newPassword = document.getElementById('new-password').value.trim(); // Get new password value
-        const confirmPassword = document.getElementById('confirm-password').value.trim(); // Get confirm password value
+    const handleChangePasswordUpdate = useCallback(() => {
+        const newPassword = newPasswordRef.current.value.trim(); // Get new password value
+        const confirmPassword = confirmPasswordRef.current.value.trim(); // Get confirm password value
 
         if (!newPassword || !confirmPassword) { // Check if any field is blank
             setAlertMessage('The field cannot be blank'); // Show alert if any field is empty
@@ -43,14 +46,14 @@ function ChangePassword() {
             localStorage.setItem('signupPassword', newPassword); // Store the new password in local storage
             navigate('/changepasswordupdate'); // Navigate to the change password update page
         }
-    };
+    }, [navigate]);
 
     // Function to handle 'Enter' key press event
-    const handleKeyDown = (event) => {
+    const handleKeyDown = useCallback((event) => {
         if (event.key === 'Enter') { // If 'Enter' is pressed
             handleChangePasswordUpdate(); // Trigger the password update
         }
-    };
+    }, [handleChangePasswordUpdate]);
 
     return (
         <div className="ChangePassword-container"> {/* Main container */}
@@ -61,7 +64,7 @@ function ChangePassword() {
                 <div className="changepassword-wrapper"> {/* Wrapper for new password input */}
                     <input
                         type={passwordVisibility.newPassword ? 'text' : 'password'} // Toggle between text and password input
-                        id="new-password"
+                        ref={newPasswordRef}
                         placeholder="Enter new password"
                         className="ChangePassword-input"
                         onKeyDown={handleKeyDown} // Handle keydown event for Enter key
@@ -79,7 +82,7 @@ function ChangePassword() {
                 <div className="changepassword-wrapper"> {/* Wrapper for confirm password input */}
                     <input
                         type={passwordVisibility.confirmPassword ? 'text' : 'password'} // Toggle between text and password input
-                        id="confirm-password"
+                        ref={confirmPasswordRef}
                         placeholder="Confirm new password"
                         className="ChangePassword-input"
                         onKeyDown={handleKeyDown} // Handle keydown event for Enter key

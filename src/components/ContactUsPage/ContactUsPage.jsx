@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ContactUsPage.css';
 import mangoBackground from '../../assets/differentmango.jpg';
@@ -11,11 +11,11 @@ function ContactUsPage() {
     const navigate = useNavigate(); // useNavigate hook for navigation between pages
 
     // Event handlers for different navigation actions
-    const handleSignIn = () => { navigate('/signin'); };
-    const handleSignUp = () => { navigate('/signup'); };
-    const handleAboutUs = () => { navigate('/aboutuspage'); };
-    const handleContactUs = () => { navigate('/contactuspage'); };
-    const handleFacebookClick = () => { window.open("https://www.facebook.com/IntegratedAgriTechEcosystem", "_blank"); };
+    const handleSignIn = useCallback(() => { navigate('/signin'); }, [navigate]);
+    const handleSignUp = useCallback(() => { navigate('/signup'); }, [navigate]);
+    const handleAboutUs = useCallback(() => { navigate('/aboutuspage'); }, [navigate]);
+    const handleContactUs = useCallback(() => { navigate('/contactuspage'); }, [navigate]);
+    const handleFacebookClick = useCallback(() => { window.open("https://www.facebook.com/IntegratedAgriTechEcosystem", "_blank"); }, []);
 
     return (
         <div className="contactus-page-container">
@@ -70,7 +70,7 @@ function ContactUsPage() {
                         {/* Facebook */}
                         <div className="framework-item" onClick={handleFacebookClick}>
                             <img src={tensorflowLogo} alt="Facebook Logo" className="framework-logo" />
-                            <p>Facebook</p>
+                            <p>IATE</p>
                         </div>
                     </div>
                 </section>

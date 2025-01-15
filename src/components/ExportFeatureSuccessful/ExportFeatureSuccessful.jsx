@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ExportFeatureSuccessful.css';
 import mangoLogo from '../../assets/Logo_white.png';
@@ -8,14 +8,14 @@ import checkImg from '../../assets/check.png'; // Import the check.png image
 const ExportFeatureSuccessful = () => {
     const navigate = useNavigate();
 
-    const handleAboutUs = () => { navigate('/aboutuspage'); };
-    const handleContactUs = () => { navigate('/contactuspage'); }
-    const handleDashboard = () => { navigate('/dashboardpage') }
-    const handleUserProfile = () => { navigate('/userprofilepage'); };
-    const handleFeatureAnalysisrResults = () => { navigate('/featureanalysisresults')}
-    const handleBruiseAreaCalculation = () => { navigate('/bruiseareacalculation') }
-    const handleFeatureAnalysis = () => { navigate('/featureanalysis') }
-    const handleResize = () => {navigate('/resize')}
+    const handleAboutUs = useCallback(() => { navigate('/aboutuspage'); }, [navigate]);
+    const handleContactUs = useCallback(() => { navigate('/contactuspage'); }, [navigate]);
+    const handleDashboard = useCallback(() => { navigate('/dashboardpage'); }, [navigate]);
+    const handleUserProfile = useCallback(() => { navigate('/userprofilepage'); }, [navigate]);
+    const handleFeatureAnalysisResults = useCallback(() => { navigate('/featureanalysisresults'); }, [navigate]);
+    const handleBruiseAreaCalculation = useCallback(() => { navigate('/bruiseareacalculation'); }, [navigate]);
+    const handleFeatureAnalysis = useCallback(() => { navigate('/featureanalysis'); }, [navigate]);
+    const handleResize = useCallback(() => { navigate('/resize'); }, [navigate]);
 
     return (
         <div className="export-feature-page">
@@ -50,7 +50,7 @@ const ExportFeatureSuccessful = () => {
                             <img src={checkImg} alt="Check" className="check-img" />
                             <p>Your CSV has been exported successfully</p>
                         </div>
-                        <button className="export-password-button" onClick={handleFeatureAnalysisrResults}>Done</button>
+                        <button className="export-password-button" onClick={handleFeatureAnalysisResults}>Done</button>
                     </div>
                 </div>
             </div>

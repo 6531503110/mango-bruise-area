@@ -12,7 +12,6 @@ const Resize = () => {
     const [keepAspectRatio, setKeepAspectRatio] = useState(false);
 
     const navigate = useNavigate();
-
     const handleAboutUs = useCallback(() => navigate('/aboutuspage'), [navigate]);
     const handleContactUs = useCallback(() => navigate('/contactuspage'), [navigate]);
     const handleUserProfile = useCallback(() => navigate('/userprofilepage'), [navigate]);

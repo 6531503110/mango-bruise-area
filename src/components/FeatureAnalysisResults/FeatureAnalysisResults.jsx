@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './FeatureAnalysisResults.css';
 import mangoLogo from '../../assets/Logo_white.png';
@@ -20,21 +20,18 @@ const FeatureAnalysisResults = () => {
 
     useEffect(() => {
         const storedFiles = localStorage.getItem('uploadedFiles');
-
         if (storedFiles) {
             setData(JSON.parse(storedFiles));
         }
     }, []);
 
-    const handleExportFeatureSuccessful = () => {
-
+    const handleExportFeatureSuccessful = useCallback(() => {
         if (data.length === 0) {
             alert("No information to export");
         } else {
             setIsExporting(true);
             const interval = setInterval(() => {
                 setExportProgress((prevProgress) => {
-                    
                     if (prevProgress >= 100) {
                         clearInterval(interval);
                         navigate('/exportfeaturesuccessful');
@@ -44,22 +41,22 @@ const FeatureAnalysisResults = () => {
                 });
             }, 300);
         }
-    };
+    }, [data, navigate]);
 
-    const handleDashboard = () => { navigate('/dashboardpage') }
-    const handleFeatureAnalysis = () => { navigate('/featureanalysis') }
-    const handleBruiseAreaCalculation = () => { navigate('/bruiseareacalculation') }
-    const handleAboutUs = () => navigate("/aboutuspage");
-    const handleContactUs = () => navigate("/contactuspage");
-    const handleUserProfile = () => navigate("/userprofilepage");
-    const handleResize = () => {navigate('/resize')}
+    const handleDashboard = useCallback(() => navigate('/dashboardpage'), [navigate]);
+    const handleFeatureAnalysis = useCallback(() => navigate('/featureanalysis'), [navigate]);
+    const handleBruiseAreaCalculation = useCallback(() => navigate('/bruiseareacalculation'), [navigate]);
+    const handleAboutUs = useCallback(() => navigate('/aboutuspage'), [navigate]);
+    const handleContactUs = useCallback(() => navigate('/contactuspage'), [navigate]);
+    const handleUserProfile = useCallback(() => navigate('/userprofilepage'), [navigate]);
+    const handleResize = useCallback(() => navigate('/resize'), [navigate]);
 
-    const handleCheckboxChange = (feature) => {
+    const handleCheckboxChange = useCallback((feature) => {
         setChecked((prevChecked) => ({
             ...prevChecked,
             [feature]: !prevChecked[feature],
         }));
-    };
+    }, []);
 
     return (
         <div className="bruise-page">

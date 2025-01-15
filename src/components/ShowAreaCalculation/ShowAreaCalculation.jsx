@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import "./ShowAreaCalculation.css";
 import mangoLogo from "../../assets/Logo_white.png";
@@ -12,33 +12,34 @@ const ShowAreaCalculation = () => {
 
   useEffect(() => {
     const storedFiles = localStorage.getItem('uploadedFiles');
-    
     if (storedFiles) {
       setTableData(JSON.parse(storedFiles));
     }
   }, []);
 
-  const handleDelete = (id) => {
+  const handleDelete = useCallback((id) => {
     const updatedData = tableData.filter((row) => row.id !== id);
     setTableData(updatedData);
     localStorage.setItem('uploadedFiles', JSON.stringify(updatedData));
-  };
+  }, [tableData]);
 
-  const handleAboutUs = () => navigate("/aboutuspage");
-  const handleContactUs = () => navigate("/contactuspage");
-  const handleUserProfile = () => navigate("/userprofilepage");
-  const handleBack = () => navigate("/bruiseareacalculation");
-  const handleResize = () => {navigate('/resize')}
+  const handleAboutUs = useCallback(() => navigate("/aboutuspage"), [navigate]);
+  const handleContactUs = useCallback(() => navigate("/contactuspage"), [navigate]);
+  const handleUserProfile = useCallback(() => navigate("/userprofilepage"), [navigate]);
+  const handleBack = useCallback(() => navigate("/bruiseareacalculation"), [navigate]);
+  const handleResize = useCallback(() => navigate('/resize'), [navigate]);
+  const handleDashboard = useCallback(() => navigate("/dashboardpage"), [navigate]);
+  const handleBruiseAreaCalculation = useCallback(() => navigate("/bruiseareacalculation"), [navigate]);
+  const handleFeatureAnalysis = useCallback(() => navigate("/featureanalysis"), [navigate]);
+  const handleViewPhotoResults = useCallback(() => navigate("/viewphotoresults"), [navigate]);
 
-  const handleExportCSV = () => {
-
+  const handleExportCSV = useCallback(() => {
     if (tableData.length === 0) {
       alert("No information to export");
     } else {
       setIsExporting(true);
       const interval = setInterval(() => {
         setExportProgress((prevProgress) => {
-          
           if (prevProgress >= 100) {
             clearInterval(interval);
             navigate("/exportcsvsuccessfully");
@@ -48,12 +49,7 @@ const ShowAreaCalculation = () => {
         });
       }, 300);
     }
-  };
-
-  const handleDashboard = () => navigate("/dashboardpage");
-  const handleBruiseAreaCalculation = () => navigate("/bruiseareacalculation");
-  const handleFeatureAnalysis = () => navigate("/featureanalysis");
-  const handleViewPhotoResults = () => navigate("/viewphotoresults");
+  }, [tableData, navigate]);
 
   return (
     <div className="show-area-calculation-page">

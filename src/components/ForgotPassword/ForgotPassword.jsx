@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ForgotPassword.css';
 import mangoLogo from '../../assets/Logo_black.png';
@@ -7,9 +7,10 @@ import mangoLogo from '../../assets/Logo_black.png';
 function ForgotPassword() {
     const navigate = useNavigate();
     const [alertMessage, setAlertMessage] = useState('');
+    const emailRef = useRef(null);
 
-    const handleSendEmail = () => {
-    const email = document.getElementById('email').value.trim();
+    const handleSendEmail = useCallback(() => {
+        const email = emailRef.current.value.trim();
 
         if (!email) {
             setAlertMessage('Please enter your email address.');
@@ -23,13 +24,13 @@ function ForgotPassword() {
 
             navigate('/verify'); // Navigate to the Verify page
         }
-    };
+    }, [navigate]);
 
-    const handleKeyDown = (event) => {
+    const handleKeyDown = useCallback((event) => {
         if (event.key === 'Enter') {
             handleSendEmail();
         }
-    };
+    }, [handleSendEmail]);
 
     return (
         <div className="ForgotPassword-container">
@@ -39,7 +40,7 @@ function ForgotPassword() {
                 {alertMessage && <div className="alert-message">{alertMessage}</div>}
                 <input
                     type="text"
-                    id="email"
+                    ref={emailRef}
                     placeholder="Enter Email"
                     className="ForgotPassword-input"
                     onKeyDown={handleKeyDown}

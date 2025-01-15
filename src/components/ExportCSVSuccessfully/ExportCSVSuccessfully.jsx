@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ExportCSVSuccessfully.css';
 import mangoLogo from '../../assets/Logo_white.png';
@@ -8,14 +8,14 @@ import checkImg from '../../assets/check.png'; // Import the check.png image
 const ExportCSVSuccessfully = () => {
     const navigate = useNavigate();
 
-    const handleAboutUs = () => { navigate('/aboutuspage'); };
-    const handleContactUs = () => { navigate('/contactuspage'); }
-    const handleDashboard = () => { navigate('/dashboardpage') }
-    const handleUserProfile = () => { navigate('/userprofilepage'); };
-    const handleShowAreaCalculation = () => { navigate('/showareacalculation')}
-    const handleBruiseAreaCalculation = () => { navigate('/bruiseareacalculation') }
-    const handleFeatureAnalysis = () => { navigate('/featureanalysis') }
-    const handleResize = () => {navigate('/resize')}
+    const handleAboutUs = useCallback(() => { navigate('/aboutuspage'); }, [navigate]);
+    const handleContactUs = useCallback(() => { navigate('/contactuspage'); }, [navigate]);
+    const handleDashboard = useCallback(() => { navigate('/dashboardpage'); }, [navigate]);
+    const handleUserProfile = useCallback(() => { navigate('/userprofilepage'); }, [navigate]);
+    const handleShowAreaCalculation = useCallback(() => { navigate('/showareacalculation'); }, [navigate]);
+    const handleBruiseAreaCalculation = useCallback(() => { navigate('/bruiseareacalculation'); }, [navigate]);
+    const handleFeatureAnalysis = useCallback(() => { navigate('/featureanalysis'); }, [navigate]);
+    const handleResize = useCallback(() => { navigate('/resize'); }, [navigate]);
 
     return (
         <div className="export-csv-page">

@@ -1,22 +1,21 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './DashboardPage.css';
 import mangoLogo from '../../assets/Logo_white.png';
 import userProfileImg from '../../assets/profile.jpg';
 
 const DashboardPage = () => {
-
     const navigate = useNavigate(); // useNavigate hook to handle page navigation
 
     // Event handlers to navigate to different pages
-    const handleAboutUs = () => {navigate('/aboutuspage');};
-    const handleContactUs = () => {navigate('/contactuspage');}
-    const handleUserProfile = () => {navigate('/userprofilepage');};
-    const handleBruiseAreaCalculation = () => { navigate('/bruiseareacalculation') }
-    const handleFeatureAnalysis = () => { navigate('/featureanalysis') }
-    const handleShowAreaCalculation = () => navigate('/showareacalculation')
-    const handleExportCSV = () => { navigate('/exportcsvsuccessfully') }
-    const handleResize = () => {navigate('/resize')}
+    const handleAboutUs = useCallback(() => { navigate('/aboutuspage'); }, [navigate]);
+    const handleContactUs = useCallback(() => { navigate('/contactuspage'); }, [navigate]);
+    const handleUserProfile = useCallback(() => { navigate('/userprofilepage'); }, [navigate]);
+    const handleBruiseAreaCalculation = useCallback(() => { navigate('/bruiseareacalculation'); }, [navigate]);
+    const handleFeatureAnalysis = useCallback(() => { navigate('/featureanalysis'); }, [navigate]);
+    const handleShowAreaCalculation = useCallback(() => { navigate('/showareacalculation'); }, [navigate]);
+    const handleExportCSV = useCallback(() => { navigate('/exportcsvsuccessfully'); }, [navigate]);
+    const handleResize = useCallback(() => { navigate('/resize'); }, [navigate]);
 
     return (
         <div className="dashboard-page">

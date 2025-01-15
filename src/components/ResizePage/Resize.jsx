@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import './Resize.css';
 import mangoLogo from '../../assets/Logo_white.png';
 import userProfileImg from '../../assets/profile.jpg';
+import JSZip from "jszip";
+import { saveAs } from "file-saver";
 
 const Resize = () => {
     const [dragActive, setDragActive] = useState(false);
@@ -10,6 +12,7 @@ const Resize = () => {
     const [resizedImages, setResizedImages] = useState([]);
     const [dimensions, setDimensions] = useState({ width: '', height: '' });
     const [keepAspectRatio, setKeepAspectRatio] = useState(false);
+    const [originalDimensions, setOriginalDimensions] = useState({ width: '', height: '' });
 
     const navigate = useNavigate();
     const handleAboutUs = useCallback(() => navigate('/aboutuspage'), [navigate]);
@@ -18,6 +21,29 @@ const Resize = () => {
     const handleDashboard = useCallback(() => navigate('/dashboardpage'), [navigate]);
     const handleFeatureAnalysis = useCallback(() => navigate('/featureanalysis'), [navigate]);
     const handleBruiseAreaCalculation = useCallback(() => navigate('/bruiseareacalculation'), [navigate]);
+
+    const handleDownloadAllImages = useCallback(async () => {
+    const zip = new JSZip();
+    for (const image of resizedImages) {
+        const imgBlob = await new Promise((resolve) => {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const img = new Image();
+            img.onload = () => {
+                canvas.width = image.width;
+                canvas.height = image.height;
+                ctx.drawImage(img, 0, 0, image.width, image.height);
+                canvas.toBlob(resolve, 'image/jpeg');
+            };
+            img.src = URL.createObjectURL(
+                selectedFiles.find((file) => file.name === image.name)
+            );
+        });
+        zip.file(image.name, imgBlob);
+    }
+    const content = await zip.generateAsync({ type: 'blob' });
+    saveAs(content, 'resized-images.zip');
+}, [resizedImages, selectedFiles]);
 
     const handleFileChange = useCallback((event) => {
         const files = Array.from(event.target.files);
@@ -70,11 +96,31 @@ const Resize = () => {
         img.src = URL.createObjectURL(selectedFiles.find(file => file.name === image.name));
     }, [selectedFiles]);
 
+    // Removed duplicate handleDownloadAllImages
+
     const handleReset = useCallback(() => {
         setSelectedFiles([]);
         setResizedImages([]);
         setDimensions({ width: '', height: '' });
+        setOriginalDimensions({ width: '', height: '' });
     }, []);
+
+    useEffect(() => {
+        if (keepAspectRatio && originalDimensions.width && originalDimensions.height) {
+            const aspectRatio = originalDimensions.width / originalDimensions.height;
+            if (dimensions.width) {
+                setDimensions(prev => ({
+                    ...prev,
+                    height: Math.round(dimensions.width / aspectRatio)
+                }));
+            } else if (dimensions.height) {
+                setDimensions(prev => ({
+                    ...prev,
+                    width: Math.round(dimensions.height * aspectRatio)
+                }));
+            }
+        }
+    }, [keepAspectRatio, dimensions.width, dimensions.height, originalDimensions]);
 
     useEffect(() => {
         return () => {
@@ -114,7 +160,8 @@ const Resize = () => {
                         onDrop={(e) => {
                             e.preventDefault();
                             setDragActive(false);
-                            handleFileChange(e);
+                            const files = Array.from(e.dataTransfer.files); // Handle dropped files
+                            handleFileChange({ target: { files } }); // Call handleFileChange
                         }}
                     >
                         <p>Drag & Drop your images here or</p>
@@ -131,7 +178,6 @@ const Resize = () => {
                         </label>
                         <p>🚨 Only .jpg .jpeg .png files are allowed</p>
                     </div>
-
                     <div className="resize-settings-bruiseareacalculation">
                         <h3>Resize Settings:</h3>
                         <div className="input-group">
@@ -140,18 +186,26 @@ const Resize = () => {
                                 className="resize-number-input"
                                 placeholder="Width (px)"
                                 value={dimensions.width}
-                                onChange={(e) =>
-                                    setDimensions({ ...dimensions, width: e.target.value })
-                                }
+                                onChange={(e) => {
+                                    const newWidth = e.target.value;
+                                    setDimensions(prev => ({ ...prev, width: newWidth }));
+                                    if (!originalDimensions.width) {
+                                        setOriginalDimensions(prev => ({ ...prev, width: newWidth }));
+                                    }
+                                }}
                             />
                             <input
                                 type="number"
                                 className="resize-number-input"
                                 placeholder="Height (px)"
                                 value={dimensions.height}
-                                onChange={(e) =>
-                                    setDimensions({ ...dimensions, height: e.target.value })
-                                }
+                                onChange={(e) => {
+                                    const newHeight = e.target.value;
+                                    setDimensions(prev => ({ ...prev, height: newHeight }));
+                                    if (!originalDimensions.height) {
+                                        setOriginalDimensions(prev => ({ ...prev, height: newHeight }));
+                                    }
+                                }}
                             />
                         </div>
                         <label className="aspect-ratio-label">
@@ -186,20 +240,35 @@ const Resize = () => {
                 </div>
 
                 {resizedImages.length > 0 && (
-                    <div className="resized-images">
-                        <h3>Resized Images:</h3>
-                        <ul>
-                            {resizedImages.map((image, index) => (
-                                <li key={index} className="resized-image-item">
-                                    <span>{image.name} - {image.width}px x {image.height}px</span>
-                                    <button className="download-btn" onClick={() => handleDownloadImage(image)}>
-                                        Download
-                                    </button>
-                                </li>
-                            ))}
-                        </ul>
+                <div className="resized-images">
+                    <h3>Resized Images:</h3>
+                    <div className="resized-images-grid">
+                        {resizedImages.map((image, index) => (
+                            <div key={index} className="resized-image-card">
+                                <img
+                                    src={URL.createObjectURL(
+                                        selectedFiles.find((file) => file.name === image.name)
+                                    )}
+                                    alt={image.name}
+                                    className="resized-image-preview"
+                                />
+                                <p className="resized-image-details">
+                                    {image.name} - {image.width}px x {image.height}px
+                                </p>
+                                <button
+                                    className="download-btn"
+                                    onClick={() => handleDownloadImage(image)}
+                                >
+                                    Download
+                                </button>
+                            </div>
+                        ))}
                     </div>
-                )}
+                    <button className="bt download-all-zip-bt" onClick={handleDownloadAllImages}>
+                        Download All as ZIP
+                    </button>
+                </div>
+            )}
             </div>
 
             <footer className="footer-bruiseareacalculation">

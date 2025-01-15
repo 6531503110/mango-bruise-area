@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './FeatureAnalysis.css';
 import mangoLogo from '../../assets/Logo_white.png';
@@ -9,14 +9,13 @@ const FeatureAnalysis = () => {
     const [selectedFiles, setSelectedFiles] = useState([]);
     const navigate = useNavigate();
     
-    const handleAboutUs = () => navigate('/aboutuspage');
-    const handleContactUs = () => navigate('/contactuspage');
-    const handleUserProfile = () => navigate('/userprofilepage');
-    const handleDashboard = () => navigate('/dashboardpage');
-    const handleBruiseAreaCalculation = () => navigate('/bruiseareacalculation');
-    const handleResize = () => {navigate('/resize')}
-    const handleFeatureAnalysisResults = () => {
-
+    const handleAboutUs = useCallback(() => navigate('/aboutuspage'), [navigate]);
+    const handleContactUs = useCallback(() => navigate('/contactuspage'), [navigate]);
+    const handleUserProfile = useCallback(() => navigate('/userprofilepage'), [navigate]);
+    const handleDashboard = useCallback(() => navigate('/dashboardpage'), [navigate]);
+    const handleBruiseAreaCalculation = useCallback(() => navigate('/bruiseareacalculation'), [navigate]);
+    const handleResize = useCallback(() => navigate('/resize'), [navigate]);
+    const handleFeatureAnalysisResults = useCallback(() => {
         const fileData = selectedFiles.map((file, index) => ({
             id: index + 1,
             name: file.name,
@@ -24,9 +23,9 @@ const FeatureAnalysis = () => {
         }));
         localStorage.setItem('uploadedFiles', JSON.stringify(fileData));
         navigate('/featureanalysisresults');
-    };
+    }, [selectedFiles, navigate]);
 
-    const handleFileChange = (event) => {
+    const handleFileChange = useCallback((event) => {
         const files = Array.from(event.target.files);
         const validFiles = files.filter(file => /\.(jpg|jpeg|png)$/i.test(file.name));
 
@@ -35,18 +34,18 @@ const FeatureAnalysis = () => {
         } else {
             alert('Only .jpg, .jpeg, and .png files are allowed.');
         }
-    };
+    }, []);
 
-    const handleDragOver = (event) => {
+    const handleDragOver = useCallback((event) => {
         event.preventDefault();
         setDragActive(true);
-    };
+    }, []);
 
-    const handleDragLeave = () => {
+    const handleDragLeave = useCallback(() => {
         setDragActive(false);
-    };
+    }, []);
 
-    const handleDrop = (event) => {
+    const handleDrop = useCallback((event) => {
         event.preventDefault();
         setDragActive(false);
         const files = Array.from(event.dataTransfer.files);
@@ -57,11 +56,11 @@ const FeatureAnalysis = () => {
         } else {
             alert('Only .jpg, .jpeg, and .png files are allowed.');
         }
-    };
+    }, []);
 
-    const handleFileDelete = (index) => {
+    const handleFileDelete = useCallback((index) => {
         setSelectedFiles(prevFiles => prevFiles.filter((_, i) => i !== index));
-    };
+    }, []);
 
     return (
         <div className="bruise-page">
@@ -73,7 +72,7 @@ const FeatureAnalysis = () => {
                 </div>
                 <div className="navbar-links">
                     <button className="navbar-link" onClick={handleDashboard}>Dashboard</button>
-                    <button className="navbar-link active" onClick={handleBruiseAreaCalculation}>Bruised Area Calculation</button>
+                    <button className="navbar-link" onClick={handleBruiseAreaCalculation}>Bruised Area Calculation</button>
                     <button className="navbar-link">Feature Analysis</button>
                     <button className="navbar-link" onClick={handleResize}>Resize</button>
                     <button className="navbar-link" onClick={handleAboutUs}>About Us</button>

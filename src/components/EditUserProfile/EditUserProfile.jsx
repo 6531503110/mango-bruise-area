@@ -10,7 +10,10 @@ const EditUserProfile = () => {
     const { userInfo, setUserInfo } = useContext(UserContext);
     const [profileImage, setProfileImage] = useState(userInfo.profileImage || userProfileImg);
     const [errorMessage, setErrorMessage] = useState('');
-    const handleResize = () => {navigate('/resize')}
+
+    const handleResize = useCallback(() => {
+        navigate('/resize');
+    }, [navigate]);
 
     const handleNavigation = useCallback((path) => () => navigate(path), [navigate]);
 

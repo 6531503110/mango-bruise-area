@@ -15,32 +15,40 @@ const Resize = () => {
     const [originalDimensions, setOriginalDimensions] = useState({ width: '', height: '' });
 
     const navigate = useNavigate();
-    const handleNavigation = useCallback((path) => () => navigate(path), [navigate]);
+    const handleAboutUs = useCallback(() => navigate('/aboutuspage'), [navigate]);
+    const handleContactUs = useCallback(() => navigate('/contactuspage'), [navigate]);
+    const handleUserProfile = useCallback(() => navigate('/userprofilepage'), [navigate]);
+    const handleDashboard = useCallback(() => navigate('/dashboardpage'), [navigate]);
+    const handleFeatureAnalysis = useCallback(() => navigate('/featureanalysis'), [navigate]);
+    const handleBruiseAreaCalculation = useCallback(() => navigate('/bruiseareacalculation'), [navigate]);
 
     const handleDownloadAllImages = useCallback(async () => {
-        const zip = new JSZip();
-        for (const image of resizedImages) {
-            const imgBlob = await new Promise((resolve) => {
-                const canvas = document.createElement('canvas');
-                const ctx = canvas.getContext('2d');
-                const img = new Image();
-                img.onload = () => {
-                    canvas.width = image.width;
-                    canvas.height = image.height;
-                    ctx.drawImage(img, 0, 0, image.width, image.height);
-                    canvas.toBlob(resolve, 'image/jpeg');
-                };
-                img.src = URL.createObjectURL(selectedFiles.find((file) => file.name === image.name));
-            });
-            zip.file(image.name, imgBlob);
-        }
-        const content = await zip.generateAsync({ type: 'blob' });
-        saveAs(content, 'resized-images.zip');
-    }, [resizedImages, selectedFiles]);
+    const zip = new JSZip();
+    for (const image of resizedImages) {
+        const imgBlob = await new Promise((resolve) => {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const img = new Image();
+            img.onload = () => {
+                canvas.width = image.width;
+                canvas.height = image.height;
+                ctx.drawImage(img, 0, 0, image.width, image.height);
+                canvas.toBlob(resolve, 'image/jpeg');
+            };
+            img.src = URL.createObjectURL(
+                selectedFiles.find((file) => file.name === image.name)
+            );
+        });
+        zip.file(image.name, imgBlob);
+    }
+    const content = await zip.generateAsync({ type: 'blob' });
+    saveAs(content, 'resized-images.zip');
+}, [resizedImages, selectedFiles]);
 
     const handleFileChange = useCallback((event) => {
         const files = Array.from(event.target.files);
         const validFiles = files.filter(file => /\.(jpg|jpeg|png)$/i.test(file.name));
+
         if (validFiles.length > 0) {
             setSelectedFiles(prevFiles => [...prevFiles, ...validFiles]);
         } else {
@@ -53,11 +61,13 @@ const Resize = () => {
             alert('Please enter both width and height!');
             return;
         }
+
         const resized = selectedFiles.map(file => ({
             name: file.name,
             width: dimensions.width,
             height: dimensions.height,
         }));
+
         setResizedImages(resized);
     }, [dimensions, selectedFiles]);
 
@@ -65,10 +75,12 @@ const Resize = () => {
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
         const img = new Image();
+
         img.onload = () => {
             canvas.width = image.width;
             canvas.height = image.height;
             ctx.drawImage(img, 0, 0, image.width, image.height);
+
             canvas.toBlob((blob) => {
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
@@ -80,8 +92,11 @@ const Resize = () => {
                 URL.revokeObjectURL(url);
             }, 'image/jpeg');
         };
+
         img.src = URL.createObjectURL(selectedFiles.find(file => file.name === image.name));
     }, [selectedFiles]);
+
+    // Removed duplicate handleDownloadAllImages
 
     const handleReset = useCallback(() => {
         setSelectedFiles([]);
@@ -120,14 +135,14 @@ const Resize = () => {
                     <img src={mangoLogo} alt="Mango Logo" className="mango-logo" />
                 </div>
                 <div className="navbar-links">
-                    <button className="navbar-link" onClick={handleNavigation('/dashboardpage')}>Dashboard</button>
-                    <button className="navbar-link" onClick={handleNavigation('/bruiseareacalculation')}>Bruised Area Calculation</button>
-                    <button className="navbar-link" onClick={handleNavigation('/featureanalysis')}>Feature Analysis</button>
+                    <button className="navbar-link" onClick={handleDashboard}>Dashboard</button>
+                    <button className="navbar-link" onClick={handleBruiseAreaCalculation}>Bruised Area Calculation</button>
+                    <button className="navbar-link" onClick={handleFeatureAnalysis}>Feature Analysis</button>
                     <button className="navbar-link">Resize</button>
-                    <button className="navbar-link" onClick={handleNavigation('/aboutuspage')}>About Us</button>
-                    <button className="navbar-link" onClick={handleNavigation('/contactuspage')}>Contact Us</button>
+                    <button className="navbar-link" onClick={handleAboutUs}>About Us</button>
+                    <button className="navbar-link" onClick={handleContactUs}>Contact Us</button>
                 </div>
-                <div className="navbar-profile" onClick={handleNavigation('/userprofilepage')}>
+                <div className="navbar-profile" onClick={handleUserProfile}>
                     <img src={userProfileImg} alt="User Profile" className="user-profile" />
                 </div>
             </nav>
@@ -145,8 +160,8 @@ const Resize = () => {
                         onDrop={(e) => {
                             e.preventDefault();
                             setDragActive(false);
-                            const files = Array.from(e.dataTransfer.files);
-                            handleFileChange({ target: { files } });
+                            const files = Array.from(e.dataTransfer.files); // Handle dropped files
+                            handleFileChange({ target: { files } }); // Call handleFileChange
                         }}
                     >
                         <p>Drag & Drop your images here or</p>
@@ -225,33 +240,35 @@ const Resize = () => {
                 </div>
 
                 {resizedImages.length > 0 && (
-                    <div className="resized-images">
-                        <h3>Resized Images:</h3>
-                        <div className="resized-images-grid">
-                            {resizedImages.map((image, index) => (
-                                <div key={index} className="resized-image-card">
-                                    <img
-                                        src={URL.createObjectURL(selectedFiles.find((file) => file.name === image.name))}
-                                        alt={image.name}
-                                        className="resized-image-preview"
-                                    />
-                                    <p className="resized-image-details">
-                                        {image.name} - {image.width}px x {image.height}px
-                                    </p>
-                                    <button
-                                        className="download-btn"
-                                        onClick={() => handleDownloadImage(image)}
-                                    >
-                                        Download
-                                    </button>
-                                </div>
-                            ))}
-                        </div>
-                        <button className="bt download-all-zip-bt" onClick={handleDownloadAllImages}>
-                            Download All as ZIP
-                        </button>
+                <div className="resized-images">
+                    <h3>Resized Images:</h3>
+                    <div className="resized-images-grid">
+                        {resizedImages.map((image, index) => (
+                            <div key={index} className="resized-image-card">
+                                <img
+                                    src={URL.createObjectURL(
+                                        selectedFiles.find((file) => file.name === image.name)
+                                    )}
+                                    alt={image.name}
+                                    className="resized-image-preview"
+                                />
+                                <p className="resized-image-details">
+                                    {image.name} - {image.width}px x {image.height}px
+                                </p>
+                                <button
+                                    className="download-btn"
+                                    onClick={() => handleDownloadImage(image)}
+                                >
+                                    Download
+                                </button>
+                            </div>
+                        ))}
                     </div>
-                )}
+                    <button className="bt download-all-zip-bt" onClick={handleDownloadAllImages}>
+                        Download All as ZIP
+                    </button>
+                </div>
+            )}
             </div>
 
             <footer className="footer-bruiseareacalculation">

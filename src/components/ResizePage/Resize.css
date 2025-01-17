@@ -10,6 +10,58 @@
     padding: 0;
 }
 
+/* Crop Image Button */
+.crop-image-bt {
+    background-color: #cea500;
+    color: white;
+    padding: 12px 35px;
+    border: none;
+    border-radius: 13px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.crop-image-bt:hover {
+    background-color: #e6b800;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.crop-image-bt:active {
+    background-color: #cc9900;
+    box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.2);
+    transform: translateY(1px);
+}
+
+/* Remove Background Button */
+.remove-background-bt {
+    background-color: #0083ae;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 13px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.remove-background-bt:hover {
+    background-color: #0086b3;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.remove-background-bt:active {
+    background-color: #007399;
+    box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.2);
+    transform: translateY(1px);
+}
+
 .download-all-zip-bt {
     display: inline-block;
     padding: 12px 20px;

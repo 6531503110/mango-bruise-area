@@ -23,27 +23,27 @@ const Resize = () => {
     const handleBruiseAreaCalculation = useCallback(() => navigate('/bruiseareacalculation'), [navigate]);
 
     const handleDownloadAllImages = useCallback(async () => {
-    const zip = new JSZip();
-    for (const image of resizedImages) {
-        const imgBlob = await new Promise((resolve) => {
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-            const img = new Image();
-            img.onload = () => {
-                canvas.width = image.width;
-                canvas.height = image.height;
-                ctx.drawImage(img, 0, 0, image.width, image.height);
-                canvas.toBlob(resolve, 'image/jpeg');
-            };
-            img.src = URL.createObjectURL(
-                selectedFiles.find((file) => file.name === image.name)
-            );
-        });
-        zip.file(image.name, imgBlob);
-    }
-    const content = await zip.generateAsync({ type: 'blob' });
-    saveAs(content, 'resized-images.zip');
-}, [resizedImages, selectedFiles]);
+        const zip = new JSZip();
+        for (const image of resizedImages) {
+            const imgBlob = await new Promise((resolve) => {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                const img = new Image();
+                img.onload = () => {
+                    canvas.width = image.width;
+                    canvas.height = image.height;
+                    ctx.drawImage(img, 0, 0, image.width, image.height);
+                    canvas.toBlob(resolve, 'image/jpeg');
+                };
+                img.src = URL.createObjectURL(
+                    selectedFiles.find((file) => file.name === image.name)
+                );
+            });
+            zip.file(image.name, imgBlob);
+        }
+        const content = await zip.generateAsync({ type: 'blob' });
+        saveAs(content, 'resized-images.zip');
+    }, [resizedImages, selectedFiles]);
 
     const handleFileChange = useCallback((event) => {
         const files = Array.from(event.target.files);
@@ -96,13 +96,21 @@ const Resize = () => {
         img.src = URL.createObjectURL(selectedFiles.find(file => file.name === image.name));
     }, [selectedFiles]);
 
-    // Removed duplicate handleDownloadAllImages
-
     const handleReset = useCallback(() => {
         setSelectedFiles([]);
         setResizedImages([]);
         setDimensions({ width: '', height: '' });
         setOriginalDimensions({ width: '', height: '' });
+    }, []);
+
+    const handleCropImage = useCallback(() => {
+        // Implement crop image functionality here
+        alert('Crop Image functionality is not implemented yet.');
+    }, []);
+
+    const handleRemoveBackground = useCallback(() => {
+        // Implement remove background functionality here
+        alert('Remove Background functionality is not implemented yet.');
     }, []);
 
     useEffect(() => {
@@ -236,6 +244,12 @@ const Resize = () => {
                     </button>
                     <button className="bt upload-bruiseareacalculation-bt" onClick={handleResizeImages}>
                         Resize
+                    </button>
+                    <button className="bt crop-image-bt" onClick={handleCropImage}>
+                        Crop Image
+                    </button>
+                    <button className="bt remove-background-bt" onClick={handleRemoveBackground}>
+                        Remove Background
                     </button>
                 </div>
 

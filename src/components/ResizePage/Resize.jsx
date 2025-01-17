@@ -24,23 +24,23 @@ const Resize = () => {
 
     const handleDownloadAllImages = useCallback(async () => {
         const zip = new JSZip();
-        for (const image of resizedImages) {
+        const imagePromises = resizedImages.map(async (image) => {
             const imgBlob = await new Promise((resolve) => {
-                const canvas = document.createElement('canvas');
+                const canvas = new OffscreenCanvas(image.width, image.height);
                 const ctx = canvas.getContext('2d');
                 const img = new Image();
                 img.onload = () => {
-                    canvas.width = image.width;
-                    canvas.height = image.height;
                     ctx.drawImage(img, 0, 0, image.width, image.height);
-                    canvas.toBlob(resolve, 'image/jpeg');
+                    canvas.convertToBlob({ type: 'image/jpeg' }).then(resolve);
                 };
                 img.src = URL.createObjectURL(
                     selectedFiles.find((file) => file.name === image.name)
                 );
             });
             zip.file(image.name, imgBlob);
-        }
+        });
+
+        await Promise.all(imagePromises);
         const content = await zip.generateAsync({ type: 'blob' });
         saveAs(content, 'resized-images.zip');
     }, [resizedImages, selectedFiles]);
@@ -72,16 +72,13 @@ const Resize = () => {
     }, [dimensions, selectedFiles]);
 
     const handleDownloadImage = useCallback((image) => {
-        const canvas = document.createElement('canvas');
+        const canvas = new OffscreenCanvas(image.width, image.height);
         const ctx = canvas.getContext('2d');
         const img = new Image();
 
         img.onload = () => {
-            canvas.width = image.width;
-            canvas.height = image.height;
             ctx.drawImage(img, 0, 0, image.width, image.height);
-
-            canvas.toBlob((blob) => {
+            canvas.convertToBlob({ type: 'image/jpeg' }).then((blob) => {
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.href = url;
@@ -90,7 +87,7 @@ const Resize = () => {
                 a.click();
                 document.body.removeChild(a);
                 URL.revokeObjectURL(url);
-            }, 'image/jpeg');
+            });
         };
 
         img.src = URL.createObjectURL(selectedFiles.find(file => file.name === image.name));
@@ -104,11 +101,13 @@ const Resize = () => {
     }, []);
 
     const handleCropImage = useCallback(() => {
+
         // Implement crop image functionality here
         alert('Crop Image functionality is not implemented yet.');
     }, []);
 
     const handleRemoveBackground = useCallback(() => {
+        
         // Implement remove background functionality here
         alert('Remove Background functionality is not implemented yet.');
     }, []);

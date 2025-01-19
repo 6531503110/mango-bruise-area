@@ -331,12 +331,14 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.upload-bt:hover {
+.upload-bruiseareacalculation-bt:hover {
     background: #3a5330;
     transform: scale(1.05);
 }
 
-.upload-bt:active {
+.upload-bruiseareacalculation-bt:active {
+    background: #2e4725;
+    /* New color when clicked */
     transform: scale(1.02);
 }
 

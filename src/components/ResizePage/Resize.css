@@ -265,6 +265,8 @@
     display: none;
 }
 
+/* ...existing code... */
+
 .browse-bruiseareacalculation-btn {
     background: #436850;
     color: #fff;
@@ -278,9 +280,15 @@
     transition: background-color 0.3s ease-in-out;
 }
 
-.browse-btn:hover {
+.browse-bruiseareacalculation-btn:hover {
     background: #3a5330;
 }
+
+.browse-bruiseareacalculation-btn:focus {
+    background: #2e4725;
+}
+
+/* ...existing code... */
 
 /* Selected files box */
 .selected-files-box {

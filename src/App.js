@@ -26,6 +26,7 @@ import ViewPhotoResults from './components/ViewPhotoResults/ViewPhotoResults';
 import FeatureAnalysisResults from './components/FeatureAnalysisResults/FeatureAnalysisResults';
 import ExportFeatureSuccessful from './components/ExportFeatureSuccessful/ExportFeatureSuccessful';
 import Resize from './components/ResizePage/Resize';
+import CropImage from './components/CropImage/CropImage';
 
 function App() {
   return (
@@ -58,6 +59,7 @@ function App() {
           <Route path="/featureanalysisresults" element={<FeatureAnalysisResults />} />
           <Route path="/exportfeaturesuccessful" element={<ExportFeatureSuccessful />} />
           <Route path="/resize" element={<Resize />} />
+          <Route path="/cropimage" element={<CropImage />} />
         </Routes>
       </Router>
     </UserProvider>

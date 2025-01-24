@@ -22,6 +22,11 @@ const Resize = () => {
     const handleFeatureAnalysis = useCallback(() => navigate('/featureanalysis'), [navigate]);
     const handleBruiseAreaCalculation = useCallback(() => navigate('/bruiseareacalculation'), [navigate]);
 
+    // Navigation handlers
+    const handleCropImage = useCallback(() => {
+        navigate('/cropimage'); // Navigate to the CropImage page
+    }, [navigate]);
+
     const handleDownloadAllImages = useCallback(async () => {
         const zip = new JSZip();
         const imagePromises = resizedImages.map(async (image) => {
@@ -98,12 +103,6 @@ const Resize = () => {
         setResizedImages([]);
         setDimensions({ width: '', height: '' });
         setOriginalDimensions({ width: '', height: '' });
-    }, []);
-
-    const handleCropImage = useCallback(() => {
-
-        // Implement crop image functionality here
-        alert('Crop Image functionality is not implemented yet.');
     }, []);
 
     const handleRemoveBackground = useCallback(() => {

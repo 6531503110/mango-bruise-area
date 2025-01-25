@@ -1,14 +1,18 @@
 import React, { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Cropper from 'react-easy-crop';
 import './CropImage.css';
 import mangoLogo from '../../assets/Logo_white.png';
 import userProfileImg from '../../assets/profile.jpg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearchMinus, faSearchPlus } from '@fortawesome/free-solid-svg-icons';
 
 const CropImage = () => {
-    const [selectedFiles] = useState([]);
     const navigate = useNavigate();
     const [image, setImage] = useState(null);
+    const [crop, setCrop] = useState({ x: 0, y: 0 });
     const [zoom, setZoom] = useState(1);
+    const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
 
     const handleAboutUs = useCallback(() => navigate('/aboutuspage'), [navigate]);
     const handleContactUs = useCallback(() => navigate('/contactuspage'), [navigate]);
@@ -26,18 +30,49 @@ const CropImage = () => {
         }
     };
 
-    const handleUpload = useCallback(() => {
-        const fileData = selectedFiles.map((file, index) => ({
-            id: index + 1,
-            photoName: file.name,
-            date: new Date().toLocaleString(),
-            area: "---",
-            percentage: "---"
-        }));
+    const handleCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
+        setCroppedAreaPixels(croppedAreaPixels);
+    }, []);
 
-        localStorage.setItem('uploadedFiles', JSON.stringify(fileData));
-        navigate('/showareacalculation');
-    }, [selectedFiles, navigate]);
+    const handleReset = () => {
+        setImage(null);
+        setCrop({ x: 0, y: 0 });
+        setZoom(1);
+    };
+
+    const handleSave = async () => {
+        if (!image || !croppedAreaPixels) return;
+
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        const img = new Image();
+        img.src = image;
+
+        img.onload = () => {
+            canvas.width = croppedAreaPixels.width;
+            canvas.height = croppedAreaPixels.height;
+            ctx.drawImage(
+                img,
+                croppedAreaPixels.x,
+                croppedAreaPixels.y,
+                croppedAreaPixels.width,
+                croppedAreaPixels.height,
+                0,
+                0,
+                croppedAreaPixels.width,
+                croppedAreaPixels.height
+            );
+
+            canvas.toBlob((blob) => {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'cropped-image.png';
+                a.click();
+                URL.revokeObjectURL(url);
+            }, 'image/png');
+        };
+    };
 
     return (
         <div className="bruiseareacalculation-page">
@@ -64,8 +99,8 @@ const CropImage = () => {
                     The online Crop image tool from mango bruise area detection transforms your images into the perfect size in seconds.
                 </p>
                 <div className="crop-image-container">
-                    <div className="image-upload">
-                        <label htmlFor="imageInput" className="upload-label">Upload Image</label>
+                    <div className="crop-image-upload">
+                        <label htmlFor="imageInput" className="upload-label">Upload Image 📁</label>
                         <input
                             type="file"
                             id="imageInput"
@@ -78,33 +113,40 @@ const CropImage = () => {
                     {image && (
                         <div className="image-crop">
                             <div className="crop-box">
-                                <img
-                                    src={image}
-                                    alt="Crop Preview"
-                                    style={{ transform: `scale(${zoom})` }}
+                                <Cropper
+                                    image={image}
+                                    crop={crop}
+                                    zoom={zoom}
+                                    aspect={4 / 3}
+                                    onCropChange={setCrop}
+                                    onZoomChange={setZoom}
+                                    onCropComplete={handleCropComplete}
                                 />
                             </div>
                             <div className="crop-controls">
-                                <label>Zoom:</label>
-                                <input
-                                    type="range"
-                                    min="1"
-                                    max="3"
-                                    step="0.1"
-                                    value={zoom}
-                                    onChange={(e) => setZoom(e.target.value)}
-                                />
+                                <div className="zoom-control">
+                                    <FontAwesomeIcon icon={faSearchMinus} className="zoom-icon" />
+                                    <input
+                                        type="range"
+                                        className="zoom-range"
+                                        min="1"
+                                        max="3"
+                                        step="0.1"
+                                        value={zoom}
+                                        onChange={(e) => setZoom(e.target.value)}
+                                    />
+                                    <FontAwesomeIcon icon={faSearchPlus} className="zoom-icon" />
+                                </div>
                             </div>
-                            <button className="save-crop">Save Crop</button>
                         </div>
                     )}
                 </div>
 
                 <div className="action-buttons">
-                    <button className="bt backto-bt" onClick={handleDashboard}>
+                    <button className="bt backto-bt" onClick={handleReset}>
                         Reset
                     </button>
-                    <button className="bt upload-bruiseareacalculation-bt" onClick={handleUpload}>
+                    <button className="bt upload-bruiseareacalculation-bt" onClick={handleSave}>
                         Saved
                     </button>
                 </div>

@@ -50,9 +50,12 @@ const RemoveBackground = () => {
                 const g = imageData.data[i + 1];
                 const b = imageData.data[i + 2];
 
-                // Simple algorithm to make white pixels transparent
-                if (r > 200 && g > 200 && b > 200) {
-                    imageData.data[i + 3] = 0; // Set alpha to 0 (transparent)
+                // Simple algorithm to make non-black pixels transparent
+                if (r < 50 && g < 50 && b < 50) {
+                    imageData.data[i] = 0;     // Set red to 0
+                    imageData.data[i + 1] = 0; // Set green to 0
+                    imageData.data[i + 2] = 0; // Set blue to 0
+                    imageData.data[i + 3] = 255; // Set alpha to 255 (opaque)
                 }
             }
             ctx.putImageData(imageData, 0, 0);
@@ -151,8 +154,8 @@ const RemoveBackground = () => {
                 </div>
             </div>
 
-            <footer className="footer-bruiseareacalculation">
-                <div className="footer-address-bruiseareacalculation">
+            <footer className="footer-removebackground">
+                <div className="footer-address-removebackground">
                     <p>Mae Fah Luang University 333 Moo 1, Thasud, Muang, Chiang Rai 57100</p>
                 </div>
             </footer>

@@ -44,8 +44,8 @@
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    padding: 20px;
-    max-width: 800px;
+    padding: 25px;
+    max-width: 1000px;
     background-color: #f9f9f9;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -171,6 +171,29 @@
     transform: scale(1.02);
 }
 
+/* Download Button */
+.download-bt {
+    background: #FF5733;
+    color: #fff;
+    padding: 18px 50px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.download-bt:hover {
+    background: #C70039;
+    transform: scale(1.05);
+}
+
+.download-bt:active {
+    transform: scale(1.02);
+}
+
 /* Delete Button */
 .delete-btn {
     background: none;
@@ -193,19 +216,19 @@
 }
 
 /* Footer */
-.footer-bruiseareacalculation {
+.footer-removebackground {
     background-color: #436850;
     padding: 15px 20px;
     text-align: center;
 }
 
-.footer-links {
+.footer-links-removebackground {
     display: flex;
     justify-content: center;
     gap: 35px;
 }
 
-.footer-link {
+.footer-link-removebackground {
     background: none;
     color: #FFFFFF;
     border: 2px solid #FFFFFF;
@@ -219,7 +242,7 @@
     text-transform: uppercase;
 }
 
-.footer-address-bruiseareacalculation {
+.footer-address-removebackground {
     font-family: 'Poppins', sans-serif;
     font-size: 0.9em;
     color: #FFFFFF;

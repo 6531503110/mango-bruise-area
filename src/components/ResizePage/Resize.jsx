@@ -21,6 +21,7 @@ const Resize = () => {
     const handleDashboard = useCallback(() => navigate('/dashboardpage'), [navigate]);
     const handleFeatureAnalysis = useCallback(() => navigate('/featureanalysis'), [navigate]);
     const handleBruiseAreaCalculation = useCallback(() => navigate('/bruiseareacalculation'), [navigate]);
+    const handleRemoveBackground = useCallback(() => navigate('/removebackground'), [navigate]);
 
     // Navigation handlers
     const handleCropImage = useCallback(() => {
@@ -103,12 +104,6 @@ const Resize = () => {
         setResizedImages([]);
         setDimensions({ width: '', height: '' });
         setOriginalDimensions({ width: '', height: '' });
-    }, []);
-
-    const handleRemoveBackground = useCallback(() => {
-        
-        // Implement remove background functionality here
-        alert('Remove Background functionality is not implemented yet.');
     }, []);
 
     useEffect(() => {

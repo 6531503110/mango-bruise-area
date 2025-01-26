@@ -27,6 +27,7 @@ import FeatureAnalysisResults from './components/FeatureAnalysisResults/FeatureA
 import ExportFeatureSuccessful from './components/ExportFeatureSuccessful/ExportFeatureSuccessful';
 import Resize from './components/ResizePage/Resize';
 import CropImage from './components/CropImage/CropImage';
+import RemoveBackground from './components/RemoveBackground/RemoveBackground';
 
 function App() {
   return (
@@ -60,6 +61,7 @@ function App() {
           <Route path="/exportfeaturesuccessful" element={<ExportFeatureSuccessful />} />
           <Route path="/resize" element={<Resize />} />
           <Route path="/cropimage" element={<CropImage />} />
+          <Route path="/removebackground" element={<RemoveBackground />} />
         </Routes>
       </Router>
     </UserProvider>

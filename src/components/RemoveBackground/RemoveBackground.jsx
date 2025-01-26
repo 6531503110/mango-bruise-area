@@ -1,18 +1,14 @@
 import React, { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Cropper from 'react-easy-crop';
 import './RemoveBackground.css';
 import mangoLogo from '../../assets/Logo_white.png';
 import userProfileImg from '../../assets/profile.jpg';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearchMinus, faSearchPlus } from '@fortawesome/free-solid-svg-icons';
 
 const RemoveBackground = () => {
     const navigate = useNavigate();
     const [image, setImage] = useState(null);
-    const [crop, setCrop] = useState({ x: 0, y: 0 });
-    const [zoom, setZoom] = useState(1);
-    const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
+    const [processedImage, setProcessedImage] = useState(null);
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleAboutUs = useCallback(() => navigate('/aboutuspage'), [navigate]);
     const handleContactUs = useCallback(() => navigate('/contactuspage'), [navigate]);
@@ -30,18 +26,13 @@ const RemoveBackground = () => {
         }
     };
 
-    const handleCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
-        setCroppedAreaPixels(croppedAreaPixels);
-    }, []);
+    const handleRemoveBackground = () => {
+        if (!image) {
+            setErrorMessage('Please upload an image first!');
+            return;
+        }
 
-    const handleReset = () => {
-        setImage(null);
-        setCrop({ x: 0, y: 0 });
-        setZoom(1);
-    };
-
-    const handleSave = async () => {
-        if (!image || !croppedAreaPixels) return;
+        setErrorMessage(''); // Clear any previous error messages
 
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
@@ -49,29 +40,45 @@ const RemoveBackground = () => {
         img.src = image;
 
         img.onload = () => {
-            canvas.width = croppedAreaPixels.width;
-            canvas.height = croppedAreaPixels.height;
-            ctx.drawImage(
-                img,
-                croppedAreaPixels.x,
-                croppedAreaPixels.y,
-                croppedAreaPixels.width,
-                croppedAreaPixels.height,
-                0,
-                0,
-                croppedAreaPixels.width,
-                croppedAreaPixels.height
-            );
+            canvas.width = img.width;
+            canvas.height = img.height;
+            ctx.drawImage(img, 0, 0);
+
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < imageData.data.length; i += 4) {
+                const r = imageData.data[i];
+                const g = imageData.data[i + 1];
+                const b = imageData.data[i + 2];
+
+                // Simple algorithm to make white pixels transparent
+                if (r > 200 && g > 200 && b > 200) {
+                    imageData.data[i + 3] = 0; // Set alpha to 0 (transparent)
+                }
+            }
+            ctx.putImageData(imageData, 0, 0);
 
             canvas.toBlob((blob) => {
                 const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = 'cropped-image.png';
-                a.click();
-                URL.revokeObjectURL(url);
+                setProcessedImage(url);
             }, 'image/png');
         };
+    };
+
+    const handleDownloadImage = () => {
+        if (processedImage) {
+            const a = document.createElement('a');
+            a.href = processedImage;
+            a.download = 'processed-image.png';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+    };
+
+    const handleReset = () => {
+        setImage(null);
+        setProcessedImage(null);
+        setErrorMessage('');
     };
 
     return (
@@ -96,7 +103,7 @@ const RemoveBackground = () => {
             <div className="bruiseareacalculation-content">
                 <h1 className="bruiseareacalculation-title">Remove Background</h1>
                 <p className="bruise-description">
-                    Remove Background in just 5 seconds and simply upload your image!
+                    Remove your background in just 5 seconds and simply upload your image!
                 </p>
                 <div className="crop-image-container">
                     <div className="crop-image-upload">
@@ -111,33 +118,20 @@ const RemoveBackground = () => {
                     </div>
 
                     {image && (
-                        <div className="image-crop">
-                            <div className="crop-box">
-                                <Cropper
-                                    image={image}
-                                    crop={crop}
-                                    zoom={zoom}
-                                    aspect={4 / 3}
-                                    onCropChange={setCrop}
-                                    onZoomChange={setZoom}
-                                    onCropComplete={handleCropComplete}
-                                />
-                            </div>
-                            <div className="crop-controls">
-                                <div className="zoom-control">
-                                    <FontAwesomeIcon icon={faSearchMinus} className="zoom-icon" />
-                                    <input
-                                        type="range"
-                                        className="zoom-range"
-                                        min="1"
-                                        max="3"
-                                        step="0.1"
-                                        value={zoom}
-                                        onChange={(e) => setZoom(e.target.value)}
-                                    />
-                                    <FontAwesomeIcon icon={faSearchPlus} className="zoom-icon" />
-                                </div>
-                            </div>
+                        <div className="image-preview">
+                            <img src={image} alt="Uploaded" className="uploaded-image" />
+                        </div>
+                    )}
+
+                    {processedImage && (
+                        <div className="image-preview">
+                            <img src={processedImage} alt="Processed" className="processed-image" />
+                        </div>
+                    )}
+
+                    {errorMessage && (
+                        <div className="error-message">
+                            <p>{errorMessage}</p>
                         </div>
                     )}
                 </div>
@@ -146,9 +140,14 @@ const RemoveBackground = () => {
                     <button className="bt backto-bt" onClick={handleReset}>
                         Reset
                     </button>
-                    <button className="bt upload-bruiseareacalculation-bt" onClick={handleSave}>
-                        Saved
+                    <button className="bt upload-bruiseareacalculation-bt" onClick={handleRemoveBackground}>
+                        Remove
                     </button>
+                    {processedImage && (
+                        <button className="bt download-bt" onClick={handleDownloadImage}>
+                            Download
+                        </button>
+                    )}
                 </div>
             </div>
 

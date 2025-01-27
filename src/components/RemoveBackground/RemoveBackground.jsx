@@ -51,11 +51,8 @@ const RemoveBackground = () => {
                 const b = imageData.data[i + 2];
 
                 // Simple algorithm to make non-black pixels transparent
-                if (r < 50 && g < 50 && b < 50) {
-                    imageData.data[i] = 0;     // Set red to 0
-                    imageData.data[i + 1] = 0; // Set green to 0
-                    imageData.data[i + 2] = 0; // Set blue to 0
-                    imageData.data[i + 3] = 255; // Set alpha to 255 (opaque)
+                if (r > 50 || g > 50 || b > 50) {
+                    imageData.data[i + 3] = 0; // Set alpha to 0 (transparent)
                 }
             }
             ctx.putImageData(imageData, 0, 0);
@@ -85,14 +82,14 @@ const RemoveBackground = () => {
     };
 
     return (
-        <div className="bruiseareacalculation-page">
+        <div className="remove-background-page">
             <nav className="navbar">
                 <div className="navbar-brand">
                     <img src={mangoLogo} alt="Mango Logo" className="mango-logo" />
                 </div>
                 <div className="navbar-links">
                     <button className="navbar-link" onClick={handleDashboard}>Dashboard</button>
-                    <button className="navbar-link">Bruised Area Calculation</button>
+                    <button className="navbar-link">Remove Background</button>
                     <button className="navbar-link" onClick={handleFeatureAnalysis}>Feature Analysis</button>
                     <button className="navbar-link" onClick={handleResize}>Resize</button>
                     <button className="navbar-link" onClick={handleAboutUs}>About Us</button>
@@ -103,13 +100,13 @@ const RemoveBackground = () => {
                 </div>
             </nav>
 
-            <div className="bruiseareacalculation-content">
-                <h1 className="bruiseareacalculation-title">Remove Background</h1>
-                <p className="bruise-description">
-                    Remove your background in just 5 seconds and simply upload your image!
+            <div className="remove-background-content">
+                <h1 className="remove-background-title">Remove Background</h1>
+                <p className="remove-background-description">
+                    Remove your background in just 5 seconds by simply uploading your image!
                 </p>
-                <div className="crop-image-container">
-                    <div className="crop-image-upload">
+                <div className="image-container">
+                    <div className="image-upload">
                         <label htmlFor="imageInput" className="upload-label">Upload Image 📁</label>
                         <input
                             type="file"
@@ -140,22 +137,22 @@ const RemoveBackground = () => {
                 </div>
 
                 <div className="action-buttons">
-                    <button className="bt backto-bt" onClick={handleReset}>
+                    <button className="btn reset-btn" onClick={handleReset}>
                         Reset
                     </button>
-                    <button className="bt upload-bruiseareacalculation-bt" onClick={handleRemoveBackground}>
+                    <button className="btn remove-btn" onClick={handleRemoveBackground}>
                         Remove
                     </button>
                     {processedImage && (
-                        <button className="bt download-bt" onClick={handleDownloadImage}>
+                        <button className="btn download-btn" onClick={handleDownloadImage}>
                             Download
                         </button>
                     )}
                 </div>
             </div>
 
-            <footer className="footer-removebackground">
-                <div className="footer-address-removebackground">
+            <footer className="footer">
+                <div className="footer-address">
                     <p>Mae Fah Luang University 333 Moo 1, Thasud, Muang, Chiang Rai 57100</p>
                 </div>
             </footer>

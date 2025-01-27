@@ -1,5 +1,5 @@
 /* General Styles */
-.bruiseareacalculation-page {
+.remove-background-page {
     font-family: 'Poppins', sans-serif;
     display: flex;
     flex-direction: column;
@@ -10,7 +10,7 @@
     padding: 0;
 }
 
-.bruiseareacalculation-content {
+.remove-background-content {
     flex: 1;
     padding: 20px;
     text-align: center;
@@ -18,27 +18,27 @@
 }
 
 /* Content */
-.bruiseareacalculation-content {
+.remove-background-content {
     flex: 1;
     padding: 40px 20px;
     text-align: center;
 }
 
-.bruiseareacalculation-title {
+.remove-background-title {
     font-size: 1.8rem;
     color: #12372A;
     margin-bottom: 10px;
     margin-top: -0%;
 }
 
-.bruise-description {
+.remove-background-description {
     font-size: 1rem;
     margin-bottom: 30px;
     color: #666;
 }
 
-/* Crop Image Container */
-.crop-image-container {
+/* Image Container */
+.image-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -51,7 +51,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.crop-image-upload {
+.image-upload {
     margin-bottom: 30px;
 }
 
@@ -71,50 +71,20 @@
     background: #3a5330;
 }
 
-.image-crop {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
+.image-preview {
+    margin-top: 20px;
 }
 
-.crop-box {
-    width: 100%;
-    height: 500px;
-    overflow: hidden;
-    margin-bottom: 20px;
-    position: relative;
-    border: 2px solid #ddd;
+.uploaded-image,
+.processed-image {
+    max-width: 100%;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.crop-controls {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.zoom-control {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.zoom-icon {
-    font-size: 1.2rem;
-    color: #436850;
-    cursor: pointer;
-    transition: color 0.3s ease-in-out;
-}
-
-.zoom-icon:hover {
-    color: #3a5330;
-}
-
-.zoom-range {
-    width: 150px;
+.error-message {
+    color: red;
+    margin-top: 20px;
 }
 
 /* Action buttons */
@@ -125,10 +95,7 @@
     margin-top: 60px;
 }
 
-/* Upload Button */
-.upload-bruiseareacalculation-bt {
-    background: #436850;
-    color: #fff;
+.btn {
     padding: 18px 50px;
     border: none;
     border-radius: 15px;
@@ -139,110 +106,56 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.upload-bt:hover {
-    background: #3a5330;
-    transform: scale(1.05);
-}
-
-.upload-bt:active {
-    transform: scale(1.02);
-}
-
-/* Back Button */
-.backto-bt {
+.reset-btn {
     background: #12372A;
     color: #fff;
-    padding: 18px 50px;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
-    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.backto-bt:hover {
+.reset-btn:hover {
     background: #212529;
     transform: scale(1.05);
 }
 
-.backto-bt:active {
+.reset-btn:active {
     transform: scale(1.02);
 }
 
-/* Download Button */
-.download-bt {
-    background: #FF5733;
+.remove-btn {
+    background: #436850;
     color: #fff;
-    padding: 18px 50px;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
-    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.download-bt:hover {
+.remove-btn:hover {
+    background: #3a5330;
+    transform: scale(1.05);
+}
+
+.remove-btn:active {
+    transform: scale(1.02);
+}
+
+.download-btn {
+    background: #FF5733;
+    color: #fff;
+}
+
+.download-btn:hover {
     background: #C70039;
     transform: scale(1.05);
 }
 
-.download-bt:active {
+.download-btn:active {
     transform: scale(1.02);
 }
 
-/* Delete Button */
-.delete-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #ff4d4d;
-    font-size: 1.2rem;
-    padding: 0;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.delete-btn:hover {
-    color: #e60000;
-    transform: scale(1.2);
-}
-
-.delete-btn:focus {
-    outline: none;
-    color: #cc0000;
-}
-
 /* Footer */
-.footer-removebackground {
+.footer {
     background-color: #436850;
     padding: 15px 20px;
     text-align: center;
 }
 
-.footer-links-removebackground {
-    display: flex;
-    justify-content: center;
-    gap: 35px;
-}
-
-.footer-link-removebackground {
-    background: none;
-    color: #FFFFFF;
-    border: 2px solid #FFFFFF;
-    padding: 10px 20px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 600;
-    letter-spacing: 1px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    text-transform: uppercase;
-}
-
-.footer-address-removebackground {
+.footer-address {
     font-family: 'Poppins', sans-serif;
     font-size: 0.9em;
     color: #FFFFFF;

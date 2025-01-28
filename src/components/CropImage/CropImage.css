@@ -10,6 +10,37 @@
     padding: 0;
 }
 
+.aspect-ratio-controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.aspect-ratio-controls button {
+    padding: 5px 10px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.aspect-ratio-controls button:hover {
+    background-color: #0056b3;
+}
+
+.preview-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.preview-image {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
 .bruiseareacalculation-content {
     flex: 1;
     padding: 20px;

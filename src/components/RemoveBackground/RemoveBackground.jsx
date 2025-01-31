@@ -145,9 +145,9 @@ const RemoveBackground = () => {
                         Remove
                     </button>
                     {processedImage && (
-                        <button className="btn download-btn" onClick={handleDownloadImage}>
-                            Download
-                        </button>
+                    <button className="btn download-btn" onClick={handleDownloadImage}>
+                        Download
+                    </button>
                     )}
                 </div>
             </div>

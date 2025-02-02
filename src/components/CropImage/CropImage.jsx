@@ -20,6 +20,7 @@ const CropImage = () => {
     const handleDashboard = useCallback(() => navigate('/dashboardpage'), [navigate]);
     const handleFeatureAnalysis = useCallback(() => navigate('/featureanalysis'), [navigate]);
     const handleResize = useCallback(() => navigate('/resize'), [navigate]);
+    const handleBruiseAreaCalculation = useCallback(() => navigate('/bruiseareacalculation'), [navigate]);
 
     const handleImageUpload = (e) => {
         const file = e.target.files[0];
@@ -82,7 +83,7 @@ const CropImage = () => {
                 </div>
                 <div className="navbar-links">
                     <button className="navbar-link" onClick={handleDashboard}>Dashboard</button>
-                    <button className="navbar-link">Bruised Area Calculation</button>
+                    <button className="navbar-link" onClick={handleBruiseAreaCalculation}>Bruised Area Calculation</button>
                     <button className="navbar-link" onClick={handleFeatureAnalysis}>Feature Analysis</button>
                     <button className="navbar-link" onClick={handleResize}>Resize</button>
                     <button className="navbar-link" onClick={handleAboutUs}>About Us</button>

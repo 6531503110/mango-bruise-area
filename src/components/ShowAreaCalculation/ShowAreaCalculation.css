@@ -10,6 +10,20 @@
     padding: 0;
 }
 
+/* No Information Available Box */
+.no-info-box {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 20px;
+    border: 1px solid #f5c6cb;
+    border-radius: 8px;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .navbar-showareacalculation {
     display: flex;
     justify-content: space-between;
@@ -93,18 +107,6 @@
     color: #12372A;
     margin-bottom: 10px;
     margin-top: 1.5%;
-}
-
-/* Table Styles */
-.show-area-calculation-table-container {
-    width: 90%;
-    margin: 0 auto;
-    max-height: 400px;
-    overflow-y: auto;
-    /* Scrollable container for the table */
-    border: 1px solid #ddd;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 2%;
 }
 
 .show-area-calculation-table {

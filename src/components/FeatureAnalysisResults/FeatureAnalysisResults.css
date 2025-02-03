@@ -10,6 +10,20 @@
     padding: 0;
 }
 
+/* No Information Available Box */
+.no-info-box {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 20px;
+    border: 1px solid #f5c6cb;
+    border-radius: 8px;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -85,16 +99,6 @@
 }
 
 /* Table */
-.results-table {
-    width: 100%;
-    margin-top: 20px;
-    background-color: #e5e5e5;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    overflow-y: auto;
-    max-height: 400px;
-}
-
 .results-table table {
     border-collapse: collapse;
     width: 100%;

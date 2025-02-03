@@ -103,7 +103,7 @@ const ShowAreaCalculation = () => {
               </tbody>
             </table>
           ) : (
-            <p>No information available</p>
+            <div className="no-info-box">No information available</div>
           )}
         </div>
 

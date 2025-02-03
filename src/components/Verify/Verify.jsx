@@ -37,7 +37,7 @@ function Verify() {
                 {alertMessage && <div className="alert-message">{alertMessage}</div>}
                 <input
                     type="text"
-                    placeholder="Verification code"
+                    placeholder="Enter your verification code"
                     className="Verify-input"
                     value={inputCode}
                     onChange={(e) => setInputCode(e.target.value)}

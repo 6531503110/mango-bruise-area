@@ -1,46 +1,54 @@
-import React, { useCallback } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ContactUsPage.css';
 import mangoBackground from '../../assets/differentmango.jpg';
 import mangoLogo from '../../assets/Logo_white.png';
-import pythonLogo from '../../assets/instagram.png';
-import pytorchLogo from '../../assets/x.png';
-import tensorflowLogo from '../../assets/facebook.png';
+import instagramLogo from '../../assets/instagram.png';
+import xLogo from '../../assets/x.png';
+import facebookLogo from '../../assets/facebook.png';
 
 function ContactUsPage() {
-    const navigate = useNavigate(); // useNavigate hook for navigation between pages
+    const navigate = useNavigate();
 
-    // Event handlers for different navigation actions
     const handleSignIn = useCallback(() => { navigate('/signin'); }, [navigate]);
     const handleSignUp = useCallback(() => { navigate('/signup'); }, [navigate]);
     const handleAboutUs = useCallback(() => { navigate('/aboutuspage'); }, [navigate]);
     const handleContactUs = useCallback(() => { navigate('/contactuspage'); }, [navigate]);
     const handleFacebookClick = useCallback(() => { window.open("https://www.facebook.com/IntegratedAgriTechEcosystem", "_blank"); }, []);
 
+    useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        });
+
+        const elements = document.querySelectorAll('.content-section, .framework-item');
+        elements.forEach(element => observer.observe(element));
+
+        return () => {
+            elements.forEach(element => observer.unobserve(element));
+        };
+    }, []);
+
     return (
         <div className="contactus-page-container">
-
-            {/* Navbar Section */}
             <nav className="contactus-navbar">
                 <div className="navbar-brand">
-
-                    {/* Logo in the navbar */}
                     <img src={mangoLogo} alt="Mango Logo" className="navbar-logo" />
                 </div>
                 <div className="navbar-actions">
-                    
-                    {/* Sign-In and Sign-Up buttons */}
                     <button className="navbar-button" onClick={handleSignIn}>Sign-In</button>
                     <button className="navbar-button" onClick={handleSignUp}>Sign-Up</button>
                 </div>
             </nav>
 
-            {/* Hero Section */}
             <header className="contactus-hero" style={{ backgroundImage: `url(${mangoBackground})` }}>
                 <h1 className="hero-title">Contact Us</h1>
             </header>
 
-            {/* Content Section */}
             <main className="contactus-content">
                 <div className="content-section">
                     <h2 className="content-title">How can we help you?</h2>
@@ -50,37 +58,27 @@ function ContactUsPage() {
                     </p>
                 </div>
 
-                {/* Frameworks Section */}
                 <section className="frameworks-section">
                     <h3 className="frameworks-title">Contact Us</h3>
                     <div className="frameworks-logos">
-
-                        {/* Instagram */}
                         <div className="framework-item">
-                            <img src={pythonLogo} alt="Instagram Logo" className="framework-logo" />
+                            <img src={instagramLogo} alt="Instagram Logo" className="framework-logo" />
                             <p>Instagram</p>
                         </div>
-
-                        {/* X */}
                         <div className="framework-item">
-                            <img src={pytorchLogo} alt="X Logo" className="framework-logo" />
+                            <img src={xLogo} alt="X Logo" className="framework-logo" />
                             <p>X</p>
                         </div>
-
-                        {/* Facebook */}
                         <div className="framework-item" onClick={handleFacebookClick}>
-                            <img src={tensorflowLogo} alt="Facebook Logo" className="framework-logo" />
+                            <img src={facebookLogo} alt="Facebook Logo" className="framework-logo" />
                             <p>IATE</p>
                         </div>
                     </div>
                 </section>
             </main>
 
-            {/* Footer Section */}
             <footer className="contactuspage-footer">
                 <div className="footer-links">
-
-                    {/* About Us and Contact Us links in the footer */}
                     <button className="footer-link" onClick={handleAboutUs}>About Us</button>
                     <button className="footer-link" onClick={handleContactUs}>Contact Us</button>
                 </div>

@@ -1,86 +1,89 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Importing useNavigate hook for navigation
-import './AboutUsPage.css'; // Importing the CSS file for styling
-import mangoBackground from '../../assets/differentmango.jpg'; // Importing background image
-import mangoLogo from '../../assets/Logo_white.png'; // Importing mango logo
-import pythonLogo from '../../assets/python.png'; // Importing Python logo
-import pytorchLogo from '../../assets/pytorch.png'; // Importing PyTorch logo
-import tensorflowLogo from '../../assets/tensorflow.png'; // Importing TensorFlow logo
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './AboutUsPage.css';
+import mangoBackground from '../../assets/differentmango.jpg';
+import mangoLogo from '../../assets/Logo_white.png';
+import pythonLogo from '../../assets/python.png';
+import pytorchLogo from '../../assets/pytorch.png';
+import tensorflowLogo from '../../assets/tensorflow.png';
 
-// AboutUsPage component
 function AboutUsPage() {
-    const navigate = useNavigate(); // Initialize useNavigate for navigation
+    const navigate = useNavigate();
 
-    // Event handler functions for navigation
-    const handleSignIn = () => { navigate('/signin'); }; // Navigate to Sign-In page
-    const handleSignUp = () => { navigate('/signup'); }; // Navigate to Sign-Up page
-    const handleContactUs = () => { navigate('/contactuspage'); }; // Navigate to Contact Us page
-    const handleAboutUs = () => { navigate('/aboutuspage'); }; // Navigate to About Us page
+    const handleSignIn = () => { navigate('/signin'); };
+    const handleSignUp = () => { navigate('/signup'); };
+    const handleContactUs = () => { navigate('/contactuspage'); };
+    const handleAboutUs = () => { navigate('/aboutuspage'); };
+
+    useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        });
+
+        const elements = document.querySelectorAll('.content-section, .framework-item');
+        elements.forEach(element => observer.observe(element));
+
+        return () => {
+            elements.forEach(element => observer.unobserve(element));
+        };
+    }, []);
 
     return (
         <div className="aboutus-page-container">
-            
-            {/* Navbar */}
             <nav className="aboutus-navbar">
                 <div className="navbar-brand">
-                    <img src={mangoLogo} alt="Mango Logo" className="navbar-logo" /> {/* Mango logo in navbar */}
+                    <img src={mangoLogo} alt="Mango Logo" className="navbar-logo" />
                 </div>
                 <div className="navbar-actions">
-                    <button className="navbar-button" onClick={handleSignIn}>Sign-In</button> {/* Sign-In button */}
-                    <button className="navbar-button" onClick={handleSignUp}>Sign-Up</button> {/* Sign-Up button */}
+                    <button className="navbar-button" onClick={handleSignIn}>Sign-In</button>
+                    <button className="navbar-button" onClick={handleSignUp}>Sign-Up</button>
                 </div>
             </nav>
 
-            {/* Hero Section */}
             <header className="aboutus-hero" style={{ backgroundImage: `url(${mangoBackground})` }}>
-                <h1 className="hero-title">About Us</h1> {/* Title in the hero section */}
+                <h1 className="hero-title">About Us</h1>
             </header>
 
-            {/* Content Section */}
             <main className="aboutus-content">
                 <div className="content-section">
-                    <h2 className="content-title">Mangoers</h2> {/* Section Title */}
+                    <h2 className="content-title">Mangoers</h2>
                     <p className="content-description">
                         Mangoers Bruise Tracker, developed at Mae Fah Luang University, specializes in the precise detection and analysis of mango bruise areas. Utilizing cutting-edge computer vision, deep learning (DL), and machine learning (ML) techniques, our platform empowers retailers to streamline mango quality assessment. This automated bruise detection service delivers actionable insights to support optimal quality control and decision-making.
                     </p>
                 </div>
 
-                {/* Frameworks Section */}
                 <section className="frameworks-section">
-                    <h3 className="frameworks-title">Frameworks We Use</h3> {/* Frameworks section title */}
+                    <h3 className="frameworks-title">Frameworks We Use</h3>
                     <div className="frameworks-logos">
-
-                        {/* Python Logo */}
                         <div className="framework-item">
                             <img src={pythonLogo} alt="Python Logo" className="framework-logo" />
-                            <p>Python</p> {/* Python label */}
+                            <p>Python</p>
                         </div>
-
-                        {/* PyTorch Logo */}
                         <div className="framework-item">
                             <img src={pytorchLogo} alt="PyTorch Logo" className="framework-logo" />
-                            <p>PyTorch</p> {/* PyTorch label */}
+                            <p>PyTorch</p>
                         </div>
-
-                        {/* TensorFlow Logo */}
                         <div className="framework-item">
                             <img src={tensorflowLogo} alt="TensorFlow Logo" className="framework-logo" />
-                            <p>TensorFlow</p> {/* TensorFlow label */}
+                            <p>TensorFlow</p>
                         </div>
                     </div>
                 </section>
             </main>
 
-            {/* Footer */}
             <footer className="aboutus-footer">
                 <div className="footer-links">
-                    <button className="footer-link" onClick={handleAboutUs}>About Us</button> {/* About Us link */}
-                    <button className="footer-link" onClick={handleContactUs}>Contact Us</button> {/* Contact Us link */}
+                    <button className="footer-link" onClick={handleAboutUs}>About Us</button>
+                    <button className="footer-link" onClick={handleContactUs}>Contact Us</button>
                 </div>
-                <p className="footer-address">Mae Fah Luang University 333 Moo 1, Thasud, Muang, Chiang Rai 57100</p> {/* Footer address */}
+                <p className="footer-address">Mae Fah Luang University 333 Moo 1, Thasud, Muang, Chiang Rai 57100</p>
             </footer>
         </div>
     );
 }
 
-export default AboutUsPage; // Export the AboutUsPage component
+export default AboutUsPage;

@@ -41,7 +41,7 @@ function ForgotPassword() {
                 <input
                     type="text"
                     ref={emailRef}
-                    placeholder="Enter Email"
+                    placeholder="Enter your email"
                     className="ForgotPassword-input"
                     onKeyDown={handleKeyDown}
                 />

@@ -68,7 +68,7 @@ function SignInPage() {
                 <input
                     type="text"
                     id="username"
-                    placeholder="Username or email"
+                    placeholder="Enter your username or email" 
                     className="signin-input"
                     onKeyDown={handleKeyDown}
                 />
@@ -77,7 +77,7 @@ function SignInPage() {
                     <input
                         type={showPassword ? 'text' : 'password'}
                         id="password"
-                        placeholder="Password"
+                        placeholder="Confirm a password"
                         className="signin-input password-input"
                         onKeyDown={handleKeyDown}
                     />

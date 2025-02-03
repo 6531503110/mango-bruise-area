@@ -65,7 +65,7 @@ function ChangePassword() {
                     <input
                         type={passwordVisibility.newPassword ? 'text' : 'password'} // Toggle between text and password input
                         ref={newPasswordRef}
-                        placeholder="Enter new password"
+                        placeholder="Enter your new password"
                         className="ChangePassword-input"
                         onKeyDown={handleKeyDown} // Handle keydown event for Enter key
                         maxLength="100" // Max length of password input
@@ -83,7 +83,7 @@ function ChangePassword() {
                     <input
                         type={passwordVisibility.confirmPassword ? 'text' : 'password'} // Toggle between text and password input
                         ref={confirmPasswordRef}
-                        placeholder="Confirm new password"
+                        placeholder="Confirm your new password"
                         className="ChangePassword-input"
                         onKeyDown={handleKeyDown} // Handle keydown event for Enter key
                         maxLength="100" // Max length of confirm password input

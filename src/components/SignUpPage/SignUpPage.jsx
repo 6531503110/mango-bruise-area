@@ -76,7 +76,7 @@ function SignUpPage() {
                 <input
                     type="text"
                     id="username"
-                    placeholder="Username"
+                    placeholder="Enter your username"
                     className="signup-input"
                     ref={usernameRef}
                     onKeyDown={handleKeyDown}
@@ -84,7 +84,7 @@ function SignUpPage() {
                 <input
                     type="text"
                     id="email"
-                    placeholder="Email"
+                    placeholder="Enter your email"
                     className="signup-input"
                     ref={emailRef}
                     onKeyDown={handleKeyDown}
@@ -93,7 +93,7 @@ function SignUpPage() {
                     <input
                         type={passwordVisibility.password ? 'text' : 'password'}
                         id="password"
-                        placeholder="Password"
+                        placeholder="Create a password"
                         className="signup-input"
                         ref={passwordRef}
                         onKeyDown={handleKeyDown}
@@ -110,7 +110,7 @@ function SignUpPage() {
                     <input
                         type={passwordVisibility.confirmPassword ? 'text' : 'password'}
                         id="confirmPassword"
-                        placeholder="Confirm Password"
+                        placeholder="Confirm a password"
                         className="signup-input"
                         ref={confirmPasswordRef}
                         onKeyDown={handleKeyDown}

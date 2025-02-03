@@ -10,12 +10,15 @@ import tensorflowLogo from '../../assets/tensorflow.png';
 function AboutUsPage() {
     const navigate = useNavigate();
 
+    // Navigation handlers
     const handleSignIn = () => { navigate('/signin'); };
     const handleSignUp = () => { navigate('/signup'); };
     const handleContactUs = () => { navigate('/contactuspage'); };
     const handleAboutUs = () => { navigate('/aboutuspage'); };
 
     useEffect(() => {
+        
+        // Intersection Observer for animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -24,9 +27,11 @@ function AboutUsPage() {
             });
         });
 
+        // Select elements to observe
         const elements = document.querySelectorAll('.content-section, .framework-item');
         elements.forEach(element => observer.observe(element));
 
+        // Cleanup observer on component unmount
         return () => {
             elements.forEach(element => observer.unobserve(element));
         };

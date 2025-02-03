@@ -10,45 +10,6 @@
     padding: 0;
 }
 
-.aspect-ratio-controls {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.aspect-ratio-controls button {
-    padding: 5px 10px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.aspect-ratio-controls button:hover {
-    background-color: #0056b3;
-}
-
-.preview-container {
-    margin-top: 20px;
-    text-align: center;
-}
-
-.preview-image {
-    max-width: 100%;
-    height: auto;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.bruiseareacalculation-content {
-    flex: 1;
-    padding: 20px;
-    text-align: center;
-    margin-top: 1.5%;
-}
-
-/* Content */
 .bruiseareacalculation-content {
     flex: 1;
     padding: 40px 20px;
@@ -59,7 +20,6 @@
     font-size: 1.8rem;
     color: #12372A;
     margin-bottom: 10px;
-    margin-top: -0%;
 }
 
 .bruise-description {
@@ -84,16 +44,21 @@
 
 .crop-image-upload {
     margin-bottom: 30px;
+    padding: 20px;
+    border: 2px dashed #436850;
+    border-radius: 12px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
 .upload-label {
     background: #436850;
     color: #fff;
-    padding: 8px 16px;
+    padding: 12px 24px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: bold;
     transition: background-color 0.3s ease-in-out;
 }
@@ -157,9 +122,9 @@
 }
 
 .btn {
-    padding: 18px 50px;
+    padding: 12px 24px;
     border: none;
-    border-radius: 15px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 1rem;
     font-weight: bold;

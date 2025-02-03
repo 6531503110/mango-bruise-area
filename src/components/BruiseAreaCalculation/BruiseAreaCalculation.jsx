@@ -88,7 +88,7 @@ const BruiseAreaCalculation = () => {
             <div className="bruiseareacalculation-content">
                 <h1 className="bruiseareacalculation-title">Bruise Area Calculation</h1>
                 <p className="bruise-description">
-                    The Bruise area calculation will show the total area of mango and the total bruise area of mango
+                    The Bruise area calculation will show the total area of mango and the total bruise area of mango.
                 </p>
                 <div className="file-upload-container">
                     <div

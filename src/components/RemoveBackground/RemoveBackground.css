@@ -38,6 +38,7 @@
 }
 
 /* Image Container */
+/* Image Container */
 .image-container {
     display: flex;
     flex-direction: column;
@@ -53,16 +54,21 @@
 
 .image-upload {
     margin-bottom: 30px;
+    padding: 20px;
+    border: 2px dashed #436850;
+    border-radius: 12px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
 .upload-label {
     background: #436850;
     color: #fff;
-    padding: 8px 16px;
+    padding: 12px 24px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: bold;
     transition: background-color 0.3s ease-in-out;
 }

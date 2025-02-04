@@ -71,6 +71,18 @@ const DashboardPage = () => {
                                 <td><button className="btn view-btn" onClick={handleShowAreaCalculation}>View Result</button></td>
                                 <td><button className="btn export-btn" onClick={handleExportCSV}>Export CSV</button></td>
                             </tr>
+                            <tr>
+                                <td>Pathomphong</td>
+                                <td>10/23/2024 (01:23 P.M.)</td>
+                                <td><button className="btn view-btn" onClick={handleShowAreaCalculation}>View Result</button></td>
+                                <td><button className="btn export-btn" onClick={handleExportCSV}>Export CSV</button></td>
+                            </tr>
+                            <tr>
+                                <td>Chaichuay</td>
+                                <td>10/23/2024 (01:23 P.M.)</td>
+                                <td><button className="btn view-btn" onClick={handleShowAreaCalculation}>View Result</button></td>
+                                <td><button className="btn export-btn" onClick={handleExportCSV}>Export CSV</button></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

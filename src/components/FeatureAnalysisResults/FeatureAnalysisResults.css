@@ -99,6 +99,12 @@
 }
 
 /* Table */
+.results-table {
+    max-height: 400px;
+    overflow-y: auto;
+    /* Set max height to enable scroll */
+}
+
 .results-table table {
     border-collapse: collapse;
     width: 100%;

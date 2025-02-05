@@ -12,7 +12,7 @@
 
 /* Crop Image Button */
 .crop-image-bt {
-    background-color: #bf9900;
+    background-color: #cea500;
     color: white;
     padding: 12px 35px;
     border: none;
@@ -149,6 +149,12 @@
     font-size: 14px;
     color: #555;
     margin-bottom: 8px;
+    word-wrap: break-word;
+    /* Ensure text wraps */
+    overflow-wrap: break-word;
+    /* Ensure text wraps */
+    text-align: center;
+    /* Center align text */
 }
 
 .download-btn {

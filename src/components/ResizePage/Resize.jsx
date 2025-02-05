@@ -130,158 +130,199 @@ const Resize = () => {
     }, [selectedFiles]);
 
     return (
-        <div className="bruiseareacalculation-page">
-            <nav className="navbar">
-                <div className="navbar-brand">
-                    <img src={mangoLogo} alt="Mango Logo" className="mango-logo" />
-                </div>
-                <div className="navbar-links">
-                    <button className="navbar-link" onClick={handleDashboard}>Dashboard</button>
-                    <button className="navbar-link" onClick={handleBruiseAreaCalculation}>Bruised Area Calculation</button>
-                    <button className="navbar-link" onClick={handleFeatureAnalysis}>Feature Analysis</button>
-                    <button className="navbar-link">Resize</button>
-                    <button className="navbar-link" onClick={handleRemoveBackground}>Remove Background</button>
-                    <button className="navbar-link" onClick={handleAboutUs}>About Us</button>
-                    <button className="navbar-link" onClick={handleContactUs}>Contact Us</button>
-                </div>
-                <div className="navbar-profile" onClick={handleUserProfile}>
-                    <img src={userProfileImg} alt="User Profile" className="user-profile" />
-                </div>
-            </nav>
+      <div className="bruiseareacalculation-page">
+        <nav className="navbar">
+          <div className="navbar-brand">
+            <img src={mangoLogo} alt="Mango Logo" className="mango-logo" />
+          </div>
+          <div className="navbar-links">
+            <button className="navbar-link" onClick={handleDashboard}>
+              Dashboard
+            </button>
+            <button
+              className="navbar-link"
+              onClick={handleBruiseAreaCalculation}
+            >
+              Bruised Area Calculation
+            </button>
+            <button className="navbar-link" onClick={handleFeatureAnalysis}>
+              Feature Analysis
+            </button>
+            <button className="navbar-link">Resize</button>
+            <button className="navbar-link" onClick={handleRemoveBackground}>
+              Remove Background
+            </button>
+            <button className="navbar-link" onClick={handleAboutUs}>
+              About Us
+            </button>
+            <button className="navbar-link" onClick={handleContactUs}>
+              Contact Us
+            </button>
+          </div>
+          <div className="navbar-profile" onClick={handleUserProfile}>
+            <img
+              src={userProfileImg}
+              alt="User Profile"
+              className="user-profile"
+            />
+          </div>
+        </nav>
 
-            <div className="bruiseareacalculation-content">
-                <h1 className="bruiseareacalculation-title">Resize Image</h1>
-                <p className="bruise-description">
-                    Resize JPG, PNG, SVG or GIF by defining new height and width pixels. Change image dimensions in bulk.
-                </p>
-                <div className="file-upload-container">
-                    <div
-                        className={`file-dropzone ${dragActive ? 'drag-active' : ''}`}
-                        onDragOver={(e) => { e.preventDefault(); setDragActive(true); }}
-                        onDragLeave={() => setDragActive(false)}
-                        onDrop={(e) => {
-                            e.preventDefault();
-                            setDragActive(false);
-                            const files = Array.from(e.dataTransfer.files); // Handle dropped files
-                            handleFileChange({ target: { files } }); // Call handleFileChange
-                        }}
-                    >
-                        <p>Drag & Drop your images here or</p>
-                        <input
-                            type="file"
-                            className="file-input"
-                            id="file-upload"
-                            onChange={handleFileChange}
-                            accept=".jpg,.jpeg,.png"
-                            multiple
-                        />
-                        <label htmlFor="file-upload" className="browse-bruiseareacalculation-btn">
-                            Browse 📁
-                        </label>
-                        <p>🚨 Only .jpg .jpeg .png files are allowed</p>
-                    </div>
-                    <div className="resize-settings-bruiseareacalculation">
-                        <h3>Resize Settings:</h3>
-                        <div className="input-group">
-                            <input
-                                type="number"
-                                className="resize-number-input"
-                                placeholder="Width (px)"
-                                value={dimensions.width}
-                                onChange={(e) => {
-                                    const newWidth = e.target.value;
-                                    setDimensions(prev => ({ ...prev, width: newWidth }));
-                                    if (!originalDimensions.width) {
-                                        setOriginalDimensions(prev => ({ ...prev, width: newWidth }));
-                                    }
-                                }}
-                            />
-                            <input
-                                type="number"
-                                className="resize-number-input"
-                                placeholder="Height (px)"
-                                value={dimensions.height}
-                                onChange={(e) => {
-                                    const newHeight = e.target.value;
-                                    setDimensions(prev => ({ ...prev, height: newHeight }));
-                                    if (!originalDimensions.height) {
-                                        setOriginalDimensions(prev => ({ ...prev, height: newHeight }));
-                                    }
-                                }}
-                            />
-                        </div>
-                        <label className="aspect-ratio-label">
-                            <input
-                                type="checkbox"
-                                checked={keepAspectRatio}
-                                onChange={() => setKeepAspectRatio(!keepAspectRatio)}
-                            />
-                            Keep Aspect Ratio
-                        </label>
-                    </div>
-
-                    <div className="selected-files-box">
-                        <h3>Selected Files:</h3>
-                        <ul>
-                            {selectedFiles.map((file, index) => (
-                                <li key={index}>
-                                    {file.name} ({(file.size / 1024).toFixed(2)} KB)
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                </div>
-
-                <div className="action-buttons">
-                    <button className="bt backto-bt" onClick={handleReset}>
-                        Reset
-                    </button>
-                    <button className="bt upload-bruiseareacalculation-bt" onClick={handleResizeImages}>
-                        Resize
-                    </button>
-                    <button className="bt crop-image-bt" onClick={handleCropImage}>
-                        Crop Image
-                    </button>
-                </div>
-
-                {resizedImages.length > 0 && (
-                <div className="resized-images">
-                    <h3>Resized Images:</h3>
-                    <div className="resized-images-grid">
-                        {resizedImages.map((image, index) => (
-                            <div key={index} className="resized-image-card">
-                                <img
-                                    src={URL.createObjectURL(
-                                        selectedFiles.find((file) => file.name === image.name)
-                                    )}
-                                    alt={image.name}
-                                    className="resized-image-preview"
-                                />
-                                <p className="resized-image-details">
-                                    {image.name} - {image.width}px x {image.height}px
-                                </p>
-                                <button
-                                    className="download-btn"
-                                    onClick={() => handleDownloadImage(image)}
-                                >
-                                    Download
-                                </button>
-                            </div>
-                        ))}
-                    </div>
-                    <button className="bt download-all-zip-bt" onClick={handleDownloadAllImages}>
-                        Download All as ZIP
-                    </button>
-                </div>
-            )}
+        <div className="bruiseareacalculation-content">
+          <h1 className="bruiseareacalculation-title">Resize Image</h1>
+          <p className="bruise-description">
+            Resize JPG, PNG, SVG or GIF by defining new height and width pixels.
+            Change image dimensions in bulk.
+          </p>
+          <div className="file-upload-container">
+            <div
+              className={`file-dropzone ${dragActive ? "drag-active" : ""}`}
+              onDragOver={(e) => {
+                e.preventDefault();
+                setDragActive(true);
+              }}
+              onDragLeave={() => setDragActive(false)}
+              onDrop={(e) => {
+                e.preventDefault();
+                setDragActive(false);
+                const files = Array.from(e.dataTransfer.files); // Handle dropped files
+                handleFileChange({ target: { files } }); // Call handleFileChange
+              }}
+            >
+              <p>Drag & Drop your images here or</p>
+              <input
+                type="file"
+                className="file-input"
+                id="file-upload"
+                onChange={handleFileChange}
+                accept=".jpg,.jpeg,.png"
+                multiple
+              />
+              <label
+                htmlFor="file-upload"
+                className="browse-bruiseareacalculation-btn"
+              >
+                Browse 📁
+              </label>
+              <p>🚨 Only .jpg .jpeg .png files are allowed</p>
+            </div>
+            <div className="resize-settings-bruiseareacalculation">
+              <h3>Resize Settings:</h3>
+              <div className="input-group">
+                <input
+                  type="number"
+                  className="resize-number-input"
+                  placeholder="Width (px)"
+                  value={dimensions.width}
+                  onChange={(e) => {
+                    const newWidth = e.target.value;
+                    setDimensions((prev) => ({ ...prev, width: newWidth }));
+                    if (!originalDimensions.width) {
+                      setOriginalDimensions((prev) => ({
+                        ...prev,
+                        width: newWidth,
+                      }));
+                    }
+                  }}
+                />
+                <input
+                  type="number"
+                  className="resize-number-input"
+                  placeholder="Height (px)"
+                  value={dimensions.height}
+                  onChange={(e) => {
+                    const newHeight = e.target.value;
+                    setDimensions((prev) => ({ ...prev, height: newHeight }));
+                    if (!originalDimensions.height) {
+                      setOriginalDimensions((prev) => ({
+                        ...prev,
+                        height: newHeight,
+                      }));
+                    }
+                  }}
+                />
+              </div>
+              <label className="aspect-ratio-label">
+                <input
+                  type="checkbox"
+                  checked={keepAspectRatio}
+                  onChange={() => setKeepAspectRatio(!keepAspectRatio)}
+                />
+                Keep Aspect Ratio
+              </label>
             </div>
 
-            <footer className="footer-bruiseareacalculation">
-                <div className="footer-address-bruiseareacalculation">
-                    <p>Mae Fah Luang University 333 Moo 1, Thasud, Muang, Chiang Rai 57100</p>
-                </div>
-            </footer>
+            <div className="selected-files-box">
+              <h3>Selected Files:</h3>
+              <ul>
+                {selectedFiles.map((file, index) => (
+                  <li key={index}>
+                    {file.name} ({(file.size / 1024).toFixed(2)} KB)
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className="action-buttons">
+            <button className="bt backto-bt" onClick={handleReset}>
+              Reset
+            </button>
+            <button
+              className="bt upload-bruiseareacalculation-bt"
+              onClick={handleResizeImages}
+            >
+              Resize
+            </button>
+            <button className="bt crop-image-bt" onClick={handleCropImage}>
+              Crop Image
+            </button>
+          </div>
+
+          {resizedImages.length > 0 && (
+            <div className="resized-images">
+              <h3>Resized Images:</h3>
+              <div className="resized-images-grid">
+                {resizedImages.map((image, index) => (
+                  <div key={index} className="resized-image-card">
+                    <img
+                      src={URL.createObjectURL(
+                        selectedFiles.find((file) => file.name === image.name)
+                      )}
+                      alt={image.name}
+                      className="resized-image-preview"
+                    />
+                    <p className="resized-image-details">
+                      {image.name} - {image.width}px x {image.height}px
+                    </p>
+                    <button
+                      className="download-btn"
+                      onClick={() => handleDownloadImage(image)}
+                    >
+                      Download
+                    </button>
+                  </div>
+                ))}
+              </div>
+              <button
+                className="bt download-all-zip-bt"
+                onClick={handleDownloadAllImages}
+              >
+                Download All as ZIP
+              </button>
+            </div>
+          )}
         </div>
+
+        <footer className="footer-bruiseareacalculation">
+          <div className="footer-address-bruiseareacalculation">
+            <p>
+              Mae Fah Luang University 333 Moo 1, Thasud, Muang, Chiang Rai
+              57100
+            </p>
+          </div>
+        </footer>
+      </div>
     );
 };
 

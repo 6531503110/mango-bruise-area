@@ -106,6 +106,11 @@ const Resize = () => {
         setOriginalDimensions({ width: '', height: '' });
     }, []);
 
+    const handleRemoveFile = useCallback((index) => {
+        setSelectedFiles(prevFiles => prevFiles.filter((_, i) => i !== index));
+        setResizedImages(prevImages => prevImages.filter((_, i) => i !== index));
+    }, []);
+
     useEffect(() => {
         if (keepAspectRatio && originalDimensions.width && originalDimensions.height) {
             const aspectRatio = originalDimensions.width / originalDimensions.height;
@@ -256,8 +261,14 @@ const Resize = () => {
               <h3>Selected Files:</h3>
               <ul>
                 {selectedFiles.map((file, index) => (
-                  <li key={index}>
+                  <li key={index} className="file-item">
                     {file.name} ({(file.size / 1024).toFixed(2)} KB)
+                    <button
+                      className="delete-btn"
+                      onClick={() => handleRemoveFile(index)}
+                    >
+                      ❌
+                    </button>
                   </li>
                 ))}
               </ul>

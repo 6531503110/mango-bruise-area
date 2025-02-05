@@ -20,6 +20,10 @@ const ChangeProfilePassword = () => {
     navigate('/resize');
   }, [navigate]);
 
+  const handleRemoveBackground = useCallback(() => {
+    navigate('/removebackground');
+  }, [navigate]);
+
   const handleNewPasswordUpdate = useCallback(() => {
     if (!newPassword || !confirmPassword) {
       setAlertMessage('The field cannot be blank');
@@ -51,11 +55,12 @@ const ChangeProfilePassword = () => {
           <img src={mangoLogo} alt="Mango Logo" className="manger-logo" />
         </div>
 
-        <div className="profile-links">
+        <div className="navbar-links">
           <button className="profile-link" onClick={() => navigate('/dashboardpage')}>Dashboard</button>
           <button className="profile-link" onClick={() => navigate('/bruiseareacalculation')}>Bruised Area Calculation</button>
           <button className="profile-link" onClick={() => navigate('/featureanalysis')}>Feature Analysis</button>
           <button className="navbar-link" onClick={handleResize}>Resize</button>
+          <button className="navbar-link" onClick={handleRemoveBackground}>Remove Background</button>
           <button className="edit-link" onClick={() => navigate('/aboutuspage')}>About Us</button>
           <button className="edit-link" onClick={() => navigate('/contactuspage')}>Contact Us</button>
         </div>

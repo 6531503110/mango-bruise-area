@@ -140,6 +140,7 @@ const Resize = () => {
                     <button className="navbar-link" onClick={handleBruiseAreaCalculation}>Bruised Area Calculation</button>
                     <button className="navbar-link" onClick={handleFeatureAnalysis}>Feature Analysis</button>
                     <button className="navbar-link">Resize</button>
+                    <button className="navbar-link" onClick={handleRemoveBackground}>Remove Background</button>
                     <button className="navbar-link" onClick={handleAboutUs}>About Us</button>
                     <button className="navbar-link" onClick={handleContactUs}>Contact Us</button>
                 </div>
@@ -240,9 +241,6 @@ const Resize = () => {
                     </button>
                     <button className="bt crop-image-bt" onClick={handleCropImage}>
                         Crop Image
-                    </button>
-                    <button className="bt remove-background-bt" onClick={handleRemoveBackground}>
-                        Remove Background
                     </button>
                 </div>
 

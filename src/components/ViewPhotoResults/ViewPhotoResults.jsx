@@ -44,6 +44,7 @@ const ViewPhotoResults = () => {
     const handleBruiseAreaCalculation = () => navigate('/bruiseareacalculation');
     const handleFeatureAnalysis = () => navigate('/featureanalysis');
     const handleResize = () => {navigate('/resize')}
+    const handleRemoveBackground = () => navigate('/removebackground');
 
     return (
         <div className="view-photo-result-page">
@@ -59,6 +60,7 @@ const ViewPhotoResults = () => {
                     <button className="navbar-link" onClick={handleBruiseAreaCalculation}>Bruised Area Calculation</button>
                     <button className="navbar-link" onClick={handleFeatureAnalysis}>Feature Analysis</button>
                     <button className="profile-link" onClick={handleResize}>Resize</button>
+                    <button className="navbar-link" onClick={handleRemoveBackground}>Remove Background</button>
                     <button className="edit-link" onClick={handleAboutUs}>About Us</button>
                     <button className="edit-link" onClick={handleContactUs}>Contact Us</button>
                 </div>

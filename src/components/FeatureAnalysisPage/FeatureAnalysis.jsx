@@ -15,6 +15,7 @@ const FeatureAnalysis = () => {
     const handleDashboard = useCallback(() => navigate('/dashboardpage'), [navigate]);
     const handleBruiseAreaCalculation = useCallback(() => navigate('/bruiseareacalculation'), [navigate]);
     const handleResize = useCallback(() => navigate('/resize'), [navigate]);
+    const handleRemoveBackground = useCallback(() => navigate('/removebackground'), [navigate]);
     const handleFeatureAnalysisResults = useCallback(() => {
         const fileData = selectedFiles.map((file, index) => ({
             id: index + 1,
@@ -75,6 +76,7 @@ const FeatureAnalysis = () => {
                     <button className="navbar-link" onClick={handleBruiseAreaCalculation}>Bruised Area Calculation</button>
                     <button className="navbar-link">Feature Analysis</button>
                     <button className="navbar-link" onClick={handleResize}>Resize</button>
+                    <button className="navbar-link" onClick={handleRemoveBackground}>Remove Background</button>
                     <button className="navbar-link" onClick={handleAboutUs}>About Us</button>
                     <button className="navbar-link" onClick={handleContactUs}>Contact Us</button>
                 </div>

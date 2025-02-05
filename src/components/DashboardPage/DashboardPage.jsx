@@ -15,6 +15,7 @@ const DashboardPage = () => {
     const handleShowAreaCalculation = useCallback(() => { navigate('/showareacalculation'); }, [navigate]);
     const handleExportCSV = useCallback(() => { navigate('/exportcsvsuccessfully'); }, [navigate]);
     const handleResize = useCallback(() => { navigate('/resize'); }, [navigate]);
+    const handleRemoveBackground = useCallback(() => { navigate('/removebackground'); }, [navigate]);
 
     return (
         <div className="dashboard-page">
@@ -27,6 +28,7 @@ const DashboardPage = () => {
                     <button className="navbar-link" onClick={handleBruiseAreaCalculation}>Bruised Area Calculation</button>
                     <button className="navbar-link" onClick={handleFeatureAnalysis}>Feature Analysis</button>
                     <button className="navbar-link" onClick={handleResize}>Resize</button>
+                    <button className="navbar-link" onClick={handleRemoveBackground}>Remove Background</button>
                     <button className="navbar-link" onClick={handleAboutUs}>About Us</button>
                     <button className="navbar-link" onClick={handleContactUs}>Contact Us</button>
                 </div>

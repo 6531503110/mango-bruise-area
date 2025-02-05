@@ -16,6 +16,7 @@ const PasswordUpdatePage = () => {
     const handleBruiseAreaCalculation = useCallback(() => navigate('/bruiseareacalculation'), [navigate]);
     const handleFeatureAnalysis = useCallback(() => navigate('/featureanalysis'), [navigate]);
     const handleResize = useCallback(() => navigate('/resize'), [navigate]);
+    const handleRemoveBackground = useCallback(() => navigate('/removebackground'), [navigate]);
 
     return (
         <div className="password-update-page">
@@ -26,11 +27,12 @@ const PasswordUpdatePage = () => {
                     <img src={mangoLogo} alt="Mango Logo" className="manger-logo" />
                 </div>
 
-                <div className="profile-links">
+                <div className="navbar-links">
                     <button className="profile-link" onClick={handleDashboard}>Dashboard</button>
                     <button className="profile-link" onClick={handleBruiseAreaCalculation}>Bruised Area Calculation</button>
                     <button className="profile-link" onClick={handleFeatureAnalysis}>Feature Analysis</button>
                     <button className="profile-link" onClick={handleResize}>Resize</button>
+                    <button className="navbar-link" onClick={handleRemoveBackground}>Remove Background</button>
                     <button className="edit-link" onClick={handleAboutUs}>About Us</button>
                     <button className="edit-link" onClick={handleContactUs}>Contact Us</button>
                 </div>

@@ -21,6 +21,7 @@ const CropImage = () => {
     const handleFeatureAnalysis = useCallback(() => navigate('/featureanalysis'), [navigate]);
     const handleResize = useCallback(() => navigate('/resize'), [navigate]);
     const handleBruiseAreaCalculation = useCallback(() => navigate('/bruiseareacalculation'), [navigate]);
+    const handleRemoveBackground = useCallback(() => navigate('/removebackground'), [navigate]);
 
     const handleImageUpload = (e) => {
         const file = e.target.files[0];
@@ -86,6 +87,7 @@ const CropImage = () => {
                     <button className="navbar-link" onClick={handleBruiseAreaCalculation}>Bruised Area Calculation</button>
                     <button className="navbar-link" onClick={handleFeatureAnalysis}>Feature Analysis</button>
                     <button className="navbar-link" onClick={handleResize}>Resize</button>
+                    <button className="navbar-link" onClick={handleRemoveBackground}>Remove Background</button>
                     <button className="navbar-link" onClick={handleAboutUs}>About Us</button>
                     <button className="navbar-link" onClick={handleContactUs}>Contact Us</button>
                 </div>

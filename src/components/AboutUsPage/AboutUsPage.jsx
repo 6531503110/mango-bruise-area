@@ -12,7 +12,6 @@ function AboutUsPage() {
 
     // Navigation handlers
     const handleSignIn = () => { navigate('/signin'); };
-    const handleSignUp = () => { navigate('/signup'); };
     const handleContactUs = () => { navigate('/contactuspage'); };
     const handleAboutUs = () => { navigate('/aboutuspage'); };
 
@@ -45,7 +44,6 @@ function AboutUsPage() {
                 </div>
                 <div className="navbar-actions">
                     <button className="navbar-button" onClick={handleSignIn}>Sign-In</button>
-                    <button className="navbar-button" onClick={handleSignUp}>Sign-Up</button>
                 </div>
             </nav>
 

@@ -40,7 +40,7 @@ body {
 .navbar-links {
     display: flex;
     gap: 30px;
-    margin-right: 6%;
+    margin-right: 5%;
 }
 
 .navbar-link {

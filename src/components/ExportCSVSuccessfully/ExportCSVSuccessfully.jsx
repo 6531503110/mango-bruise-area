@@ -16,6 +16,7 @@ const ExportCSVSuccessfully = () => {
     const handleBruiseAreaCalculation = useCallback(() => { navigate('/bruiseareacalculation'); }, [navigate]);
     const handleFeatureAnalysis = useCallback(() => { navigate('/featureanalysis'); }, [navigate]);
     const handleResize = useCallback(() => { navigate('/resize'); }, [navigate]);
+    const handleRemoveBackground = useCallback(() => { navigate('/removebackground'); }, [navigate]);
 
     return (
         <div className="export-csv-page">
@@ -26,13 +27,14 @@ const ExportCSVSuccessfully = () => {
                     <img src={mangoLogo} alt="Mango Logo" className="manger-logo" />
                 </div>
 
-                <div className="profile-links">
-                    <button className="profile-link" onClick={handleDashboard}>Dashboard</button>
-                    <button className="profile-link" onClick={handleBruiseAreaCalculation}>Bruised Area Calculation</button>
-                    <button className="profile-link" onClick={handleFeatureAnalysis}>Feature Analysis</button>
-                    <button className="profile-link" onClick={handleResize}>Resize</button>
-                    <button className="profile-link" onClick={handleAboutUs}>About Us</button>
-                    <button className="profile-link" onClick={handleContactUs}>Contact Us</button>
+                <div className="navbar-links">
+                    <button className="navbar-link" onClick={handleDashboard}>Dashboard</button>
+                    <button className="navbar-link" onClick={handleBruiseAreaCalculation}>Bruised Area Calculation</button>
+                    <button className="navbar-link" onClick={handleFeatureAnalysis}>Feature Analysis</button>
+                    <button className="navbar-link" onClick={handleResize}>Resize</button>
+                    <button className="navbar-link" onClick={handleRemoveBackground}>Remove Background</button>
+                    <button className="navbar-link" onClick={handleAboutUs}>About Us</button>
+                    <button className="navbar-link" onClick={handleContactUs}>Contact Us</button>
                 </div>
 
                 <div className="navbar-profile">

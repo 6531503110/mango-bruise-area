@@ -93,6 +93,7 @@ const RemoveBackground = () => {
                     <button className="navbar-link" onClick={handleBruiseAreaCalculation}>Bruised Area Calculation</button>
                     <button className="navbar-link" onClick={handleFeatureAnalysis}>Feature Analysis</button>
                     <button className="navbar-link" onClick={handleResize}>Resize</button>
+                    <button className="navbar-link" onClick={handleRemoveBackground}>Remove Background</button>
                     <button className="navbar-link" onClick={handleAboutUs}>About Us</button>
                     <button className="navbar-link" onClick={handleContactUs}>Contact Us</button>
                 </div>

@@ -50,6 +50,7 @@ const FeatureAnalysisResults = () => {
     const handleContactUs = useCallback(() => navigate('/contactuspage'), [navigate]);
     const handleUserProfile = useCallback(() => navigate('/userprofilepage'), [navigate]);
     const handleResize = useCallback(() => navigate('/resize'), [navigate]);
+    const handleRemoveBackground = useCallback(() => navigate('/removebackground'), [navigate]);
 
     const handleCheckboxChange = useCallback((feature) => {
         setChecked((prevChecked) => ({
@@ -84,6 +85,7 @@ const FeatureAnalysisResults = () => {
             <button className="profile-link" onClick={handleResize}>
               Resize
             </button>
+            <button className="navbar-link" onClick={handleRemoveBackground}>Remove Background</button>
             <button className="navbar-link" onClick={handleAboutUs}>
               About Us
             </button>

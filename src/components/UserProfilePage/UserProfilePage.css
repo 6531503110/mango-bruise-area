@@ -44,7 +44,9 @@ body {
     margin-right: 20%;
 }
 
-.profile-link {
+/* ...existing code... */
+
+.navbar-link {
     background: none;
     color: #FFFFFF;
     border: 2px solid #FFFFFF;
@@ -57,17 +59,19 @@ body {
     transition: all 0.3s ease-in-out;
 }
 
-.profile-link:hover {
+.navbar-link:hover {
     background-color: #FFDD55;
     color: #4B6A3D;
     transform: scale(1.05);
     box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
 }
 
-.profile-link:active {
+.navbar-link:active {
     transform: scale(1);
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
 }
+
+/* ...existing code... */
 
 /* User Profile Content */
 .user-profile-content {

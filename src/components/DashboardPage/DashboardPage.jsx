@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './DashboardPage.css';
 import mangoLogo from '../../assets/Logo_white.png';
@@ -6,6 +6,7 @@ import userProfileImg from '../../assets/profile.jpg';
 
 const DashboardPage = () => {
     const navigate = useNavigate();
+    const [operationHistory, setOperationHistory] = useState([]);
 
     const handleAboutUs = useCallback(() => { navigate('/aboutuspage'); }, [navigate]);
     const handleContactUs = useCallback(() => { navigate('/contactuspage'); }, [navigate]);
@@ -16,6 +17,11 @@ const DashboardPage = () => {
     const handleExportCSV = useCallback(() => { navigate('/exportcsvsuccessfully'); }, [navigate]);
     const handleResize = useCallback(() => { navigate('/resize'); }, [navigate]);
     const handleRemoveBackground = useCallback(() => { navigate('/removebackground'); }, [navigate]);
+
+    useEffect(() => {
+        const history = JSON.parse(localStorage.getItem('operationHistory')) || [];
+        setOperationHistory(history);
+    }, []);
 
     return (
         <div className="dashboard-page">
@@ -49,42 +55,20 @@ const DashboardPage = () => {
                             </tr>
                         </thead>
                         <tbody className="dashboard-table-body">
-                            <tr>
-                                <td>Bruised Area Calculation</td>
-                                <td>10/23/2024 (03:35 P.M.)</td>
-                                <td><button className="btn view-btn" onClick={handleShowAreaCalculation}>View Result</button></td>
-                                <td><button className="btn export-btn" onClick={handleExportCSV}>Export CSV</button></td>
-                            </tr>
-                            <tr>
-                                <td>Bruised Area Calculation</td>
-                                <td>10/23/2024 (02:47 P.M.)</td>
-                                <td><button className="btn view-btn" onClick={handleShowAreaCalculation}>View Result</button></td>
-                                <td><button className="btn export-btn" onClick={handleExportCSV}>Export CSV</button></td>
-                            </tr>
-                            <tr>
-                                <td>Feature Analysis</td>
-                                <td>10/23/2024 (01:23 P.M.)</td>
-                                <td><button className="btn view-btn" onClick={handleShowAreaCalculation}>View Result</button></td>
-                                <td><button className="btn export-btn" onClick={handleExportCSV}>Export CSV</button></td>
-                            </tr>
-                            <tr>
-                                <td>Resize</td>
-                                <td>10/23/2024 (01:23 P.M.)</td>
-                                <td><button className="btn view-btn" onClick={handleShowAreaCalculation}>View Result</button></td>
-                                <td><button className="btn export-btn" onClick={handleExportCSV}>Export CSV</button></td>
-                            </tr>
-                            <tr>
-                                <td>Pathomphong</td>
-                                <td>10/23/2024 (01:23 P.M.)</td>
-                                <td><button className="btn view-btn" onClick={handleShowAreaCalculation}>View Result</button></td>
-                                <td><button className="btn export-btn" onClick={handleExportCSV}>Export CSV</button></td>
-                            </tr>
-                            <tr>
-                                <td>Chaichuay</td>
-                                <td>10/23/2024 (01:23 P.M.)</td>
-                                <td><button className="btn view-btn" onClick={handleShowAreaCalculation}>View Result</button></td>
-                                <td><button className="btn export-btn" onClick={handleExportCSV}>Export CSV</button></td>
-                            </tr>
+                            {operationHistory.length > 0 ? (
+                                operationHistory.map((operation, index) => (
+                                    <tr key={index}>
+                                        <td>{operation.type}</td>
+                                        <td>{operation.date}</td>
+                                        <td><button className="btn view-btn" onClick={handleShowAreaCalculation}>View Result</button></td>
+                                        <td><button className="btn export-btn" onClick={handleExportCSV}>Export CSV</button></td>
+                                    </tr>
+                                ))
+                            ) : (
+                                <tr>
+                                    <td colSpan="4">No information available</td>
+                                </tr>
+                            )}
                         </tbody>
                     </table>
                 </div>

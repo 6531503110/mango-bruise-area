@@ -33,7 +33,7 @@ const ShowAreaCalculation = () => {
   const handleDashboard = useCallback(() => navigate("/dashboardpage"), [navigate]);
   const handleBruiseAreaCalculation = useCallback(() => navigate("/bruiseareacalculation"), [navigate]);
   const handleFeatureAnalysis = useCallback(() => navigate("/featureanalysis"), [navigate]);
-  const handleViewPhotoResults = useCallback(() => navigate("/viewphotoresults"), [navigate]);
+  const handleViewPhotoResults = useCallback((index) => navigate("/viewphotoresults", { state: { index } }), [navigate]);
 
   const handleExportCSV = useCallback(() => {
     if (tableData.length === 0) {
@@ -64,7 +64,7 @@ const ShowAreaCalculation = () => {
           <button className="navbar-link" onClick={handleBruiseAreaCalculation}>Bruised Area Calculation</button>
           <button className="navbar-link" onClick={handleFeatureAnalysis}>Feature Analysis</button>
           <button className="navbar-link" onClick={handleResize}>Resize</button>
-                    <button className="navbar-link" onClick={handleRemoveBackground}>Remove Background</button>
+          <button className="navbar-link" onClick={handleRemoveBackground}>Remove Background</button>
           <button className="navbar-link" onClick={handleAboutUs}>About Us</button>
           <button className="navbar-link" onClick={handleContactUs}>Contact Us</button>
         </div>
@@ -89,14 +89,14 @@ const ShowAreaCalculation = () => {
                 </tr>
               </thead>
               <tbody>
-                {tableData.map((row) => (
+                {tableData.map((row, index) => (
                   <tr key={row.id}>
                     <td>{row.photoName}</td>
                     <td>{row.date}</td>
                     <td>{row.area}</td>
                     <td>{row.percentage}</td>
                     <td>
-                      <button className="btn view-result-btn" onClick={handleViewPhotoResults}>View Photo</button>
+                      <button className="btn view-result-btn" onClick={() => handleViewPhotoResults(index)}>View Photo</button>
                     </td>
                     <td>
                       <button className="btn export-result-btn" onClick={() => handleDelete(row.id)}>Delete Photo</button>

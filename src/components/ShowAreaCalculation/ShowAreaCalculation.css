@@ -137,6 +137,10 @@
     text-align: center;
     background: #fff;
     border-bottom: 1px solid #ddd;
+    word-wrap: break-word;
+    /* Add this line to enable text wrapping */
+    white-space: normal;
+    /* Add this line to enable text wrapping */
 }
 
 .show-area-calculation-table tbody tr:nth-child(odd) td {

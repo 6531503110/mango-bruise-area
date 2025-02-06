@@ -21,8 +21,19 @@ const FeatureAnalysis = () => {
             id: index + 1,
             name: file.name,
             size: file.size,
+            date: new Date().toLocaleString(),
+            src: URL.createObjectURL(file)
         }));
         localStorage.setItem('uploadedFiles', JSON.stringify(fileData));
+
+        // Update operation history
+        const operationHistory = JSON.parse(localStorage.getItem('operationHistory')) || [];
+        operationHistory.push({
+            type: 'Feature Analysis',
+            date: new Date().toLocaleString()
+        });
+        localStorage.setItem('operationHistory', JSON.stringify(operationHistory));
+
         navigate('/featureanalysisresults');
     }, [selectedFiles, navigate]);
 

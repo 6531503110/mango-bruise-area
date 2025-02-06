@@ -1,30 +1,23 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './ViewPhotoResults.css';
 import mangoLogo from '../../assets/Logo_white.png';
-import mangoData1 from '../../assets/MangoData1.png';
-import mangoData2 from '../../assets/MangoData2.png';
 import userProfileImg from '../../assets/profile.jpg';
 
 const ViewPhotoResults = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+    const { index } = location.state || { index: 0 };
 
-    // Array of images with details
-    const images = [
-        {
-            src: mangoData1,
-            alt: "Mango 1",
-            info: "Fruit Areas: 142564 sq-pixels | Bruised Area: 23 sq-pixels | Photo: Mango1.png W: 1653 x H: 840",
-        },
-        
-        {
-            src: mangoData2,
-            alt: "Mango 2",
-            info: "Fruit Areas: 152654 sq-pixels | Bruised Area: 30 sq-pixels | Photo: Mango2.png W: 1653 x H: 840",
-        },
-    ];
+    const [images, setImages] = useState([]);
+    const [currentIndex, setCurrentIndex] = useState(index);
 
-    const [currentIndex, setCurrentIndex] = useState(0);
+    useEffect(() => {
+        const storedFiles = localStorage.getItem('uploadedFiles');
+        if (storedFiles) {
+            setImages(JSON.parse(storedFiles));
+        }
+    }, []);
 
     // Navigation functions for pictures
     const handleNext = () => {
@@ -43,7 +36,7 @@ const ViewPhotoResults = () => {
     const handleDashboard = () => navigate('/dashboardpage');
     const handleBruiseAreaCalculation = () => navigate('/bruiseareacalculation');
     const handleFeatureAnalysis = () => navigate('/featureanalysis');
-    const handleResize = () => {navigate('/resize')}
+    const handleResize = () => navigate('/resize');
     const handleRemoveBackground = () => navigate('/removebackground');
 
     return (
@@ -78,11 +71,15 @@ const ViewPhotoResults = () => {
                 <main className="main-content">
                     <div className="photo-container">
                         <button className="nav-button prev-button" onClick={handlePrevious}>◀</button>
-                        <img src={images[currentIndex].src} alt={images[currentIndex].alt} className="photo" />
+                        {images.length > 0 && (
+                            <img src={images[currentIndex].src} alt={images[currentIndex].photoName} className="photo" />
+                        )}
                         <button className="nav-button next-button" onClick={handleNext}>▶</button>
-                        <div className="photo-info">
-                            <p>{images[currentIndex].info}</p>
-                        </div>
+                        {images.length > 0 && (
+                            <div className="photo-info">
+                                <p>{images[currentIndex].info}</p>
+                            </div>
+                        )}
                     </div>
                 </main>
 

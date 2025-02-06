@@ -60,10 +60,20 @@ const BruiseAreaCalculation = () => {
             photoName: file.name,
             date: new Date().toLocaleString(),
             area: "---",
-            percentage: "---"
+            percentage: "---",
+            src: URL.createObjectURL(file)
         }));
         
         localStorage.setItem('uploadedFiles', JSON.stringify(fileData));
+
+        // Update operation history
+        const operationHistory = JSON.parse(localStorage.getItem('operationHistory')) || [];
+        operationHistory.push({
+            type: 'Bruised Area Calculation',
+            date: new Date().toLocaleString()
+        });
+        localStorage.setItem('operationHistory', JSON.stringify(operationHistory));
+
         navigate('/showareacalculation');
     }, [selectedFiles, navigate]);
 

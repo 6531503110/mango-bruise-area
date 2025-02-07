@@ -59,14 +59,6 @@ function ContactUsPage() {
                 <section className="frameworks-section">
                     <h3 className="frameworks-title">Contact Us</h3>
                     <div className="frameworks-logos">
-                        <div className="framework-item">
-                            <img src={instagramLogo} alt="Instagram Logo" className="framework-logo" />
-                            <p>Instagram</p>
-                        </div>
-                        <div className="framework-item">
-                            <img src={xLogo} alt="X Logo" className="framework-logo" />
-                            <p>X</p>
-                        </div>
                         <div className="framework-item" onClick={handleFacebookClick}>
                             <img src={facebookLogo} alt="Facebook Logo" className="framework-logo" />
                             <p>IATE</p>

@@ -7,6 +7,7 @@ import userProfileImg from '../../assets/profile.jpg';
 const DashboardPage = () => {
     const navigate = useNavigate();
     const [operationHistory, setOperationHistory] = useState([]);
+    const [exportProgress, setExportProgress] = useState(0);
 
     const handleAboutUs = useCallback(() => { navigate('/aboutuspage'); }, [navigate]);
     const handleContactUs = useCallback(() => { navigate('/contactuspage'); }, [navigate]);
@@ -14,7 +15,6 @@ const DashboardPage = () => {
     const handleBruiseAreaCalculation = useCallback(() => { navigate('/bruiseareacalculation'); }, [navigate]);
     const handleFeatureAnalysis = useCallback(() => { navigate('/featureanalysis'); }, [navigate]);
     const handleShowAreaCalculation = useCallback(() => { navigate('/showareacalculation'); }, [navigate]);
-    const handleExportCSV = useCallback(() => { navigate('/exportcsvsuccessfully'); }, [navigate]);
     const handleResize = useCallback(() => { navigate('/resize'); }, [navigate]);
     const handleRemoveBackground = useCallback(() => { navigate('/removebackground'); }, [navigate]);
 
@@ -22,6 +22,20 @@ const DashboardPage = () => {
         const history = JSON.parse(localStorage.getItem('operationHistory')) || [];
         setOperationHistory(history);
     }, []);
+
+    const handleExportCSV = useCallback(() => {
+        setExportProgress(0);
+        const interval = setInterval(() => {
+            setExportProgress(prevProgress => {
+                if (prevProgress >= 100) {
+                    clearInterval(interval);
+                    navigate('/exportcsvsuccessfully');
+                    return 100;
+                }
+                return prevProgress + 10;
+            });
+        }, 100);
+    }, [navigate]);
 
     return (
         <div className="dashboard-page">
@@ -72,6 +86,11 @@ const DashboardPage = () => {
                         </tbody>
                     </table>
                 </div>
+                {exportProgress > 0 && exportProgress < 100 && (
+                    <div className="export-progress-container">
+                        <div className="export-progress">Exporting CSV... {exportProgress}%</div>
+                    </div>
+                )}
             </div>
             <footer className="footering">
                 <div className="footering-links"></div>

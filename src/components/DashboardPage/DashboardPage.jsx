@@ -21,6 +21,17 @@ const DashboardPage = () => {
     useEffect(() => {
         const history = JSON.parse(localStorage.getItem('operationHistory')) || [];
         setOperationHistory(history);
+
+        const handleBeforeUnload = () => {
+            localStorage.removeItem('operationHistory');
+            setOperationHistory([]);
+        };
+
+        window.addEventListener('beforeunload', handleBeforeUnload);
+
+        return () => {
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
     }, []);
 
     const handleExportCSV = useCallback(() => {

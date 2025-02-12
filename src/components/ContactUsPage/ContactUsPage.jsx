@@ -3,8 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import './ContactUsPage.css';
 import mangoBackground from '../../assets/differentmango.jpg';
 import mangoLogo from '../../assets/Logo_white.png';
-import instagramLogo from '../../assets/instagram.png';
-import xLogo from '../../assets/x.png';
 import facebookLogo from '../../assets/facebook.png';
 
 function ContactUsPage() {

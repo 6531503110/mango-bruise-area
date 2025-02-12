@@ -155,8 +155,8 @@ const CropImage = () => {
                 </div>
             </div>
 
-            <footer className="footer-featureanalysis">
-                <div className="footer-address-featureanalysis">
+            <footer className="footer-cropimage">
+                <div className="footer-address-cropimage">
                     <p>Mae Fah Luang University 333 Moo 1, Thasud, Muang, Chiang Rai 57100</p>
                 </div>
             </footer>

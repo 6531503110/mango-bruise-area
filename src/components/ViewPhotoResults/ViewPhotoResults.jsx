@@ -32,7 +32,7 @@ const ViewPhotoResults = () => {
     const handleAboutUs = () => navigate('/aboutuspage');
     const handleContactUs = () => navigate('/contactuspage');
     const handleUserProfile = () => navigate('/userprofilepage');
-    const handleBack = () => navigate('/bruiseareacalculation');
+    const handleBack = () => navigate("/showareacalculation");
     const handleDashboard = () => navigate('/dashboardpage');
     const handleBruiseAreaCalculation = () => navigate('/bruiseareacalculation');
     const handleFeatureAnalysis = () => navigate('/featureanalysis');

@@ -38,6 +38,7 @@ const ViewPhotoResults = () => {
     const handleFeatureAnalysis = () => navigate('/featureanalysis');
     const handleResize = () => navigate('/resize');
     const handleRemoveBackground = () => navigate('/removebackground');
+    const handlemainhomepage = () => navigate('/mainhomepage')
 
     return (
         <div className="view-photo-result-page">
@@ -45,7 +46,7 @@ const ViewPhotoResults = () => {
             {/* Navbar */}
             <nav className="navbar">
                 <div className="navbar-brand">
-                    <img src={mangoLogo} alt="Mango Logo" className="mango-logo" />
+                    <img src={mangoLogo} alt="Mango Logo" className="mango-logo" onClick={handlemainhomepage}/>
                 </div>
 
                 <div className="navbar-links">

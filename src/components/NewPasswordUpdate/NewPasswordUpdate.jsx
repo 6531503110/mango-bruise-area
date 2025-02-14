@@ -17,6 +17,7 @@ const PasswordUpdatePage = () => {
     const handleFeatureAnalysis = useCallback(() => navigate('/featureanalysis'), [navigate]);
     const handleResize = useCallback(() => navigate('/resize'), [navigate]);
     const handleRemoveBackground = useCallback(() => navigate('/removebackground'), [navigate]);
+    const handlemainhomepage = useCallback(() => navigate('/mainhomepage'), [navigate]);
 
     return (
         <div className="password-update-page">
@@ -24,7 +25,7 @@ const PasswordUpdatePage = () => {
             {/* Navbar */}
             <nav className="profile">
                 <div className="profile-brand">
-                    <img src={mangoLogo} alt="Mango Logo" className="manger-logo" />
+                    <img src={mangoLogo} alt="Mango Logo" className="manger-logo" onClick={handlemainhomepage}/>
                 </div>
 
                 <div className="navbar-links">

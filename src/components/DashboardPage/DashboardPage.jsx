@@ -17,6 +17,7 @@ const DashboardPage = () => {
     const handleShowAreaCalculation = useCallback(() => { navigate('/showareacalculation'); }, [navigate]);
     const handleResize = useCallback(() => { navigate('/resize'); }, [navigate]);
     const handleRemoveBackground = useCallback(() => { navigate('/removebackground'); }, [navigate]);
+    const handlemainhomepage = useCallback(() => navigate('/mainhomepage'), [navigate]);
 
     useEffect(() => {
         const history = JSON.parse(localStorage.getItem('operationHistory')) || [];
@@ -52,7 +53,7 @@ const DashboardPage = () => {
         <div className="dashboard-page">
             <nav className="navbar-dashboard">
                 <div className="navbar-brand">
-                    <img src={mangoLogo} alt="Mango Logo" className="manger-logo" />
+                    <img src={mangoLogo} alt="Mango Logo" className="manger-logo" onClick={handlemainhomepage}/>
                 </div>
                 <div className="navbar-links">
                     <button className="navbar-link">Dashboard</button>

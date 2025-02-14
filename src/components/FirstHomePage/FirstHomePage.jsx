@@ -12,6 +12,7 @@ function FirstHomePage() {
     const handleGetStarted = () => { navigate('/signin'); };
     const handleAboutUs = () => { navigate('/aboutuspage'); };
     const handleContactUs = () => { navigate('/contactuspage'); };
+    const handlemainhomepage = () => navigate('/mainhomepage');
 
     return (
         <div className="first-homepage">
@@ -21,7 +22,7 @@ function FirstHomePage() {
                 <div className="navbar-brand">
                     
                     {/* Updated to use Logo_white.png and removed Bruise Tracker */}
-                    <img src={logoWhite} alt="Logo" className="mango-logo" />
+                    <img src={logoWhite} alt="Logo" className="mango-logo" onClick={handlemainhomepage}/>
                 </div>
                 <div className="navbar-buttons">
                     <button className="navbar-btn" onClick={handleSignIn}>Sign-In</button>

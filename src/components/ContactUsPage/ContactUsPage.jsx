@@ -12,6 +12,7 @@ function ContactUsPage() {
     const handleAboutUs = useCallback(() => { navigate('/aboutuspage'); }, [navigate]);
     const handleContactUs = useCallback(() => { navigate('/contactuspage'); }, [navigate]);
     const handleFacebookClick = useCallback(() => { window.open("https://www.facebook.com/IntegratedAgriTechEcosystem", "_blank"); }, []);
+    const handlemainhomepage = useCallback(() => navigate('/mainhomepage'), [navigate]);
 
     useEffect(() => {
         const observer = new IntersectionObserver((entries) => {
@@ -34,7 +35,7 @@ function ContactUsPage() {
         <div className="contactus-page-container">
             <nav className="contactus-navbar">
                 <div className="navbar-brand">
-                    <img src={mangoLogo} alt="Mango Logo" className="navbar-logo" />
+                    <img src={mangoLogo} alt="Mango Logo" className="navbar-logo" onClick={handlemainhomepage}/>
                 </div>
                 <div className="navbar-actions">
                     <button className="navbar-button" onClick={handleSignIn}>Sign-In</button>

@@ -217,6 +217,12 @@
     margin-top: 10px;
 }
 
+/* @media screen and (max-width : 1280px) {
+    .hero-content h1{
+        font-size: 0.1rem;
+    }
+} */
+
 /* Animations */
 @keyframes fadeIn {
     from {

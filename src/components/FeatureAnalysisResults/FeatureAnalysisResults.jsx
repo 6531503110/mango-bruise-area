@@ -51,6 +51,7 @@ const FeatureAnalysisResults = () => {
     const handleUserProfile = useCallback(() => navigate('/userprofilepage'), [navigate]);
     const handleResize = useCallback(() => navigate('/resize'), [navigate]);
     const handleRemoveBackground = useCallback(() => navigate('/removebackground'), [navigate]);
+    const handlemainhomepage = useCallback(() => navigate('/mainhomepage'), [navigate]);
 
     const handleCheckboxChange = useCallback((feature) => {
         setChecked((prevChecked) => ({
@@ -64,7 +65,7 @@ const FeatureAnalysisResults = () => {
         {/* Navbar */}
         <nav className="navbar">
           <div className="navbar-brand">
-            <img src={mangoLogo} alt="Mango Logo" className="mango-logo" />
+            <img src={mangoLogo} alt="Mango Logo" className="mango-logo" onClick={handlemainhomepage}/>
           </div>
           <div className="navbar-links">
             <button className="navbar-link" onClick={handleDashboard}>

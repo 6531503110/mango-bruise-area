@@ -48,11 +48,13 @@ const ChangeProfilePassword = () => {
     }
   }, []);
 
+  const handlemainhomepage = useCallback(() => navigate('/mainhomepage'), [navigate]);
+
   return (
     <div className="change-profilepassword-page">
       <nav className="profile">
         <div className="profile-brand">
-          <img src={mangoLogo} alt="Mango Logo" className="manger-logo" />
+          <img src={mangoLogo} alt="Mango Logo" className="manger-logo" onClick={handlemainhomepage}/>
         </div>
 
         <div className="navbar-links">

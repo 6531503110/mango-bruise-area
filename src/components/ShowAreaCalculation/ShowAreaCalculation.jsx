@@ -34,6 +34,7 @@ const ShowAreaCalculation = () => {
   const handleBruiseAreaCalculation = useCallback(() => navigate("/bruiseareacalculation"), [navigate]);
   const handleFeatureAnalysis = useCallback(() => navigate("/featureanalysis"), [navigate]);
   const handleViewPhotoResults = useCallback((index) => navigate("/viewphotoresults", { state: { index } }), [navigate]);
+    const handlemainhomepage = useCallback(() => navigate('/mainhomepage'), [navigate]);
 
   const handleExportCSV = useCallback(() => {
     if (tableData.length === 0) {
@@ -57,7 +58,7 @@ const ShowAreaCalculation = () => {
     <div className="show-area-calculation-page">
       <nav className="navbar-showareacalculation">
         <div className="navbar-brand">
-          <img src={mangoLogo} alt="Mango Logo" className="mango-logo" />
+          <img src={mangoLogo} alt="Mango Logo" className="mango-logo" onClick={handlemainhomepage}/>
         </div>
         <div className="navbar-links">
           <button className="navbar-link" onClick={handleDashboard}>Dashboard</button>

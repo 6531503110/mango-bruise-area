@@ -10,12 +10,13 @@ const UserProfilePage = () => {
     const handleResize = () => {navigate('/resize')}
     const { userInfo } = useContext(UserContext);
     const handleRemoveBackground = () => {navigate('/removebackground')}
+    const handlemainhomepage = () => {navigate('/mainhomepage')}
 
     return (
         <div className="profile-page">
             <nav className="profile">
                 <div className="profile-brand">
-                    <img src={mangoLogo} alt="Mango Logo" className="manger-logo" />
+                    <img src={mangoLogo} alt="Mango Logo" className="manger-logo" onClick={handlemainhomepage}/>
                 </div>
                 <div className="navbar-links">
                     <button className="profile-link" onClick={() => navigate('/dashboardpage')}>Dashboard</button>

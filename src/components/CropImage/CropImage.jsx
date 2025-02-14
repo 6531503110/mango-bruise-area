@@ -22,6 +22,7 @@ const CropImage = () => {
     const handleResize = useCallback(() => navigate('/resize'), [navigate]);
     const handleBruiseAreaCalculation = useCallback(() => navigate('/bruiseareacalculation'), [navigate]);
     const handleRemoveBackground = useCallback(() => navigate('/removebackground'), [navigate]);
+    const handlemainhomepage = useCallback(() => navigate('/mainhomepage'), [navigate]);
 
     const handleImageUpload = (e) => {
         const file = e.target.files[0];
@@ -80,7 +81,7 @@ const CropImage = () => {
         <div className="bruiseareacalculation-page">
             <nav className="navbar">
                 <div className="navbar-brand">
-                    <img src={mangoLogo} alt="Mango Logo" className="mango-logo" />
+                    <img src={mangoLogo} alt="Mango Logo" className="mango-logo" onClick={handlemainhomepage}/>
                 </div>
                 <div className="navbar-links">
                     <button className="navbar-link" onClick={handleDashboard}>Dashboard</button>

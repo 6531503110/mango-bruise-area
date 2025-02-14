@@ -16,6 +16,7 @@ const FeatureAnalysis = () => {
     const handleBruiseAreaCalculation = useCallback(() => navigate('/bruiseareacalculation'), [navigate]);
     const handleResize = useCallback(() => navigate('/resize'), [navigate]);
     const handleRemoveBackground = useCallback(() => navigate('/removebackground'), [navigate]);
+    const handlemainhomepage = useCallback(() => navigate('/mainhomepage'), [navigate]);
     const handleFeatureAnalysisResults = useCallback(() => {
         const fileData = selectedFiles.map((file, index) => ({
             id: index + 1,
@@ -80,7 +81,7 @@ const FeatureAnalysis = () => {
             {/* Navbar */}
             <nav className="FeatureAnalysis-navbar">
                 <div className="navbar-brand">
-                    <img src={mangoLogo} alt="Mango Logo" className="mango-logo" />
+                    <img src={mangoLogo} alt="Mango Logo" className="mango-logo" onClick={handlemainhomepage}/>
                 </div>
                 <div className="navbar-links">
                     <button className="navbar-link" onClick={handleDashboard}>Dashboard</button>

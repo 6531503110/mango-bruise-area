@@ -11,6 +11,7 @@ const EditUserProfile = () => {
     const [profileImage, setProfileImage] = useState(userInfo.profileImage || userProfileImg);
     const [errorMessage, setErrorMessage] = useState('');
     const handleRemoveBackground = useCallback(() => navigate('/removebackground'), [navigate]);
+    const handlemainhomepage = useCallback(() => navigate('/mainhomepage'), [navigate]);
 
     const handleResize = useCallback(() => {
         navigate('/resize');
@@ -49,7 +50,7 @@ const EditUserProfile = () => {
         <div className="edit-page">
             <nav className="edit">
                 <div className="edit-brand">
-                    <img src={mangoLogo} alt="Mango Logo" className="manger-logo" />
+                    <img src={mangoLogo} alt="Mango Logo" className="manger-logo" onClick={handlemainhomepage}/>
                 </div>
                 <div className="edit-links">
                     <button className="edit-link" onClick={handleNavigation('/dashboardpage')}>Dashboard</button>

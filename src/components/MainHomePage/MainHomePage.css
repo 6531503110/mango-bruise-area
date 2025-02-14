@@ -21,6 +21,7 @@ body {
 
 .manger-logo {
     width: 100%;
+    cursor: pointer;
     /* Adjust this to resize the logo */
     max-width: 100px;
     /* Ensure it doesn't grow too large */

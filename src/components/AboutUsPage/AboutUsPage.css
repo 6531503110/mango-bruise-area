@@ -24,6 +24,7 @@
     display: flex;
     align-items: center;
     color: #FFF;
+    cursor: pointer;
 }
 
 .aboutus-navbar .navbar-brand span {
@@ -243,5 +244,114 @@
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .aboutus-navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .aboutus-navbar .navbar-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .aboutus-hero {
+        height: 250px;
+    }
+
+    .hero-title {
+        font-size: 2em;
+    }
+
+    .aboutus-content {
+        padding: 40px 10px;
+    }
+
+    .content-title {
+        font-size: 1.8em;
+    }
+
+    .content-description {
+        font-size: 0.9em;
+    }
+
+    .frameworks-logos {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .framework-item {
+        width: 100px;
+    }
+
+    .framework-item .framework-logo {
+        width: 40px;
+    }
+
+    .aboutus-footer {
+        padding: 10px 15px;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .footer-address {
+        font-size: 0.6em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .aboutus-navbar {
+        padding: 10px 20px;
+    }
+
+    .aboutus-navbar .navbar-logo {
+        max-width: 80px;
+    }
+
+    .aboutus-navbar .navbar-actions .navbar-button {
+        padding: 8px 20px;
+    }
+
+    .aboutus-hero {
+        height: 200px;
+    }
+
+    .hero-title {
+        font-size: 1.5em;
+    }
+
+    .aboutus-content {
+        padding: 30px 5px;
+    }
+
+    .content-title {
+        font-size: 1.5em;
+    }
+
+    .content-description {
+        font-size: 0.8em;
+    }
+
+    .framework-item {
+        width: 80px;
+    }
+
+    .framework-item .framework-logo {
+        width: 30px;
+    }
+
+    .aboutus-footer {
+        padding: 8px 10px;
+    }
+
+    .footer-address {
+        font-size: 0.5em;
     }
 }

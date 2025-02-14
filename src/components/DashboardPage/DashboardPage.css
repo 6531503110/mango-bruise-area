@@ -22,6 +22,7 @@
 
 .manger-logo {
     width: 100%;
+    cursor: pointer;
     max-width: 100px;
     margin-right: 4%;
     vertical-align: middle;

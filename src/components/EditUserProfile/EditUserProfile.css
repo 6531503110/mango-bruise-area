@@ -68,6 +68,7 @@ body {
 }
 
 .edit-logo {
+    cursor: pointer;
     width: 13%;
     margin-right: 4%;
     vertical-align: middle;

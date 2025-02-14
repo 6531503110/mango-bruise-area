@@ -154,3 +154,81 @@
     text-align: center;
     margin-top: -0.5%;
 }
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .mango-logo {
+        width: 80px;
+    }
+
+    .remove-background-title {
+        font-size: 1.5rem;
+    }
+
+    .remove-background-description {
+        font-size: 0.9rem;
+    }
+
+    .image-container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .footer {
+        padding: 10px 15px;
+    }
+
+    .footer-address {
+        font-size: 0.8em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .navbar {
+        padding: 10px 20px;
+    }
+
+    .mango-logo {
+        width: 60px;
+    }
+
+    .remove-background-title {
+        font-size: 1.2rem;
+    }
+
+    .remove-background-description {
+        font-size: 0.8rem;
+    }
+
+    .image-container {
+        padding: 15px;
+    }
+
+    .btn {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    .footer {
+        padding: 8px 10px;
+    }
+
+    .footer-address {
+        font-size: 0.7em;
+    }
+}

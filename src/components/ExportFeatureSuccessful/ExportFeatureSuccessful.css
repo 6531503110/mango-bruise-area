@@ -154,3 +154,75 @@
     font-size: 0.7em;
     margin-top: 10px;
 }
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .profile {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .manger-logo {
+        width: 80px;
+    }
+
+    .export-feature-title {
+        font-size: 1.5em;
+    }
+
+    .export-feature-container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .export-password-button,
+    .cancel-button {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .footer-exportfeature {
+        padding: 10px 15px;
+    }
+
+    .footer-address {
+        font-size: 0.8em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .profile {
+        padding: 10px 20px;
+    }
+
+    .manger-logo {
+        width: 60px;
+    }
+
+    .export-feature-title {
+        font-size: 1.2em;
+    }
+
+    .export-feature-container {
+        padding: 15px;
+    }
+
+    .export-password-button,
+    .cancel-button {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+
+    .footer-exportfeature {
+        padding: 8px 10px;
+    }
+
+    .footer-address {
+        font-size: 0.7em;
+    }
+}

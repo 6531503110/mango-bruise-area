@@ -196,3 +196,94 @@ body {
     text-align: center;
     margin-top: -0.5%;
 }
+
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .profile {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-links {
+        flex-direction: column;
+        gap: 10px;
+        margin-right: 0;
+    }
+
+    .manger-logo {
+        width: 80px;
+    }
+
+    .profile-title {
+        font-size: 1.5em;
+    }
+
+    .profile-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .profile-userimage {
+        width: 120px;
+        height: 120px;
+    }
+
+    .profile-info {
+        text-align: center;
+    }
+
+    .profile-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .footer-userprofilepage {
+        padding: 10px 15px;
+    }
+
+    .footer-address {
+        font-size: 0.8em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .profile {
+        padding: 10px 20px;
+    }
+
+    .manger-logo {
+        width: 60px;
+    }
+
+    .profile-title {
+        font-size: 1.2em;
+    }
+
+    .profile-container {
+        padding: 15px;
+    }
+
+    .profile-userimage {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile-info {
+        font-size: 0.9em;
+    }
+
+    .profile-buttons {
+        padding: 10px;
+        font-size: 0.9em;
+    }
+
+    .footer-userprofilepage {
+        padding: 8px 10px;
+    }
+
+    .footer-address {
+        font-size: 0.7em;
+    }
+}

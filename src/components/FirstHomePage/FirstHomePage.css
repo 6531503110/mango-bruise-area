@@ -193,3 +193,69 @@ body {
     font-size: 1.2em;
     margin-top: 10px;
 }
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .navba {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .mango-logo {
+        max-width: 80px;
+    }
+
+    .hero-content h1 {
+        font-size: 2em;
+    }
+
+    .hero-content p {
+        font-size: 1em;
+    }
+
+    .get-started-btn {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .footer-address p {
+        font-size: 0.9em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .navba {
+        padding: 10px 20px;
+    }
+
+    .mango-logo {
+        max-width: 60px;
+    }
+
+    .hero-content h1 {
+        font-size: 1.5em;
+    }
+
+    .hero-content p {
+        font-size: 0.9em;
+    }
+
+    .get-started-btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+
+    .footer-address p {
+        font-size: 0.8em;
+    }
+}

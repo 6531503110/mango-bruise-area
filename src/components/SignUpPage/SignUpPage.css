@@ -165,3 +165,86 @@ h1 {
 .toggle-password:focus {
     outline: none;
 }
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .signup-box {
+        width: 90%;
+        padding: 20px 30px;
+    }
+
+    .signup-logo {
+        width: 80px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    .signup-input {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .signup-button {
+        padding: 10px;
+        font-size: 15px;
+    }
+
+    .alert-message {
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    .signup-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .forgot-password,
+    .signup-link {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .signup-box {
+        width: 100%;
+        padding: 15px 20px;
+    }
+
+    .signup-logo {
+        width: 60px;
+    }
+
+    h1 {
+        font-size: 18px;
+    }
+
+    .signup-input {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .signup-button {
+        padding: 8px;
+        font-size: 13px;
+    }
+
+    .alert-message {
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    .signup-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .forgot-password,
+    .signup-link {
+        font-size: 13px;
+    }
+}

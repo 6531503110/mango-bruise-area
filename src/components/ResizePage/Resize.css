@@ -433,3 +433,96 @@
     text-align: center;
     margin-top: -0.5%;
 }
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .mango-logo {
+        width: 80px;
+    }
+
+    .bruiseareacalculation-title {
+        font-size: 1.5rem;
+    }
+
+    .bruise-description {
+        font-size: 0.9rem;
+    }
+
+    .file-upload-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .file-dropzone,
+    .selected-files-box {
+        width: 100%;
+    }
+
+    .resize-settings-bruiseareacalculation {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .footer-resize {
+        padding: 10px 15px;
+    }
+
+    .footer-address-resize {
+        font-size: 0.8em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .navbar {
+        padding: 10px 20px;
+    }
+
+    .mango-logo {
+        width: 60px;
+    }
+
+    .bruiseareacalculation-title {
+        font-size: 1.2rem;
+    }
+
+    .bruise-description {
+        font-size: 0.8rem;
+    }
+
+    .file-dropzone,
+    .selected-files-box {
+        padding: 15px;
+    }
+
+    .resize-settings-bruiseareacalculation {
+        padding: 15px;
+    }
+
+    .btn {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    .footer-resize {
+        padding: 8px 10px;
+    }
+
+    .footer-address-resize {
+        font-size: 0.7em;
+    }
+}

@@ -177,3 +177,59 @@ body {
     text-align: center;
     margin-top: -0.5%;
 }
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .navbar-mainhomepage {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .manger-logo {
+        max-width: 80px;
+    }
+
+    .hero-content h1 {
+        font-size: 2em;
+    }
+
+    .hero-content p {
+        font-size: 1em;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .footer-address p {
+        font-size: 0.9em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .navbar-mainhomepage {
+        padding: 10px 20px;
+    }
+
+    .manger-logo {
+        max-width: 60px;
+    }
+
+    .hero-content h1 {
+        font-size: 1.5em;
+    }
+
+    .hero-content p {
+        font-size: 0.9em;
+    }
+
+    .footer-address p {
+        font-size: 0.8em;
+    }
+}

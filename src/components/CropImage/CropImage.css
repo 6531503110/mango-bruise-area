@@ -194,3 +194,97 @@
     text-align: center;
     margin-top: -0.5%;
 }
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .bruiseareacalculation-title {
+        font-size: 1.5rem;
+    }
+
+    .bruise-description {
+        font-size: 0.9rem;
+    }
+
+    .crop-image-container {
+        padding: 20px 10px;
+    }
+
+    .crop-box {
+        height: 300px;
+    }
+
+    .zoom-range {
+        width: 100px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .footer-cropimage {
+        padding: 10px 15px;
+    }
+
+    .footer-address-cropimage {
+        font-size: 0.8em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .navbar {
+        padding: 10px 20px;
+    }
+
+    .navbar .mango-logo {
+        max-width: 80px;
+    }
+
+    .navbar-links .navbar-link {
+        padding: 8px 20px;
+    }
+
+    .bruiseareacalculation-title {
+        font-size: 1.2rem;
+    }
+
+    .bruise-description {
+        font-size: 0.8rem;
+    }
+
+    .crop-box {
+        height: 200px;
+    }
+
+    .zoom-range {
+        width: 80px;
+    }
+
+    .btn {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+
+    .footer-cropimage {
+        padding: 8px 10px;
+    }
+
+    .footer-address-cropimage {
+        font-size: 0.7em;
+    }
+}

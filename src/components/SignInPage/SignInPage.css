@@ -278,3 +278,88 @@ h1 {
 .toggle-password:hover {
     color: #3e7f31;
 }
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .signin-box {
+        width: 90%;
+        padding: 20px 30px;
+    }
+
+    .signin-logo {
+        width: 80px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    .signin-input {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .signin-button {
+        padding: 10px;
+        font-size: 15px;
+    }
+
+    .password-alert,
+    .alert-message {
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    .signin-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .forgot-password,
+    .signup-link {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .signin-box {
+        width: 100%;
+        padding: 15px 20px;
+    }
+
+    .signin-logo {
+        width: 60px;
+    }
+
+    h1 {
+        font-size: 18px;
+    }
+
+    .signin-input {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .signin-button {
+        padding: 8px;
+        font-size: 13px;
+    }
+
+    .password-alert,
+    .alert-message {
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    .signin-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .forgot-password,
+    .signup-link {
+        font-size: 13px;
+    }
+}

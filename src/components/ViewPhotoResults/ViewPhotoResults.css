@@ -144,3 +144,111 @@
     text-align: center;
     margin-top: -0.5%;
 }
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .mango-logo {
+        width: 80px;
+    }
+
+    .photo-container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .photo {
+        max-height: 300px;
+    }
+
+    .photo-info {
+        font-size: 0.8rem;
+        padding: 10px 15px;
+    }
+
+    .nav-button {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+
+    .prev-button {
+        left: -45px;
+    }
+
+    .next-button {
+        right: -45px;
+    }
+
+    .back-to-btn {
+        padding: 15px 40px;
+        font-size: 0.9rem;
+    }
+
+    .footer-viewphotoresutls {
+        padding: 10px 15px;
+    }
+
+    .footer-address-viewphotoresults {
+        font-size: 0.8em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .navbar {
+        padding: 10px 20px;
+    }
+
+    .mango-logo {
+        width: 60px;
+    }
+
+    .photo-container {
+        padding: 15px;
+    }
+
+    .photo {
+        max-height: 200px;
+    }
+
+    .photo-info {
+        font-size: 0.7rem;
+        padding: 8px 12px;
+    }
+
+    .nav-button {
+        width: 30px;
+        height: 30px;
+        font-size: 0.9rem;
+    }
+
+    .prev-button {
+        left: -35px;
+    }
+
+    .next-button {
+        right: -35px;
+    }
+
+    .back-to-btn {
+        padding: 12px 30px;
+        font-size: 0.8rem;
+    }
+
+    .footer-viewphotoresutls {
+        padding: 8px 10px;
+    }
+
+    .footer-address-viewphotoresults {
+        font-size: 0.7em;
+    }
+}

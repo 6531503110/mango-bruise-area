@@ -195,3 +195,75 @@
     font-size: 0.95em;
     margin-top: 10px;
 }
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .navbar-exportcsv {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .manger-logo {
+        width: 80px;
+    }
+
+    .export-csv-title {
+        font-size: 1.5em;
+    }
+
+    .export-csv-container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .export-password,
+    .cancel-button {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .footer-exportcsv {
+        padding: 10px 15px;
+    }
+
+    .footer-exportcsv-address {
+        font-size: 0.8em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .navbar-exportcsv {
+        padding: 10px 20px;
+    }
+
+    .manger-logo {
+        width: 60px;
+    }
+
+    .export-csv-title {
+        font-size: 1.2em;
+    }
+
+    .export-csv-container {
+        padding: 15px;
+    }
+
+    .export-password,
+    .cancel-button {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+
+    .footer-exportcsv {
+        padding: 8px 10px;
+    }
+
+    .footer-exportcsv-address {
+        font-size: 0.7em;
+    }
+}

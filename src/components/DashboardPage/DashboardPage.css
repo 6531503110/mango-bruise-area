@@ -166,3 +166,97 @@
     text-align: center;
     margin-top: -0.7%;
 }
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .navbar-dashboard {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .dashboard-title {
+        font-size: 1.2rem;
+    }
+
+    .dashboard-subtitle {
+        font-size: 1rem;
+    }
+
+    .dashboard-table-container {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .dashboard-table thead th {
+        padding: 10px;
+    }
+
+    .dashboard-table tbody td {
+        padding: 10px;
+    }
+
+    .btn {
+        padding: 6px 10px;
+        font-size: 0.9rem;
+    }
+
+    .footering {
+        padding: 10px 15px;
+    }
+
+    .footering-address {
+        font-size: 0.8em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .navbar-dashboard {
+        padding: 10px 20px;
+    }
+
+    .navbar .manger-logo {
+        max-width: 80px;
+    }
+
+    .navbar-links .navbar-link {
+        padding: 8px 20px;
+    }
+
+    .dashboard-title {
+        font-size: 1rem;
+    }
+
+    .dashboard-subtitle {
+        font-size: 0.8rem;
+    }
+
+    .dashboard-table-container {
+        padding: 0 5px;
+    }
+
+    .dashboard-table thead th {
+        padding: 8px;
+    }
+
+    .dashboard-table tbody td {
+        padding: 8px;
+    }
+
+    .btn {
+        padding: 5px 8px;
+        font-size: 0.8rem;
+    }
+
+    .footering {
+        padding: 8px 10px;
+    }
+
+    .footering-address {
+        font-size: 0.7em;
+    }
+}

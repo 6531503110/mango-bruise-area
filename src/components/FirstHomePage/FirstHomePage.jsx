@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './FirstHomePage.css';
 import mangoBackground from '../../assets/differentmango.jpg';
-import logoWhite from '../../assets/Logo_white.png'; // Ensure the file path is correct
+import logoWhite from '../../assets/Logo_white.png';
 
 function FirstHomePage() {
     const navigate = useNavigate();
@@ -15,12 +15,10 @@ function FirstHomePage() {
 
     return (
         <div className="first-homepage">
-
+            
             {/* Navbar */}
             <nav className="navba">
                 <div className="navbar-brand">
-                    
-                    {/* Updated to use Logo_white.png and removed Bruise Tracker */}
                     <img src={logoWhite} alt="Logo" className="mango-logo" />
                 </div>
                 <div className="navbar-buttons">

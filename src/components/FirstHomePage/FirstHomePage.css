@@ -3,6 +3,9 @@
 body {
     font-family: 'Poppins', sans-serif;
     letter-spacing: 0.5px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .first-homepage {
@@ -11,16 +14,12 @@ body {
     min-height: 100vh;
     color: #FFFFFF;
     background-color: #436850;
-    margin: 0;
-    padding: 0;
 }
 
 .mango-logo {
     width: 100%;
     cursor: pointer;
-    /* Adjust this to resize the logo */
     max-width: 100px;
-    /* Ensure it doesn't grow too large */
     margin-right: 4%;
     vertical-align: middle;
 }
@@ -76,7 +75,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('../../assets/differentmango.jpg');
     background-size: cover;
     background-position: center;
     text-align: center;
@@ -111,7 +109,7 @@ body {
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
 }
 
-.first-hero-content p {
+.hero-content p {
     font-size: 1.2em;
     margin-bottom: 20px;
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);

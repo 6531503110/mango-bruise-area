@@ -30,7 +30,7 @@ const RemoveBackground = () => {
 
     const handleRemoveBackground = () => {
         if (!image) {
-            setErrorMessage('Please upload an image first!');
+            alert('Please upload an image first!');
             return;
         }
 

@@ -44,7 +44,12 @@ const CropImage = () => {
     };
 
     const handleSave = async () => {
-        if (!image || !croppedAreaPixels) return;
+        if (!image) {
+            alert('Please upload an image first!');
+            return;
+        }
+
+        if (!croppedAreaPixels) return;
 
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');

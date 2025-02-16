@@ -257,6 +257,7 @@
     .aboutus-navbar .navbar-actions {
         flex-direction: column;
         gap: 10px;
+        align-items: center;
     }
 
     .aboutus-hero {
@@ -317,6 +318,8 @@
 
     .aboutus-navbar .navbar-actions .navbar-button {
         padding: 8px 20px;
+        width: 100%;
+        text-align: center;
     }
 
     .aboutus-hero {

@@ -34,7 +34,7 @@ function App() {
     <UserProvider>
       <Router>
         <Routes>
-          <Route path="/" element={<Navigate to="/firsthomepage" />} />
+          <Route path="/" element={<Navigate to="/firsthome" />} />
           <Route path="/firsthome" element={<FirstHome />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />

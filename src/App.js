@@ -35,20 +35,20 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Navigate to="/firsthomepage" />} />
-          <Route path="/firsthomepage" element={<FirstHomePage />} />
+          <Route path="/firsthome" element={<FirstHomePage />} />
           <Route path="/signin" element={<SignInPage />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/verify" element={<Verify />} />
           <Route path="/changepassword" element={<ChangePassword />} />
           <Route path="/changepasswordupdate" element={<ChangePasswordUpdate />} />
-          <Route path="/mainhomepage" element={<MainHomePage />} />
-          <Route path="/aboutuspage" element={<AboutUsPage />} />
-          <Route path="/contactuspage" element={<ContactUsPage />} />
-          <Route path="/feedbackpage" element={<FeedbackPage />} />
+          <Route path="/mainhome" element={<MainHomePage />} />
+          <Route path="/aboutus" element={<AboutUsPage />} />
+          <Route path="/contactus" element={<ContactUsPage />} />
+          <Route path="/feedback" element={<FeedbackPage />} />
           <Route path="/feedbacksubmitted" element={<FeedbackSubmitted />} />
-          <Route path="/dashboardpage" element={<DashboardPage />} />
-          <Route path="/userprofilepage" element={<UserProfilePage />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/userprofile" element={<UserProfilePage />} />
           <Route path="/edituserprofile" element={<EditUserProfile />} />
           <Route path="/changeprofilepassword" element={<ChangeProfilePassword />} />
           <Route path="/newpasswordupdate" element={<NewPasswordUpdate />} />

@@ -48,21 +48,21 @@ const EditUserProfile = () => {
 
     return (
         <div className="edit-page">
-            <nav className="edit">
-                <div className="edit-brand">
+            <nav className="profile">
+                <div className="profile-brand">
                     <img src={mangoLogo} alt="Mango Logo" className="manger-logo" onClick={handlemainhomepage}/>
                 </div>
-                <div className="edit-links">
-                    <button className="edit-link" onClick={handleNavigation('/dashboardpage')}>Dashboard</button>
-                    <button className="edit-link" onClick={handleNavigation('/bruiseareacalculation')}>Bruised Area Calculation</button>
-                    <button className="edit-link" onClick={handleNavigation('/featureanalysis')}>Feature Analysis</button>
+                <div className="navbar-links">
+                    <button className="profile-link" onClick={() => navigate('/dashboardpage')}>Dashboard</button>
+                    <button className="profile-link" onClick={() => navigate('/bruiseareacalculation')}>Bruised Area Calculation</button>
+                    <button className="profile-link" onClick={() => navigate('/featureanalysis')}>Feature Analysis</button>
                     <button className="profile-link" onClick={handleResize}>Resize</button>
                     <button className="navbar-link" onClick={handleRemoveBackground}>Remove Background</button>
-                    <button className="edit-link" onClick={handleNavigation('/aboutuspage')}>About Us</button>
-                    <button className="edit-link" onClick={handleNavigation('/contactuspage')}>Contact Us</button>
+                    <button className="profile-link" onClick={() => navigate('/aboutuspage')}>About Us</button>
+                    <button className="profile-link" onClick={() => navigate('/contactuspage')}>Contact Us</button>
                 </div>
-                <div className="edit-profile">
-                    <img src={profileImage} alt="User Profile" className="user-profile" onClick={handleNavigation('/userprofilepage')} />
+                <div className="navbar-profile">
+                    <img src={userInfo.profileImage || userProfileImg} alt="User Profile" className="user-profile" onClick={() => navigate('/userprofilepage')} />
                 </div>
             </nav>
 
@@ -105,8 +105,8 @@ const EditUserProfile = () => {
                 </div>
             </div>
 
-            <footer className="footer-edituserprofile">
-                <div className="footer-address-edituserprofile">
+            <footer className="footer-userprofilepage">
+                <div className="footer-address">
                     <p>Mae Fah Luang University 333 Moo 1, Thasud, Muang, Chiang Rai 57100</p>
                 </div>
             </footer>

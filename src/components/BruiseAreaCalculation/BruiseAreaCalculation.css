@@ -42,10 +42,8 @@
     display: flex;
     justify-content: space-between;
     gap: 15px;
-    /* Increased the gap slightly for better spacing */
     margin-top: 4%;
     max-width: 80%;
-    /* Limit the width to make it appear smaller */
     margin-left: auto;
     margin-right: auto;
 }
@@ -57,11 +55,9 @@
     padding: 20px;
     text-align: center;
     width: 48%;
-    /* Adjusted width for consistency */
     background-color: #e5e5e5;
     transition: background-color 0.3s;
     min-height: 120px;
-    /* Set a minimum height */
 }
 
 .file-dropzone.drag-active {
@@ -77,7 +73,6 @@
     background: #436850;
     color: #fff;
     padding: 10px 25px;
-    /* Increased padding for a bigger button */
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -95,13 +90,11 @@
 .selected-files-box {
     width: 48%;
     padding: 15px;
-    /* Increased padding for balance */
     background-color: #fff;
     border-radius: 12px;
     border: 2px solid #ADBC9F;
     text-align: left;
     max-height: 160px;
-    /* Increased max-height for more content visibility */
     overflow-y: auto;
 }
 
@@ -135,7 +128,6 @@
     background: #436850;
     color: #fff;
     padding: 18px 50px;
-    /* Increased padding for bigger button */
     border: none;
     border-radius: 15px;
     cursor: pointer;
@@ -159,7 +151,6 @@
     background: #12372A;
     color: #fff;
     padding: 18px 50px;
-    /* Increased padding for bigger button */
     border: none;
     border-radius: 15px;
     cursor: pointer;

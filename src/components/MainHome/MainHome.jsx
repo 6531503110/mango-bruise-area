@@ -8,15 +8,15 @@ import userProfileImg from '../../assets/profile.jpg';
 function MainHome() {
     const navigate = useNavigate();
 
-    const handleAboutUs = useCallback(() => navigate('/aboutuspage'), [navigate]);
-    const handleContactUs = useCallback(() => navigate('/contactuspage'), [navigate]);
-    const handleDashboard = useCallback(() => navigate('/dashboardpage'), [navigate]);
-    const handleUserProfile = useCallback(() => navigate('/userprofilepage'), [navigate]);
+    const handleAboutUs = useCallback(() => navigate('/aboutus'), [navigate]);
+    const handleContactUs = useCallback(() => navigate('/contactus'), [navigate]);
+    const handleDashboard = useCallback(() => navigate('/dashboard'), [navigate]);
+    const handleUserProfile = useCallback(() => navigate('/userprofile'), [navigate]);
     const handleBruiseAreaCalculation = useCallback(() => navigate('/bruiseareacalculation'), [navigate]);
     const handleFeatureAnalysis = useCallback(() => navigate('/featureanalysis'), [navigate]);
     const handleResize = useCallback(() => navigate('/resize'), [navigate]);
     const handleRemoveBackground = useCallback(() => navigate('/removebackground'), [navigate]);
-    const handlemainhomepage = useCallback(() => navigate('/mainhomepage'), [navigate]);
+    const handlemainhome = useCallback(() => navigate('/mainhome'), [navigate]);
 
     return (
         <div className="main-homepage">
@@ -24,7 +24,7 @@ function MainHome() {
             {/* Navbar */}
             <nav className="navbar-mainhomepage">
                 <div className="navbar-brand">
-                    <img src={mangoLogo} alt="Mango Logo" className="manger-logo" onClick={handlemainhomepage}/>
+                    <img src={mangoLogo} alt="Mango Logo" className="manger-logo" onClick={handlemainhome}/>
                 </div>
 
                 <div className="navbar-links">

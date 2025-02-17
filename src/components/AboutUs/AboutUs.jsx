@@ -12,9 +12,9 @@ function AboutUs() {
 
     // Navigation handlers
     const handleSignIn = () => { navigate('/signin'); };
-    const handleContactUs = () => { navigate('/contactuspage'); };
-    const handleAboutUs = () => { navigate('/aboutuspage'); };
-    const handlemainhomepage = () => { navigate('/mainhomepage')}
+    const handleContactUs = () => { navigate('/contactus'); };
+    const handleAboutUs = () => { navigate('/aboutus'); };
+    const handlemainhome = () => { navigate('/mainhome')}
 
     useEffect(() => {
         
@@ -41,7 +41,7 @@ function AboutUs() {
         <div className="aboutus-page-container">
             <nav className="aboutus-navbar">
                 <div className="navbar-brand">
-                    <img src={mangoLogo} alt="Mango Logo" className="navbar-logo" onClick={handlemainhomepage} />
+                    <img src={mangoLogo} alt="Mango Logo" className="navbar-logo" onClick={handlemainhome} />
                 </div>
                 <div className="navbar-actions">
                     <button className="navbar-button" onClick={handleSignIn}>Sign-In</button>

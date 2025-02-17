@@ -9,15 +9,15 @@ const Dashboard = () => {
     const [operationHistory, setOperationHistory] = useState([]);
     const [exportProgress, setExportProgress] = useState(0);
 
-    const handleAboutUs = useCallback(() => { navigate('/aboutuspage'); }, [navigate]);
-    const handleContactUs = useCallback(() => { navigate('/contactuspage'); }, [navigate]);
-    const handleUserProfile = useCallback(() => { navigate('/userprofilepage'); }, [navigate]);
+    const handleAboutUs = useCallback(() => { navigate('/aboutus'); }, [navigate]);
+    const handleContactUs = useCallback(() => { navigate('/contactus'); }, [navigate]);
+    const handleUserProfile = useCallback(() => { navigate('/userprofile'); }, [navigate]);
     const handleBruiseAreaCalculation = useCallback(() => { navigate('/bruiseareacalculation'); }, [navigate]);
     const handleFeatureAnalysis = useCallback(() => { navigate('/featureanalysis'); }, [navigate]);
     const handleShowAreaCalculation = useCallback(() => { navigate('/showareacalculation'); }, [navigate]);
     const handleResize = useCallback(() => { navigate('/resize'); }, [navigate]);
     const handleRemoveBackground = useCallback(() => { navigate('/removebackground'); }, [navigate]);
-    const handlemainhomepage = useCallback(() => navigate('/mainhomepage'), [navigate]);
+    const handlemainhome = useCallback(() => navigate('/mainhome'), [navigate]);
 
     useEffect(() => {
         const history = JSON.parse(localStorage.getItem('operationHistory')) || [];
@@ -53,7 +53,7 @@ const Dashboard = () => {
         <div className="dashboard-page">
             <nav className="navbar-dashboard">
                 <div className="navbar-brand">
-                    <img src={mangoLogo} alt="Mango Logo" className="manger-logo" onClick={handlemainhomepage}/>
+                    <img src={mangoLogo} alt="Mango Logo" className="manger-logo" onClick={handlemainhome}/>
                 </div>
                 <div className="navbar-links">
                     <button className="navbar-link">Dashboard</button>

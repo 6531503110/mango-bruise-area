@@ -28,7 +28,7 @@ function SignIn() {
         if (username === presetUsername && password === presetPassword) {
             setAlertMessage('');
             console.log('Remember Me:', rememberMe);
-            navigate('/mainhomepage'); // Redirect to main page after successful sign-in
+            navigate('/mainhome'); // Redirect to main page after successful sign-in
             return;
         }
 
@@ -45,7 +45,7 @@ function SignIn() {
         } else {
             setAlertMessage('');
             console.log('Remember Me:', rememberMe);
-            navigate('/mainhomepage'); // Redirect to main page after successful sign-in
+            navigate('/mainhome'); // Redirect to main page after successful sign-in
         }
     };
 

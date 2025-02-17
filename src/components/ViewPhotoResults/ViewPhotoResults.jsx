@@ -29,16 +29,16 @@ const ViewPhotoResults = () => {
     };
 
     // Navigation handlers
-    const handleAboutUs = () => navigate('/aboutuspage');
-    const handleContactUs = () => navigate('/contactuspage');
-    const handleUserProfile = () => navigate('/userprofilepage');
+    const handleAboutUs = () => navigate('/aboutus');
+    const handleContactUs = () => navigate('/contactus');
+    const handleUserProfile = () => navigate('/userprofile');
     const handleBack = () => navigate("/showareacalculation");
-    const handleDashboard = () => navigate('/dashboardpage');
+    const handleDashboard = () => navigate('/dashboard');
     const handleBruiseAreaCalculation = () => navigate('/bruiseareacalculation');
     const handleFeatureAnalysis = () => navigate('/featureanalysis');
     const handleResize = () => navigate('/resize');
     const handleRemoveBackground = () => navigate('/removebackground');
-    const handlemainhomepage = () => navigate('/mainhomepage')
+    const handlemainhome = () => navigate('/mainhome')
 
     return (
         <div className="view-photo-result-page">
@@ -46,7 +46,7 @@ const ViewPhotoResults = () => {
             {/* Navbar */}
             <nav className="navbar">
                 <div className="navbar-brand">
-                    <img src={mangoLogo} alt="Mango Logo" className="mango-logo" onClick={handlemainhomepage}/>
+                    <img src={mangoLogo} alt="Mango Logo" className="mango-logo" onClick={handlemainhome}/>
                 </div>
 
                 <div className="navbar-links">

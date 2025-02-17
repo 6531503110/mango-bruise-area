@@ -9,10 +9,10 @@ function ContactUs() {
     const navigate = useNavigate();
 
     const handleSignIn = useCallback(() => { navigate('/signin'); }, [navigate]);
-    const handleAboutUs = useCallback(() => { navigate('/aboutuspage'); }, [navigate]);
-    const handleContactUs = useCallback(() => { navigate('/contactuspage'); }, [navigate]);
+    const handleAboutUs = useCallback(() => { navigate('/aboutus'); }, [navigate]);
+    const handleContactUs = useCallback(() => { navigate('/contactus'); }, [navigate]);
     const handleFacebookClick = useCallback(() => { window.open("https://www.facebook.com/IntegratedAgriTechEcosystem", "_blank"); }, []);
-    const handlemainhomepage = useCallback(() => navigate('/mainhomepage'), [navigate]);
+    const handlemainhome = useCallback(() => navigate('/mainhome'), [navigate]);
 
     useEffect(() => {
         const observer = new IntersectionObserver((entries) => {
@@ -35,7 +35,7 @@ function ContactUs() {
         <div className="contactus-page-container">
             <nav className="contactus-navbar">
                 <div className="navbar-brand">
-                    <img src={mangoLogo} alt="Mango Logo" className="navbar-logo" onClick={handlemainhomepage}/>
+                    <img src={mangoLogo} alt="Mango Logo" className="navbar-logo" onClick={handlemainhome}/>
                 </div>
                 <div className="navbar-actions">
                     <button className="navbar-button" onClick={handleSignIn}>Sign-In</button>

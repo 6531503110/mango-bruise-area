@@ -48,27 +48,27 @@ const ChangeProfilePassword = () => {
     }
   }, []);
 
-  const handlemainhomepage = useCallback(() => navigate('/mainhomepage'), [navigate]);
+  const handlemainhome = useCallback(() => navigate('/mainhome'), [navigate]);
 
   return (
     <div className="change-profilepassword-page">
       <nav className="profile">
         <div className="profile-brand">
-          <img src={mangoLogo} alt="Mango Logo" className="manger-logo" onClick={handlemainhomepage}/>
+          <img src={mangoLogo} alt="Mango Logo" className="manger-logo" onClick={handlemainhome}/>
         </div>
 
         <div className="navbar-links">
-          <button className="profile-link" onClick={() => navigate('/dashboardpage')}>Dashboard</button>
+          <button className="profile-link" onClick={() => navigate('/dashboard')}>Dashboard</button>
           <button className="profile-link" onClick={() => navigate('/bruiseareacalculation')}>Bruised Area Calculation</button>
           <button className="profile-link" onClick={() => navigate('/featureanalysis')}>Feature Analysis</button>
           <button className="navbar-link" onClick={handleResize}>Resize</button>
           <button className="navbar-link" onClick={handleRemoveBackground}>Remove Background</button>
-          <button className="edit-link" onClick={() => navigate('/aboutuspage')}>About Us</button>
-          <button className="edit-link" onClick={() => navigate('/contactuspage')}>Contact Us</button>
+          <button className="edit-link" onClick={() => navigate('/aboutus')}>About Us</button>
+          <button className="edit-link" onClick={() => navigate('/contactus')}>Contact Us</button>
         </div>
 
         <div className="navbar-profile">
-          <img src={userProfileImg} alt="User Profile" className="user-profile" onClick={() => navigate('/userprofilepage')} />
+          <img src={userProfileImg} alt="User Profile" className="user-profile" onClick={() => navigate('/userprofile')} />
         </div>
       </nav>
 
@@ -115,7 +115,7 @@ const ChangeProfilePassword = () => {
           <button className="save-profilepassword-button" onClick={handleNewPasswordUpdate}>
             Save Password
           </button>
-          <button className="ban-button" onClick={() => navigate('/userprofilepage')}>Cancel</button>
+          <button className="ban-button" onClick={() => navigate('/userprofile')}>Cancel</button>
         </div>
       </div>
 

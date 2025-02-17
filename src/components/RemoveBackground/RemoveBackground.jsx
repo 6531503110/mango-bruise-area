@@ -10,14 +10,14 @@ const RemoveBackground = () => {
     const [processedImage, setProcessedImage] = useState(null);
     const [errorMessage, setErrorMessage] = useState('');
 
-    const handleAboutUs = useCallback(() => navigate('/aboutuspage'), [navigate]);
-    const handleContactUs = useCallback(() => navigate('/contactuspage'), [navigate]);
-    const handleUserProfile = useCallback(() => navigate('/userprofilepage'), [navigate]);
-    const handleDashboard = useCallback(() => navigate('/dashboardpage'), [navigate]);
+    const handleAboutUs = useCallback(() => navigate('/aboutus'), [navigate]);
+    const handleContactUs = useCallback(() => navigate('/contactus'), [navigate]);
+    const handleUserProfile = useCallback(() => navigate('/userprofile'), [navigate]);
+    const handleDashboard = useCallback(() => navigate('/dashboard'), [navigate]);
     const handleFeatureAnalysis = useCallback(() => navigate('/featureanalysis'), [navigate]);
     const handleResize = useCallback(() => navigate('/resize'), [navigate]);
     const handleBruiseAreaCalculation = useCallback(() => navigate('/bruiseareacalculation'), [navigate]);
-    const handlemainhomepage = useCallback(() => navigate('/mainhomepage'), [navigate]);
+    const handlemainhome = useCallback(() => navigate('/mainhome'), [navigate]);
 
     const handleImageUpload = (e) => {
         const file = e.target.files[0];
@@ -87,7 +87,7 @@ const RemoveBackground = () => {
         <div className="remove-background-page">
             <nav className="navbar">
                 <div className="navbar-brand">
-                    <img src={mangoLogo} alt="Mango Logo" className="mango-logo" onClick={handlemainhomepage}/>
+                    <img src={mangoLogo} alt="Mango Logo" className="mango-logo" onClick={handlemainhome}/>
                 </div>
                 <div className="navbar-links">
                     <button className="navbar-link" onClick={handleDashboard}>Dashboard</button>

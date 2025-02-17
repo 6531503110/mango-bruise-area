@@ -15,14 +15,14 @@ const Resize = () => {
     const [originalDimensions, setOriginalDimensions] = useState({ width: '', height: '' });
 
     const navigate = useNavigate();
-    const handleAboutUs = useCallback(() => navigate('/aboutuspage'), [navigate]);
-    const handleContactUs = useCallback(() => navigate('/contactuspage'), [navigate]);
-    const handleUserProfile = useCallback(() => navigate('/userprofilepage'), [navigate]);
-    const handleDashboard = useCallback(() => navigate('/dashboardpage'), [navigate]);
+    const handleAboutUs = useCallback(() => navigate('/aboutus'), [navigate]);
+    const handleContactUs = useCallback(() => navigate('/contactus'), [navigate]);
+    const handleUserProfile = useCallback(() => navigate('/userprofile'), [navigate]);
+    const handleDashboard = useCallback(() => navigate('/dashboard'), [navigate]);
     const handleFeatureAnalysis = useCallback(() => navigate('/featureanalysis'), [navigate]);
     const handleBruiseAreaCalculation = useCallback(() => navigate('/bruiseareacalculation'), [navigate]);
     const handleRemoveBackground = useCallback(() => navigate('/removebackground'), [navigate]);
-    const handlemainhomepage = useCallback(() => navigate('/mainhomepage'), [navigate]);
+    const handlemainhome = useCallback(() => navigate('/mainhome'), [navigate]);
 
     // Navigation handlers
     const handleCropImage = useCallback(() => {
@@ -139,7 +139,7 @@ const Resize = () => {
       <div className="bruiseareacalculation-page">
         <nav className="navbar">
           <div className="navbar-brand">
-            <img src={mangoLogo} alt="Mango Logo" className="mango-logo" onClick={handlemainhomepage}/>
+            <img src={mangoLogo} alt="Mango Logo" className="mango-logo" onClick={handlemainhome}/>
           </div>
           <div className="navbar-links">
             <button className="navbar-link" onClick={handleDashboard}>

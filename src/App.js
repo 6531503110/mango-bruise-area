@@ -1,31 +1,31 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { UserProvider } from './UserContext';
-import FirstHomePage from './components/FirstHomePage/FirstHomePage';
-import SignUpPage from './components/SignUpPage/SignUpPage';
-import SignInPage from './components/SignInPage/SignInPage';
+import FirstHome from './components/FirstHome/FirstHome';
+import SignUp from './components/SignUp/SignUp';
+import SignIn from './components/SignIn/SignIn';
 import ForgotPassword from './components/ForgotPassword/ForgotPassword';
 import Verify from './components/Verify/Verify';
 import ChangePassword from './components/ChangePassword/ChangePassword';
 import ChangePasswordUpdate from './components/ChangePasswordUpdate/ChangePasswordUpdate';
-import MainHomePage from './components/MainHomePage/MainHomePage';
-import AboutUsPage from './components/AboutUsPage/AboutUsPage'
-import ContactUsPage from './components/ContactUsPage/ContactUsPage';
-import FeedbackPage from './components/FeedbackPage/FeedbackPage';
-import FeedbackSubmitted from './components/FeedbackPage/FeedbackSubmitted';
-import DashboardPage from './components/DashboardPage/DashboardPage';
-import UserProfilePage from './components/UserProfilePage/UserProfilePage';
+import MainHome from './components/MainHome/MainHome';
+import AboutUs from './components/AboutUs/AboutUs'
+import ContactUs from './components/ContactUs/ContactUs';
+import Feedback from './components/Feedback/Feedback';
+import FeedbackSubmitted from './components/Feedback/FeedbackSubmitted';
+import Dashboard from './components/Dashboard/Dashboard';
+import UserProfile from './components/UserProfile/UserProfile';
 import EditUserProfile from './components/EditUserProfile/EditUserProfile';
 import ChangeProfilePassword from './components/ChangeProfilePassword/ChangeProfilePassword';
 import NewPasswordUpdate from './components/NewPasswordUpdate/NewPasswordUpdate';
 import BruiseAreaCalculation from './components/BruiseAreaCalculation/BruiseAreaCalculation';
 import ShowAreaCalculation from './components/ShowAreaCalculation/ShowAreaCalculation';
 import ExportCSVSuccessfully from './components/ExportCSVSuccessfully/ExportCSVSuccessfully';
-import FeatureAnalysis from './components/FeatureAnalysisPage/FeatureAnalysis';
+import FeatureAnalysis from './components/FeatureAnalysis/FeatureAnalysis';
 import ViewPhotoResults from './components/ViewPhotoResults/ViewPhotoResults';
 import FeatureAnalysisResults from './components/FeatureAnalysisResults/FeatureAnalysisResults';
 import ExportFeatureSuccessful from './components/ExportFeatureSuccessful/ExportFeatureSuccessful';
-import Resize from './components/ResizePage/Resize';
+import Resize from './components/Resize/Resize';
 import CropImage from './components/CropImage/CropImage';
 import RemoveBackground from './components/RemoveBackground/RemoveBackground';
 
@@ -35,20 +35,20 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Navigate to="/firsthomepage" />} />
-          <Route path="/firsthome" element={<FirstHomePage />} />
-          <Route path="/signin" element={<SignInPage />} />
-          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/firsthome" element={<FirstHome />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/verify" element={<Verify />} />
           <Route path="/changepassword" element={<ChangePassword />} />
           <Route path="/changepasswordupdate" element={<ChangePasswordUpdate />} />
-          <Route path="/mainhome" element={<MainHomePage />} />
-          <Route path="/aboutus" element={<AboutUsPage />} />
-          <Route path="/contactus" element={<ContactUsPage />} />
-          <Route path="/feedback" element={<FeedbackPage />} />
+          <Route path="/mainhome" element={<MainHome />} />
+          <Route path="/aboutus" element={<AboutUs />} />
+          <Route path="/contactus" element={<ContactUs />} />
+          <Route path="/feedback" element={<Feedback />} />
           <Route path="/feedbacksubmitted" element={<FeedbackSubmitted />} />
-          <Route path="/dashboard" element={<DashboardPage />} />
-          <Route path="/userprofile" element={<UserProfilePage />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/userprofile" element={<UserProfile />} />
           <Route path="/edituserprofile" element={<EditUserProfile />} />
           <Route path="/changeprofilepassword" element={<ChangeProfilePassword />} />
           <Route path="/newpasswordupdate" element={<NewPasswordUpdate />} />
